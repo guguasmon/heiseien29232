@@ -7,6 +7,7 @@
     <div class="right">
       <ul class="lists">
         <% if user_signed_in? %>
+        <span class="name"><%= "ようこそ#{current_user.name}さん" %></span>
         <li class="list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         <li class="list"><%= link_to "利用者を登録する", "#", class: "post" %></li>
         <% else %>

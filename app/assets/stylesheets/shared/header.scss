@@ -18,6 +18,10 @@ header {
     display: flex;
       .lists {
         display: flex;
+        .name {
+          display: block;
+          padding: 0 24px;
+        }
         a {
           display: block;
           padding: 0 24px;
