@@ -15,8 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   def create
     @user = User.new(sign_up_params)
-    if @user.valid?
-      @user.save # バリデーションをクリアした時
+    if @user.save # バリデーションをクリアした時
       bypass_sign_in(@user)
       redirect_to root_path
     else
