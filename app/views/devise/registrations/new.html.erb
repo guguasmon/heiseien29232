@@ -12,7 +12,7 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">名前</label>
+      <label class="form-text" for="name">名前</label>
       <span class="indispensable">必須</span>
     </div>
     <%= f.text_area :name, class:"input-default", id:"name", placeholder:"例) 平成の里", maxlength:"40" %>
@@ -20,7 +20,7 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">メールアドレス</label>
+      <label class="form-text" for="email">メールアドレス</label>
       <span class="indispensable">必須</span>
     </div>
     <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
@@ -28,7 +28,7 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">パスワード</label>
+      <label class="form-text" for="password">パスワード</label>
       <span class="indispensable">必須</span>
     </div>
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
@@ -37,10 +37,10 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">パスワード(確認)</label>
+      <label class="form-text" for="password_confirmation">パスワード(確認)</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.password_field :password, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
+    <%= f.password_field :password, class:"input-default", id:"password_confirmation", placeholder:"同じパスワードを入力して下さい" %>
   </div>
 
   <div class='register-btn'>

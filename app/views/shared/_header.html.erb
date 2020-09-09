@@ -2,9 +2,9 @@
   <div class="container">
     <div class="left">
     <%= link_to '兵声援', root_path %>
-    <%= flash[:notice] %>
+    <%# <%= flash[:notice] ログインしましたがテストに引っかかる %>
     <% if user_signed_in? %>
-      <span class="name"><%= "ようこそ#{current_user.name}さん" %></span>
+     <span class="name"><%= "ようこそ#{current_user.name}さん" %> </span> %>
     <% end %>
     </div>
     <div class="right">
