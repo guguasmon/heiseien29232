@@ -1,0 +1,22 @@
+<header class="header">
+  <div class="container">
+    <div class="left">
+    <%= link_to '兵声援', root_path %>
+    <%# <%= flash[:notice] ログインしましたがテストに引っかかる %>
+    <% if user_signed_in? %>
+     <span class="name"><%= "ようこそ#{current_user.name}さん" %> </span> %>
+    <% end %>
+    </div>
+    <div class="right">
+      <ul class="lists">
+        <% if user_signed_in? %>
+        <li class="list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li class="list"><%= link_to "利用者を登録する", "#", class: "post" %></li>
+        <% else %>
+        <li class="list"><%= link_to "ログイン", new_user_session_path, class: "post" %></li>
+        <li class="list"><%= link_to "新規登録", new_user_registration_path, class: "post" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</header>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'guests/index'
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+}
+
   root to: "guests#index"
   resources :guests
 end
