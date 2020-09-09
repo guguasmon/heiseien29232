@@ -153,3 +153,13 @@
   text-align: right;
   cursor: pointer;
 }
+
+.btn-other {
+  width: 100%;
+  background: gray;
+  border: 1px solid gray;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}

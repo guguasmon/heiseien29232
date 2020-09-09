@@ -18,10 +18,6 @@ header {
     display: flex;
       .lists {
         display: flex;
-        .name {
-          display: block;
-          padding: 0 24px;
-        }
         a {
           display: block;
           padding: 0 24px;
@@ -40,6 +36,26 @@ header {
           }
         
         }
+    }
+  }
+}
+
+/* タブレット表示時 */
+@media (max-width: 1024px) {
+
+}
+
+ /* スマホ表示時 */
+ @media (max-width: 650px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    .left {
+      margin: 0 auto;
+    }
+    .right {
+      display: flex;
+      justify-content: center;
     }
   }
 }

@@ -35,7 +35,9 @@
     <%= f.submit "ログイン" ,class:"login-red-btn" %>
   </div>
 
+  <div class='login-btn'>
+    <%= link_to 'トップ画面に戻る', root_path, class: "btn-other" %>
+    <%= link_to "新規登録画面にいく", new_user_registration_path, class: "btn-other" %>
+  </div>
 </div>
 <% end %>
-
-
