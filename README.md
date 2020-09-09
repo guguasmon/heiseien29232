@@ -16,24 +16,46 @@
 
 ## guests テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| name           | string     | null: false                    |
-| gender_id      | integer    | null: false                    |
-| addres         | string     | null: false                    |
-| visit1_id      | integer    | null: false                    |
-| visit2_id      | integer    |                                |
-| bathing_id     | integer    | null: false                    |
-| drink_id       | integer    | null: false                    |
-| warm           | boolean    | default: false, null: false    |
-| thickness_id   | integer    | null: false                    |
-| description    | text       |                                |
-| user           | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| first_name      | string     | null: false                    |
+| last_name       | string     | null: false                    |
+| first_name_kana | string     | null: false                    |
+| last_name_kana  | string     | null: false                    |
+| gender_id       | integer    | null: false                    |
+| visit1_id       | integer    | null: false                    |
+| visit2_id       | integer    | null: false                    |
+| description     | text       |                                |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- has_one :bath
+- has_one :drink
 - has_many :comments
+
+## baths テーブル
+
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| bathing_id     | integer    | null: false                    |
+| infection_id   | integer    | null: false                    |
+| guest          | references | null: false, foreign_key: true |
+
+- belongs_to :guest
+
+## drink テーブル
+
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| drinking_id    | integer    | null: false                    |
+| thickness_id   | integer    | null: false                    |
+| warm           | boolean    | null: false, default: false    |
+| guest          | references | null: false, foreign_key: true |
+
+- belongs_to :guest
+
 
 ## comments テーブル
 
