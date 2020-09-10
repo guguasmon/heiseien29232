@@ -5,4 +5,4 @@ class Bathing < ActiveHash::Base
     { id: 2, name: '一般チェアー浴' },
     { id: 3, name: 'チェアー浴' }
   ]
-  end
+end
