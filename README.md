@@ -50,22 +50,14 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| drink_type     | references | null: false, foreign_key: true |
+| drink_type     | integer    | null: false                    |
 | warm           | boolean    | null: false, default: false    |
 | thickness_id   | integer    | null: false                    |
 | diabetes       | boolean    | null: false, default: false    |
 | guest          | references | null: false, foreign_key: true |
 
 - belongs_to :guest
-- belongs_to :drink_type
 
-## drink_types テーブル
-
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| name           | string     | null: false                    |
-
-- has_many :drinks
 
 ## comments テーブル
 
