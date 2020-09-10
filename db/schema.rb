@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_070707) do
+ActiveRecord::Schema.define(version: 2020_09_10_071101) do
 
   create_table "baths", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "bathing_id", null: false
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 2020_09_10_070707) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "drinks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "drink_type_id", null: false
+    t.boolean "warm", default: false, null: false
+    t.integer "thickness_id", null: false
+    t.bigint "guest_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["drink_type_id"], name: "index_drinks_on_drink_type_id"
+    t.index ["guest_id"], name: "index_drinks_on_guest_id"
   end
 
   create_table "guests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -57,5 +68,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_070707) do
   end
 
   add_foreign_key "baths", "guests"
+  add_foreign_key "drinks", "drink_types"
+  add_foreign_key "drinks", "guests"
   add_foreign_key "guests", "users"
 end
