@@ -43,6 +43,7 @@
 | infection_id   | integer    | null: false                    |
 | thickness_id   | integer    | null: false                    |
 | guest          | references | null: false, foreign_key: true |
+| remark         | string     |                                |
 
 - belongs_to :guest
 
@@ -55,6 +56,7 @@
 | thickness_id   | integer    | null: false                    |
 | diabetes       | boolean    | null: false, default: false    |
 | guest          | references | null: false, foreign_key: true |
+| remark         | string     |                                |
 
 - belongs_to :guest
 
