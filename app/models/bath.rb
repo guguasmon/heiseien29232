@@ -12,6 +12,7 @@ class Bath < ApplicationRecord
     validates :timing_id
     with_options numericality: { other_than: 0, message: "can't be blank" } do
       validates :bating_id
+      validates :infection_id
     end
   end
 end
