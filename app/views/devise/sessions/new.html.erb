@@ -1,41 +1,32 @@
-<%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'registration-main', local: true do |f| %>
-
-<div class='form-wrap'>
-
-  <div class='form-header'>
-    <h1 class='form-header-text'>
-      ログイン画面
-    </h1>
-  </div>
-
-  <div class='login-flash-message'>
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
-  </div>
-  
-   <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">メールアドレス</label>
-      <span class="indispensable">必須</span>
+<div class="container">
+  <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'registration-main', local: true do |f| %>
+    <%# タイトル %>
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center m-3">ユーザーログイン画面</h1>
+        <div class='text-danger text-center m-3'>
+          <%= flash[:notice] %>
+          <%= flash[:alert] %>
+        </div>
+      </div>
     </div>
-    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
-  </div>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">パスワード</label>
-      <span class="indispensable">必須</span>
+    <div class="form-group">
+      <label for="email">メールアドレス<span class="text-danger">必須</span></label>
+      <%= f.email_field :email, class:"input-default form-control", id:"email", placeholder:"", autofocus: true %>
     </div>
-    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
-  </div>
-  
-  <div class='login-btn'>
-    <%= f.submit "ログイン" ,class:"login-red-btn" %>
-  </div>
-
-  <div class='login-btn'>
-    <%= link_to 'トップ画面に戻る', root_path, class: "btn-other" %>
-    <%= link_to "新規登録画面にいく", new_user_registration_path, class: "btn-other" %>
+    <div class="form-group">
+      <label for="password">パスワード<span class="text-danger">必須</span></label>
+      <%= f.password_field :password, class:"input-default form-control", id:"password", placeholder:"" %>
+    </div>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-12">
+        <%= f.submit "ログイン" ,class:"btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to "新規登録画面へ行く", new_user_registration_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
+    <%= link_to 'トップ画面に戻る', root_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
   </div>
 </div>
-<% end %>
