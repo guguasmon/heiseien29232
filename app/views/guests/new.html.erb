@@ -3,7 +3,7 @@
 </div>
 
 <div class="container">
-  <%= form_with(model: @guest, local: true) do |f| %>
+  <%= form_with(model: @guest, url: guests_path, local: true) do |f| %>
     <div class="row">
       <div class="col">
         <h1 class="text-center m-3">利用者情報登録画面</h1>
@@ -72,7 +72,7 @@
         <%= f.collection_select(:bathing_id, Bathing.all, :id, :name, {}, {class:"form-control", id:"bathing-id"}) %>
       </div>
       <div class="form-group col-sm-4">
-        <label for="infection-id">感染症など<span class="text-danger pl-3">必須</span></label>
+        <label for="infection-id">対応が必要な感染症の有無について<span class="text-danger pl-3">必須</span></label>
         <%= f.collection_select(:infection_id, Infection.all, :id, :name, {}, {class:"form-control", id:"infection-id"}) %>
       </div>
       <div class="form-group col-sm-4">
@@ -84,7 +84,7 @@
     <div class="form-row my-3">
       <div class="form-group col-sm-12">
         <label for="remark-bath">入浴の備考</label>
-        <%= f.text_field :remark, class:"form-control", id:"remark-bath", placeholder:"例）女性対応。"  %>
+        <%= f.text_field :remark_bath, class:"form-control", id:"remark-bath", placeholder:"例）女性対応。"  %>
       </div>
     </div>
     <%# /bathsテーブルの情報入力 %>
@@ -116,7 +116,7 @@
     <div class="form-row my-3">
       <div class="form-group col-sm-12">
         <label for="remark-drink">水分提供の備考</label>
-        <%= f.text_field :remark, class:"form-control", id:"remark-drink", placeholder:"例）コーヒーが苦手"  %>
+        <%= f.text_field :remark_drink, class:"form-control", id:"remark-drink", placeholder:"例）コーヒーが苦手"  %>
       </div>
     </div>
     <%# /drinksテーブルの情報入力 %>
