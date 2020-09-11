@@ -1,0 +1,41 @@
+ja:
+  activerecord:
+    attributes:
+      guest:
+       first_name: 苗字（全角）
+       last_name: 名前（全角）
+       first_name_kana: 苗字（カタカナ）
+       last_name_kana: 名前（カタカナ）
+       gender_id: 性別
+       visit1_id: １回目の利用日
+       visit2_id: ２回目の利用日
+       description: 利用者の詳細
+      bath:
+       bathing_id: 入浴の種類
+       infection_id: 対応が必要な感染症の有無について
+       timing_id: 入浴の順番
+       remark_bath: 入浴の備考
+      drink:
+       drink_type_id: 飲み物の種類
+       thickness_id: とろみの量
+       warm: 温めるか
+       diabetes: 糖尿病
+  activemodel:
+    attributes:
+      guest_data:
+        first_name: 苗字（全角）
+        last_name: 名前（全角）
+        first_name_kana: 苗字（カタカナ）
+        last_name_kana: 名前（カタカナ）
+        gender_id: 性別
+        visit1_id: １回目の利用日
+        visit2_id: ２回目の利用日
+        description: 利用者の詳細
+        bathing_id: 入浴の種類
+        infection_id: 対応が必要な感染症の有無
+        timing_id: 入浴の順番
+        remark_bath: 入浴の備考
+        drink_type_id: 飲み物の種類
+        thickness_id: とろみの量
+        warm: 温めるか
+        diabetes: 糖尿病
