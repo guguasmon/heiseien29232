@@ -11,6 +11,7 @@ class GuestsController < ApplicationController
     @guest = GuestData.new(guest_params)
     if @guest.valid? 
       @guest.save
+      flash[:notice] = '利用者情報を登録しました'
       redirect_to root_path
     else
       render('guests/new')
