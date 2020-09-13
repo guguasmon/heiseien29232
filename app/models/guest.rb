@@ -1,11 +1,12 @@
 class Guest < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :gender
-  belongs_to_active_hash :visit
+  belongs_to_active_hash :visit1
+  belongs_to_active_hash :visit2
 
   belongs_to :user
-  has_one    :bath
-  has_one    :drink
+  has_one    :bath, dependent: :destroy
+  has_one    :drink, dependent: :destroy
 
   with_options presence: true do
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'full-width characters.' }

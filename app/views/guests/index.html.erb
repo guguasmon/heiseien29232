@@ -3,15 +3,52 @@
 </div>
 
 <div class="container">
-<%# ログインなどのフラッシュメッセージ %>
-  <span class="navbar-text">
-      <%= flash[:notice] %>
-  </span>
+<%# メッセージヘッダー %>
+  <div class="row">
+    <div class="col">
+      <%# ログイン時の名前表示 %>
+      <% if user_signed_in? %>
+        <span class="navbar-text">
+          <%= "ようこそ#{current_user.name}さん" %>
+        </span>
+      <% end %>
+    </div>
+    <div class="col">
+      <%# ログインなどのフラッシュメッセージ %>
+      <span class="navbar-text">
+        <%= flash[:notice] %>
+      </span>
+    </div>
+  </div>
 
-  <%# ログイン時の名前表示 %>
-  <% if user_signed_in? %>
-    <span class="navbar-text">
-      <%= "ようこそ#{current_user.name}さん" %>
-    </span>
+  <div class="container">
+  <% unless user_signed_in? %>
+    <h1 class="text-center">兵声援とは </h1>
+    <p class="text-center">兵声援は登録した利用者データを用いて,曜日毎の利用者表や入浴表及び水分提供表を自動作成するサービスです。</p>
+    <p class="text-center">これを利用することで、利用者の増減や状態の変化に応じて各表を手動で手直しする必要がなくなります。</p>
+    <p class="text-center">このアプリはデジタル化の進んでいない紙媒体がメインのデイサービスの現場を想定しています。</p>
+  <% else%>
+    <table class="table table-striped table-bordered table-hover">
+      <caption>利用者一覧</caption>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">苗字</th>
+          <th scope="col">名前</th>
+          <th scope="col">性別</th>
+          <th scope="col">利用日１</th>
+          <th scope="col">利用日２</th>
+          <th scope="col">入浴の種類</th>
+          <th scope="col">飲み物の種類</th>
+          <th scope="col">編集/削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @guests.each do |guest| %>
+          <%= render partial: "shared/guest", locals: { guest: guest } %>
+        <% end %>
+      </tbody>
+    </table>
   <% end %>
+  </div>
 </div>

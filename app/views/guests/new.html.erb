@@ -46,11 +46,11 @@
     <div class="form-row my-3">
       <div class="form-group col-sm-6">
         <label for="visit1-id">利用日１<span class="text-danger pl-3">必須</span></label>
-        <%= f.collection_select(:visit1_id, Visit.all, :id, :name, {}, {class:"form-control", id:"visit1-id"}) %>
+        <%= f.collection_select(:visit1_id, Visit1.all, :id, :name, {}, {class:"form-control", id:"visit1-id"}) %>
       </div>
       <div class="form-group col-sm-6">
         <label for="visit2-id">利用日２<span class="text-danger pl-3"></span></label>
-        <%= f.collection_select(:visit2_id, Visit.all, :id, :name, {}, {class:"form-control", id:"visit2-id"}) %>
+        <%= f.collection_select(:visit2_id, Visit2.all, :id, :name, {}, {class:"form-control", id:"visit2-id"}) %>
       </div>
     </div>
     <div class="form-row my-3">
