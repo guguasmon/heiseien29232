@@ -1,7 +1,8 @@
 class Guest < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :gender
-  belongs_to_active_hash :visit
+  belongs_to_active_hash :visit1
+  belongs_to_active_hash :visit2
 
   belongs_to :user
   has_one    :bath, dependent: :destroy
