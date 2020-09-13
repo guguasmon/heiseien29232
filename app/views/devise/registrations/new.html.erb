@@ -37,7 +37,10 @@
       </div>
     </div>
     <%# /新規登録ボタン %>
+  <div>
+    <%= link_to "ログイン画面へいく", new_user_session_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
+    <%= link_to 'トップ画面に戻る', root_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
+  </div>
 
   <% end %>
 </div>
-
