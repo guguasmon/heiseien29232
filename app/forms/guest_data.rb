@@ -1,13 +1,12 @@
 class GuestData
-
   include ActiveModel::Model
   attr_accessor :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id, :description, :user_id,
                 :bathing_id, :infection_id, :timing_id, :remark_bath, :guest_id,
                 :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id
 
   # # boolean型のチェックはpresence:trueが使えない
-   validates :warm, inclusion: { in: [true, false] }
-   validates :diabetes, inclusion: { in: [true, false] }
+  validates :warm, inclusion: { in: [true, false] }
+  validates :diabetes, inclusion: { in: [true, false] }
 
   with_options presence: true do
     # guestテーブル
@@ -25,14 +24,14 @@ class GuestData
     validates :bathing_id
     validates :infection_id
     validates :timing_id
-    with_options numericality: { other_than: 0, message: "の選択肢を選んでください" } do
-    # guestテーブル
+    with_options numericality: { other_than: 0, message: 'の選択肢を選んでください' } do
+      # guestテーブル
       validates :gender_id
       validates :visit1_id
-    # drinkテーブル
+      # drinkテーブル
       validates :drink_type_id
       validates :thickness_id
-    # bathテーブル
+      # bathテーブル
       validates :bathing_id
       validates :infection_id
     end
@@ -45,13 +44,11 @@ class GuestData
       gender_id: gender_id, visit1_id: visit1_id, visit2_id: visit2_id, description: description, user_id: user_id
     )
     # 利用日が被っていたら利用日２を0にする
-    if guest.visit1_id == guest.visit2_id
-      guest.update(visit2_id: 0)
-    end    
-    
+    guest.update(visit2_id: 0) if guest.visit1_id == guest.visit2_id
+
     # 入浴の情報を保存
     bath = Bath.create(bathing_id: bathing_id, infection_id: infection_id, timing_id: timing_id, remark_bath: remark_bath, guest_id: guest.id)
-    
+
     # 水分の情報を保存
     drink = Drink.create(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink, guest_id: guest.id)
   end
@@ -59,6 +56,7 @@ class GuestData
   def warm
     ActiveRecord::Type::Boolean.new.cast(@warm)
   end
+
   def diabetes
     ActiveRecord::Type::Boolean.new.cast(@diabetes)
   end

@@ -8,7 +8,7 @@ class Drink < ApplicationRecord
   # # boolean型のチェック
   validates :warm, inclusion: { in: [true, false] }
   validates :diabetes, inclusion: { in: [true, false] }
-  
+
   with_options presence: true do
     validates :drink_type_id
     validates :thickness_id

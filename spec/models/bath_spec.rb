@@ -25,7 +25,6 @@ RSpec.describe Bath, type: :model do
         @bath.remark_bath = ''
         expect(@bath).to be_valid
       end
-
     end
 
     context '入浴情報の新規登録がうまくいかないとき' do

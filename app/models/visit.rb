@@ -9,4 +9,4 @@ class Visit < ActiveHash::Base
     { id: 6, name: '土曜日' },
     { id: 7, name: '日曜日' }
   ]
-  end
+end

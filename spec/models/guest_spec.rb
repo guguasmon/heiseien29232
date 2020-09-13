@@ -49,7 +49,6 @@ RSpec.describe Guest, type: :model do
         @guest.description = ''
         expect(@guest).to be_valid
       end
-
     end
 
     context '新規登録がうまくいかないとき' do

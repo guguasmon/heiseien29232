@@ -8,7 +8,7 @@ class GuestsController < ApplicationController
 
   def create
     @guest = GuestData.new(guest_params)
-    if @guest.valid? 
+    if @guest.valid?
       @guest.save
       flash[:notice] = '利用者情報を登録しました'
       redirect_to root_path
@@ -24,6 +24,6 @@ class GuestsController < ApplicationController
       :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id, :description,
       :bathing_id, :infection_id, :timing_id, :remark_bath,
       :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink
-      ).merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id)
   end
 end

@@ -7,7 +7,7 @@ FactoryBot.define do
     gender_id              { 1 }
     visit1_id              { 1 }
     visit2_id              { 2 }
-    description            { }
+    description            {}
     association :user
   end
 end

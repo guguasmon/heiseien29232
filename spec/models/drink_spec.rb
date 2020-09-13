@@ -21,7 +21,6 @@ RSpec.describe Drink, type: :model do
         @drink.remark_drink = ''
         expect(@drink).to be_valid
       end
-
     end
 
     context '水分情報の新規登録がうまくいかないとき' do
@@ -38,12 +37,12 @@ RSpec.describe Drink, type: :model do
       it 'warmが空では登録できない' do
         @drink.warm = nil
         @drink.valid?
-        expect(@drink.errors.full_messages).to include("Warm is not included in the list")
+        expect(@drink.errors.full_messages).to include('Warm is not included in the list')
       end
       it 'diabetesが空では登録できない' do
         @drink.diabetes = nil
         @drink.valid?
-        expect(@drink.errors.full_messages).to include("Diabetes is not included in the list")
+        expect(@drink.errors.full_messages).to include('Diabetes is not included in the list')
       end
     end
   end
