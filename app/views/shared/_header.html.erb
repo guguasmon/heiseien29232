@@ -1,22 +1,47 @@
-<header class="header">
+<header class="header bg-light">
   <div class="container">
-    <div class="left">
-    <%= link_to '兵声援', root_path %>
-    <%# <%= flash[:notice] ログインしましたがテストに引っかかる %>
-    <% if user_signed_in? %>
-     <span class="name"><%= "ようこそ#{current_user.name}さん" %> </span>
-    <% end %>
-    </div>
-    <div class="right">
-      <ul class="lists">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+
+      <%# ロゴ表示 %>
+      <div>
+       <%= link_to '兵声援', root_path, class: "navbar-brand" %>
+      </div>
+
+      <%# トグル %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <%# メニューバー %>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto list-group">
         <% if user_signed_in? %>
-        <li class="list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-        <li class="list"><%= link_to "利用者を登録する", "#", class: "post" %></li>
+          <li class="nav-item">
+            <%= link_to "利用者を登録する", new_guest_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '利用者一覧', root_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '入浴表', "#", class: "btn btn-outline-secondary nav-link", role: "button" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '水分表', "#", class: "btn btn-outline-secondary nav-link", role: "button" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary nav-link", role: "button" %>
+          </li>
         <% else %>
-        <li class="list"><%= link_to "ログイン", new_user_session_path, class: "post" %></li>
-        <li class="list"><%= link_to "新規登録", new_user_registration_path, class: "post" %></li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
+          </li>
         <% end %>
-      </ul>
-    </div>
+        </ul>
+      </div>
+
+    </nav>
   </div>
 </header>

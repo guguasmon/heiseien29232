@@ -1,52 +1,43 @@
-<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'registration-main', local: true do |f| %>
-
-<div class='form-wrap'>
-  <div class='form-header'>
-    <h1 class='form-header-text'>
-    ユーザー新規登録画面
-    </h1>
-  </div>
-
-<%# エラーメッセージの表示 %>
-  <%= render 'shared/error_messages', model: f.object %>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text" for="name">名前</label>
-      <span class="indispensable">必須</span>
+<div class="container">
+  <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'registration-main', local: true do |f| %>
+    <%# タイトル %>
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center m-3">ユーザー新規登録画面</h1>
+        <%# エラーメッセージの表示 %>
+        <%= render 'shared/error_messages', model: f.object %>
+      </div>
     </div>
-    <%= f.text_area :name, class:"input-default", id:"name", placeholder:"例) 平成の里", maxlength:"40" %>
-  </div>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text" for="email">メールアドレス</label>
-      <span class="indispensable">必須</span>
+    <%# /タイトル %>
+    
+    <%# 入力情報 %>
+    <div class="form-group">
+      <label for="name">名前<span class="text-danger">必須</span></label>
+      <%= f.text_area :name, class:"input-default form-control", id:"name", placeholder:"例) 平成の里", maxlength:"40" %>
     </div>
-    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
-  </div>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text" for="password">パスワード</label>
-      <span class="indispensable">必須</span>
+    <div class="form-group">
+      <label for="email">メールアドレス<span class="text-danger">必須</span></label>
+      <%= f.email_field :email, class:"input-default form-control", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
     </div>
-    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
-    <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
-  </div>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text" for="password_confirmation">パスワード(確認)</label>
-      <span class="indispensable">必須</span>
+    <div class="form-group">
+      <label for="password">パスワード<span class="text-danger">必須</span></label>
+      <%= f.password_field :password, class:"input-default form-control", id:"password", placeholder:"6文字以上の半角英数字" %>
+      <small id="passwordHelp" class="form-text text-muted">※英字と数字の両方を含めて設定してください</small>
     </div>
-    <%= f.password_field :password, class:"input-default", id:"password_confirmation", placeholder:"同じパスワードを入力して下さい" %>
-  </div>
+    <div class="form-group">
+      <label for="password_confirmation">パスワード(確認)<span class="text-danger">必須</span></label>
+      <%= f.password_field :password, class:"input-default  form-control", id:"password_confirmation", placeholder:"同じパスワードを入力して下さい" %>
+    </div>
+    <%# /入力情報 %>
 
-  <div class='register-btn'>
-    <%= f.submit "新規登録" ,class:"register-red-btn" %>
-  </div>
+    <%# 新規登録ボタン %>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-12">
+        <%= f.submit "新規登録" ,class:"btn btn-primary" %>
+      </div>
+    </div>
+    <%# /新規登録ボタン %>
+
+  <% end %>
 </div>
-<% end %>
-
 
