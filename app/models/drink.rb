@@ -6,8 +6,8 @@ class Drink < ApplicationRecord
   belongs_to :guest
 
   # # boolean型のチェック
-  # validates :warm, inclusion: { in: [true, false] }
-  # validates :diabetes, inclusion: { in: [true, false] }
+  validates :warm, inclusion: { in: [true, false] }
+  validates :diabetes, inclusion: { in: [true, false] }
   
   with_options presence: true do
     validates :drink_type_id
