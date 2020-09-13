@@ -6,8 +6,8 @@ class GuestData
                 :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id
 
   # # boolean型のチェックはpresence:trueが使えない
-  # validates :warm, inclusion: { in: [true, false] }
-  # validates :diabetes, inclusion: { in: [true, false] }
+   validates :warm, inclusion: { in: [true, false] }
+   validates :diabetes, inclusion: { in: [true, false] }
 
   with_options presence: true do
     # guestテーブル
@@ -36,9 +36,7 @@ class GuestData
       validates :bathing_id
       validates :infection_id
     end
-
   end
-
 
   def save
     # 利用者の情報を保存し、「guest」という変数に入れている
@@ -50,14 +48,28 @@ class GuestData
     if guest.visit1_id == guest.visit2_id
       guest.update(visit2_id: 0)
     end    
-    binding.pry
     
     # 入浴の情報を保存
     bath = Bath.create(bathing_id: bathing_id, infection_id: infection_id, timing_id: timing_id, remark_bath: remark_bath, guest_id: guest.id)
-    binding.pry
     
     # 水分の情報を保存
     drink = Drink.create(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink, guest_id: guest.id)
-    binding.pry
+  end
+
+  def warm
+    ActiveRecord::Type::Boolean.new.cast(@warm)
+  end
+  def diabetes
+    ActiveRecord::Type::Boolean.new.cast(@diabetes)
   end
 end
+
+guestdata = GuestData.new(warm: '1')
+guestdata.warm #=> true
+gusetdata = GuestData.new(warm: '0')
+gusetdata.warm #=> false
+
+guestdata = GuestData.new(diabetes: '1')
+guestdata.diabetes #=> true
+gusetdata = GuestData.new(diabetes: '0')
+gusetdata.diabetes #=> false

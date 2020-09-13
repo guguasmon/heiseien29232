@@ -7,7 +7,6 @@ class GuestsController < ApplicationController
   end
 
   def create
-    binding.pry
     @guest = GuestData.new(guest_params)
     if @guest.valid? 
       @guest.save
