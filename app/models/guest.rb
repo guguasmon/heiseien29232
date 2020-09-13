@@ -4,8 +4,8 @@ class Guest < ApplicationRecord
   belongs_to_active_hash :visit
 
   belongs_to :user
-  has_one    :bath
-  has_one    :drink
+  has_one    :bath, dependent: :destroy
+  has_one    :drink, dependent: :destroy
 
   with_options presence: true do
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'full-width characters.' }
