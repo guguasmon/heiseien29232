@@ -1,0 +1,113 @@
+<div>
+ <%= render "shared/header" %>
+</div>
+<div class="container my-3">
+  <h1 class="text-center m-3"><%= "#{@guest.first_name} #{@guest.last_name} (#{@guest.first_name_kana} #{@guest.last_name_kana})さんの詳細" %></h1>
+  <%# 利用者の詳細テーブル %>
+  <div class="container">
+    <table class="table table-bordered">
+      <caption>利用者の詳細</caption>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">名前</th>
+          <th scope="col">性別</th>
+          <th scope="col">利用日１</th>
+          <th scope="col">利用日２</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="col"><%= "#{@guest.first_name} #{@guest.last_name} (#{@guest.first_name_kana} #{@guest.last_name_kana})" %></td>
+          <td scope="col"><%= @guest.gender.name %></td>
+          <td scope="col"><%= @guest.visit1.name %></td>
+          <td scope="col"><%= @guest.visit2.name %></td>
+        </tr>
+      </tbody>
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="12">利用者の備考</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="12"><%= @guest.description %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%# /利用者の詳細テーブル %>
+  <%# 利用者の入浴詳細テーブル %>
+  <div class="container">
+    <table class="table table-bordered">
+      <caption>入浴の詳細</caption>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">入浴の種類</th>
+          <th scope="col">感染症</th>
+          <th scope="col">入浴の順番</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="col"><%= @guest.bath.bathing.name %></td>
+          <td scope="col"><%= @guest.bath.infection.name %></td>
+          <td scope="col"><%= @guest.bath.timing.name %></td>
+        </tr>
+      </tbody>
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="12">入浴の備考</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="12"><%= @guest.bath.remark_bath %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%# /利用者の入浴詳細テーブル %>
+  <%# 利用者の水分詳細テーブル %>
+  <div class="container">
+    <table class="table table-bordered">
+      <caption>水分の詳細</caption>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">飲み物の種類</th>
+          <th scope="col">とろみの量</th>
+          <th scope="col">温めの有無</th>
+          <th scope="col">糖尿病の有無</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="col"><%= @guest.drink.drink_type.name %></td>
+          <td scope="col"><%= @guest.drink.thickness.name %></td>
+          <td scope="col"><%= @guest.drink.warm ? "温める" : "温めない"  %></td>
+          <td scope="col"><%= @guest.drink.diabetes ? "有り" : "無し"  %></td>
+        </tr>
+      </tbody>
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="12">水分の備考</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="12"><%= @guest.drink.remark_drink %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%# /利用者の水分詳細テーブル %>
+  <%# 編集あるいは削除ボタン %>
+  <div class="row">
+    <div class="col">
+      <%= link_to '編集', edit_guest_path(@guest.id), method: :get, class: "btn btn-primary btn-block btn-lg", role: "button" %>
+    </div>
+    <div class="col">
+      <%= link_to '削除', guest_path(@guest.id), method: :delete, class: "btn btn-danger btn-block btn-lg", role: "button" %>
+    </div>
+  </div>
+  <%# /編集あるいは削除ボタン %>
+</div>
