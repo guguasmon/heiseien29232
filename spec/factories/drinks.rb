@@ -4,7 +4,7 @@ FactoryBot.define do
     thickness_id       { 1 }
     warm               { 'false' }
     diabetes           { 'false' }
-    remark_drink       { '' }
+    remark_drink       { Faker::Lorem.sentence }
     association :guest
   end
 end

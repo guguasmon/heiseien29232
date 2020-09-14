@@ -8,7 +8,7 @@ FactoryBot.define do
     visit1_id              { 1 }
     visit2_id              { 2 }
     adl_id                 { 1 }
-    description            {}
+    description            { Faker::Lorem.sentence }
     association :user
   end
 end
