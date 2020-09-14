@@ -25,6 +25,7 @@
 | gender_id       | integer    | null: false                    |
 | visit1_id       | integer    | null: false                    |
 | visit2_id       | integer    | null: false                    |
+| adl_id          | integer    | null: false                    |
 | description     | text       |                                |
 | user            | references | null: false, foreign_key: true |
 

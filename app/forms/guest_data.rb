@@ -1,7 +1,7 @@
 class GuestData
   include ActiveModel::Model
   attr_accessor :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id,
-                :description, :user_id, :id,
+                :description, :user_id, :id, :adl_id,
                 :bathing_id, :infection_id, :timing_id, :remark_bath,
                 :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id
 
@@ -18,6 +18,7 @@ class GuestData
     validates :gender_id
     validates :visit1_id
     validates :visit2_id
+    validates :adl_id
     # drinkテーブル
     validates :drink_type_id
     validates :thickness_id
@@ -29,6 +30,7 @@ class GuestData
       # guestテーブル
       validates :gender_id
       validates :visit1_id
+      validates :adl_id
       # drinkテーブル
       validates :drink_type_id
       validates :thickness_id
@@ -42,7 +44,7 @@ class GuestData
     # 利用者の情報を保存し、「guest」という変数に入れている
     guest = Guest.create(
       first_name: first_name, last_name: last_name, first_name_kana: first_name_kana, last_name_kana: last_name_kana,
-      gender_id: gender_id, visit1_id: visit1_id, visit2_id: visit2_id, description: description, user_id: user_id
+      gender_id: gender_id, visit1_id: visit1_id, visit2_id: visit2_id, description: description, user_id: user_id, adl_id: adl_id
     )
     # 利用日が被っていたら利用日２を0（未選択）にする
     guest.update(visit2_id: 0) if guest.visit1_id == guest.visit2_id
@@ -58,7 +60,7 @@ class GuestData
     guest = Guest.find(id)
     guest.update(
       first_name: first_name, last_name: last_name, first_name_kana: first_name_kana, last_name_kana: last_name_kana,
-      gender_id: gender_id, visit1_id: visit1_id, visit2_id: visit2_id, description: description, user_id: user_id
+      gender_id: gender_id, visit1_id: visit1_id, visit2_id: visit2_id, description: description, user_id: user_id, adl_id: adl_id
     )
 
     # 利用日が被っていたら利用日２を0（未選択）にする

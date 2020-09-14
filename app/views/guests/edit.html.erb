@@ -32,7 +32,10 @@
       </div>
     </div>
     <div class="form-row">
-
+      <div class="form-group col-sm-6">
+        <label for="adl-id">利用者の歩行状態<span class="text-danger pl-3">必須</span></label>
+        <%= f.collection_select(:adl_id, Adl.all, :id, :name, {}, {class:"form-control", id:"adl-id"}) %>
+      </div>
       <div class="col-2">
         <label for="male">性別:男<span class="text-danger pl-3">必須</span></label>
         <%= f.radio_button :gender_id, 1, class:"form-control", id: "male" %>

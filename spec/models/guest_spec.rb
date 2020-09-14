@@ -6,7 +6,7 @@ RSpec.describe Guest, type: :model do
   end
   describe '利用者新規登録' do
     context '新規登録がうまくいくとき' do
-      it 'first_name,last_name,first_name_kana,last_name_kana,gender_id,visit1_id,visit2_idが存在すれば登録できる' do
+      it 'first_name,last_name,first_name_kana,last_name_kana,gender_id,visit1_id,visit2_id,adl_idが存在すれば登録できる' do
         expect(@guest).to be_valid
       end
       it 'first_nameが全角（漢字・ひらがな・カタカナ）であれば登録できる' do
@@ -43,6 +43,10 @@ RSpec.describe Guest, type: :model do
       end
       it 'visit2_idが0(未選択)でも登録できる' do
         @guest.visit2_id = '0'
+        expect(@guest).to be_valid
+      end
+      it 'adl_idがあれば登録できる' do
+        @guest.adl_id = '1'
         expect(@guest).to be_valid
       end
       it 'descriptionが空でも登録できる' do
@@ -101,6 +105,11 @@ RSpec.describe Guest, type: :model do
         @guest.visit1_id = '0'
         @guest.valid?
         expect(@guest.errors.full_messages).to include("Visit1 can't be blank")
+      end
+      it 'adl_idが0（未選択）では登録できない' do
+        @guest.adl_id = '0'
+        @guest.valid?
+        expect(@guest.errors.full_messages).to include("Adl can't be blank")
       end
     end
   end

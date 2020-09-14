@@ -13,6 +13,7 @@
           <th scope="col">性別</th>
           <th scope="col">利用日１</th>
           <th scope="col">利用日２</th>
+          <th scope="col">歩行状態</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,7 @@
           <td scope="col"><%= @guest.gender.name %></td>
           <td scope="col"><%= @guest.visit1.name %></td>
           <td scope="col"><%= @guest.visit2.name %></td>
+          <td scope="col"><%= @guest.adl.name %></td>
         </tr>
       </tbody>
       <thead class="thead-dark">
