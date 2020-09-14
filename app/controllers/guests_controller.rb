@@ -1,6 +1,6 @@
 class GuestsController < ApplicationController
   before_action :set_guest, only: [:show, :destroy, :edit, :update]
-  before_action :move_to_index, except: :index
+  before_action :move_to_index, except: [:index, :new, :create, :update]
   def index
     if user_signed_in?
       user = User.find(current_user.id)
@@ -41,6 +41,7 @@ class GuestsController < ApplicationController
       gender_id: @guest.gender_id,
       visit1_id: @guest.visit1_id,
       visit2_id: @guest.visit2_id,
+      adl_id: @guest.adl_id,
       description: @guest.description,
       bathing_id: @guest.bath.bathing_id,
       infection_id: @guest.bath.infection_id,
@@ -75,7 +76,7 @@ class GuestsController < ApplicationController
 
   def guest_params
     params.require(:guest_data).permit(
-      :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id, :description,
+      :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id, :description, :adl_id,
       :bathing_id, :infection_id, :timing_id, :remark_bath,
       :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink
     ).merge(id: params[:id], user_id: current_user.id)
