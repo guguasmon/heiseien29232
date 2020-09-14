@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "利用者の新規登録", type: :system do
+RSpec.describe '利用者の新規登録', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @guestdata = FactoryBot.build(:guest_data)
   end
-  context '利用者の新規登録ができるとき'do
+  context '利用者の新規登録ができるとき' do
     it 'ログインしたユーザーは利用者の新規登録ができる' do
       # ログインする
       sign_in(@user)
@@ -33,16 +33,16 @@ RSpec.describe "利用者の新規登録", type: :system do
       check 'guest_data[diabetes]'
       fill_in 'guest_data[remark_drink]', with: @guestdata.remark_drink
       # 送信するとGuestモデル/Bathモデル/Drinkモデルのカウントが1上がることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { Guest.count }.by(1).and change { Bath.count }.by(1).and change { Drink.count }.by(1)
+      end.to change { Guest.count }.by(1).and change { Bath.count }.by(1).and change { Drink.count }.by(1)
       # トップページに戻ることを確認する
       expect(current_path).to eq root_path
       # トップページには先ほど登録した内容の利用者が存在することを確認する
       expect(page).to have_content(@guestdata.first_name)
     end
   end
-  context '利用者の新規登録ができないとき'do
+  context '利用者の新規登録ができないとき' do
     it 'ログインしていないと利用者の新規登録ページに遷移できない' do
       # トップページに遷移する
       visit root_path
@@ -83,11 +83,11 @@ RSpec.describe '利用者情報の編集', type: :system do
       fill_in 'guest_data[first_name]', with: "#{@guest1.first_name}編集済み"
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
       # 編集してもTweetモデルのカウントは変わらないことを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
-        # トップページに戻ることを確認する
-        expect(current_path).to eq root_path
+      end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
+      # トップページに戻ることを確認する
+      expect(current_path).to eq root_path
       # トップページには先ほど変更した内容の利用者情報が存在することを確認する
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
@@ -130,13 +130,13 @@ RSpec.describe '利用者情報の削除', type: :system do
         find(".guest-no-#{@guest1.id}")
       ).to have_link '削除', href: guest_path(@guest1.id)
       # 削除するとGuestテーブル・Bathテーブル・Drinkテーブルのレコードの数が1減ることを確認する
-      expect{
+      expect do
         find_link('削除', href: guest_path(@guest1)).click
-      }.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
+      end.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
       # トップページに戻ることを確認する
       expect(current_path).to eq root_path
       # トップページには利用者１の内容が存在しないことを確認する
-      expect(page).to have_no_content("#{@guest1.first_name}")
+      expect(page).to have_no_content(@guest1.first_name.to_s)
     end
   end
   context '利用者情報の削除ができないとき' do
@@ -178,7 +178,7 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
       # 詳細ページへ遷移する
       visit guest_path(@guest1.id)
       # 詳細ページに登録した内容が表示されていることを確認する
-      expect(page).to have_content("#{@guest1.first_name}").and have_content("#{@guest1.bath.bathing.name}").and have_content("#{@guest1.drink.drink_type.name}")
+      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s)
       # 利用者１の「編集」ボタンがあることを確認する
       expect(page).to have_link '編集', href: edit_guest_path(@guest1.id)
       # 利用者１の「削除」ボタンがあることを確認する
@@ -194,8 +194,8 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
       # 詳細ページへ遷移する
       visit guest_path(@guest1.id)
       # 詳細ページに登録した内容が表示されていることを確認する
-      expect(page).to have_content("#{@guest1.first_name}").and have_content("#{@guest1.last_name}").and have_content("#{@guest1.first_name_kana}").and have_content("#{@guest1.last_name_kana}").and have_content("#{@guest1.visit1.name}").and have_content("#{@guest1.visit2.name}").and have_content("#{@guest1.adl.name}").and have_content("#{@guest1.description}").and have_content("#{@guest1.bath.bathing.name}").and have_content("#{@guest1.bath.infection.name}").and have_content("#{@guest1.bath.timing.name}")
-      .and have_content("#{@guest1.bath.remark_bath}").and have_content("#{@guest1.drink.drink_type.name}").and have_content("#{@guest1.drink.thickness.name}").and have_content(@guest1.drink.warm ? "温める" : "温めない").and have_content(@guest1.drink.diabetes ? "有り" : "無し").and have_content("#{@guest1.drink.remark_drink}")
+      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.last_name.to_s).and have_content(@guest1.first_name_kana.to_s).and have_content(@guest1.last_name_kana.to_s).and have_content(@guest1.visit1.name.to_s).and have_content(@guest1.visit2.name.to_s).and have_content(@guest1.adl.name.to_s).and have_content(@guest1.description.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.bath.infection.name.to_s).and have_content(@guest1.bath.timing.name.to_s)
+        .and have_content(@guest1.bath.remark_bath.to_s).and have_content(@guest1.drink.drink_type.name.to_s).and have_content(@guest1.drink.thickness.name.to_s).and have_content(@guest1.drink.warm ? '温める' : '温めない').and have_content(@guest1.drink.diabetes ? '有り' : '無し').and have_content(@guest1.drink.remark_drink.to_s)
       # 利用者１の「編集」ボタンがあることを確認する
       expect(page).to have_link '編集', href: edit_guest_path(@guest1.id)
       # 編集ページへ遷移する
@@ -211,11 +211,11 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
       fill_in 'guest_data[first_name]', with: "#{@guest1.first_name}編集済み"
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
       # 編集してもTweetモデルのカウントは変わらないことを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
-        # トップページに戻ることを確認する
-        expect(current_path).to eq root_path
+      end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
+      # トップページに戻ることを確認する
+      expect(current_path).to eq root_path
       # トップページには先ほど変更した内容の利用者情報が存在することを確認する
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
@@ -230,17 +230,17 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
       # 詳細ページへ遷移する
       visit guest_path(@guest1.id)
       # 詳細ページに登録した内容が表示されていることを確認する
-      expect(page).to have_content("#{@guest1.first_name}").and have_content("#{@guest1.bath.bathing.name}").and have_content("#{@guest1.drink.drink_type.name}")
+      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s)
       # 利用者１の「削除」ボタンがあることを確認する
       expect(page).to have_link '削除', href: guest_path(@guest1.id)
       # 削除するとGuestテーブル・Bathテーブル・Drinkテーブルのレコードの数が1減ることを確認する
-      expect{
+      expect do
         find_link('削除', href: guest_path(@guest1)).click
-      }.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
+      end.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
       # トップページに戻ることを確認する
       expect(current_path).to eq root_path
       # トップページには利用者１の内容が存在しないことを確認する
-      expect(page).to have_no_content("#{@guest1.first_name}")
+      expect(page).to have_no_content(@guest1.first_name.to_s)
     end
   end
   context '利用者の詳細情報が表示されない時' do
@@ -248,15 +248,15 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
       # 利用者1を投稿したユーザーでログインする
       user1_sign_in(@guest1)
       # 利用者２の表示がないことを確認する
-      expect(page).to have_no_content("#{@guest2.first_name}")
+      expect(page).to have_no_content(@guest2.first_name.to_s)
     end
     it 'ログインしていない状態では利用者情報が表示されない' do
       # トップページに遷移する
       visit root_path
       # 利用者１の表示がないことを確認する
-      expect(page).to have_no_content("#{@guest1.first_name}")
+      expect(page).to have_no_content(@guest1.first_name.to_s)
       # 利用者２の表示がないことを確認する
-      expect(page).to have_no_content("#{@guest2.first_name}")
+      expect(page).to have_no_content(@guest2.first_name.to_s)
     end
   end
 end

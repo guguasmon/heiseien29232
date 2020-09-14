@@ -70,6 +70,7 @@ class GuestsController < ApplicationController
   end
 
   private
+
   def set_guest
     @guest = Guest.find(params[:id])
   end
