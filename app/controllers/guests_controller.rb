@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-  before_action :set_guest, only: [:show, :edit, :update]
+  before_action :set_guest, only: [:show, :destroy, :edit, :update]
   before_action :move_to_index, except: :index
   def index
     if user_signed_in?
@@ -20,6 +20,15 @@ class GuestsController < ApplicationController
       redirect_to root_path
     else
       render('guests/new')
+    end
+  end
+
+  def destroy
+    if @guest.destroy
+      flash[:notice] = '利用者情報を削除しました'
+      redirect_to root_path
+    else
+      redirect_to guest_path(@guest.id)
     end
   end
 
@@ -56,7 +65,7 @@ class GuestsController < ApplicationController
     end
   end
 
-  def sho
+  def show
   end
 
   private
