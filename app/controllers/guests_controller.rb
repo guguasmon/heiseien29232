@@ -82,7 +82,8 @@ class GuestsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in?
+    unless user_signed_in? && current_user.id == @guest.user.id
+      flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
       redirect_to action: :index
     end
   end
