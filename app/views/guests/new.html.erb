@@ -104,7 +104,7 @@
         <%= f.collection_select(:drink_type_id, DrinkType.all, :id, :name, {}, {class:"form-control", id:"drink-type-id"}) %>
       </div>
       <div class="form-group col-sm-3">
-        <label for="infection-id">とろみの量<span class="text-danger pl-3">必須</span></label>
+        <label for="thickness-id">とろみの量<span class="text-danger pl-3">必須</span></label>
         <%= f.collection_select(:thickness_id, Thickness.all, :id, :name, {}, {class:"form-control", id:"thickness-id"}) %>
       </div>
       <div class="form-group col-sm-3 form-check px-5">
