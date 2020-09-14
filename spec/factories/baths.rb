@@ -3,7 +3,7 @@ FactoryBot.define do
     bathing_id              { 1 }
     infection_id            { 1 }
     timing_id               { 2 }
-    remark_bath             { '' }
+    remark_bath             { Faker::Lorem.sentence }
     association :guest
   end
 end

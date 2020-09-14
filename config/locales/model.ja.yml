@@ -9,6 +9,7 @@ ja:
        gender_id: 性別
        visit1_id: １回目の利用日
        visit2_id: ２回目の利用日
+       adl_id: 歩行状態
        description: 利用者の詳細
       bath:
        bathing_id: 入浴の種類
@@ -30,6 +31,7 @@ ja:
         gender_id: 性別
         visit1_id: １回目の利用日
         visit2_id: ２回目の利用日
+        adl_id: 歩行状態
         description: 利用者の詳細
         bathing_id: 入浴の種類
         infection_id: 対応が必要な感染症の有無

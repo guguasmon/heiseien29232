@@ -3,6 +3,7 @@ class Guest < ApplicationRecord
   belongs_to_active_hash :gender
   belongs_to_active_hash :visit1
   belongs_to_active_hash :visit2
+  belongs_to_active_hash :adl
 
   belongs_to :user
   has_one    :bath, dependent: :destroy
@@ -16,9 +17,11 @@ class Guest < ApplicationRecord
     validates :gender_id
     validates :visit1_id
     validates :visit2_id
+    validates :adl_id
     with_options numericality: { other_than: 0, message: "can't be blank" } do
       validates :gender_id
       validates :visit1_id
+      validates :adl_id
     end
   end
 end

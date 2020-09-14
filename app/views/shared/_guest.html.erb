@@ -1,11 +1,15 @@
-<tr>
+<tr class="guest-no-<%= guest.id %>">
   <th scope="col"><%= guest.id %></th>
-  <th scope="col"><%= guest.first_name %></th>
-  <th scope="col"><%= guest.last_name %></th>
+  <th scope="col"><%= "#{guest.first_name} #{guest.last_name}" %></th>
   <th scope="col"><%= guest.gender.name %></th>
   <th scope="col"><%= guest.visit1.name %></th>
   <th scope="col"><%= guest.visit2.name %></th>
+  <th scope="col"><%= guest.adl.name %></th>
   <th scope="col"><%= guest.bath.bathing.name %></th>
   <th scope="col"><%= guest.drink.drink_type.name %></th>
-  <th scope="col">編集/削除</th>
+  <th scope="col">
+    <%= link_to '詳細', guest_path(guest.id), method: :get, class: "btn btn-success", role: "button" %>
+    <%= link_to '編集', edit_guest_path(guest.id), method: :get, class: "btn btn-primary", role: "button" %>
+    <%= link_to '削除', guest_path(guest.id), method: :delete, class: "btn btn-danger", role: "button" %>
+  </th>
 </tr>
