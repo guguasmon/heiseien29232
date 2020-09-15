@@ -1,0 +1,8 @@
+<tr class="guest-no-<%= guest.id %>">
+  <th scope="col"></th>
+  <th scope="col"><%= "#{guest.first_name} #{guest.last_name}" %></th>
+  <th scope="col"><%= guest.drink.remark_drink %></th>
+  <th scope="col"><%= guest.drink.thickness_id == 1 ? "" : "#{guest.drink.thickness.name}" %></th>
+  <th scope="col"><%= guest.drink.warm ? "●" : "" %></th>
+  <th scope="col"><%= guest.drink.diabetes ? "●" : "" %></th>
+</tr>
