@@ -12,7 +12,7 @@ class Drink < ApplicationRecord
   with_options presence: true do
     validates :drink_type_id
     validates :thickness_id
-    with_options numericality: { other_than: 0, message: "can't be blank" } do
+    with_options numericality: { other_than: 0, message: "の選択肢を選んでください" } do
       validates :drink_type_id
       validates :thickness_id
     end
