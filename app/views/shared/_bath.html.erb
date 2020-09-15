@@ -1,4 +1,4 @@
-<tr class="bath guest-no-<%= guest.id %>" data-href="<%= guest_path(guest.id ) %>" >
+<tr class="bath guest-no-<%= guest.id %>" data-href="<%= edit_bath_path(guest.bath.id ) %>" >
   <th scope="col"></th>
   <th scope="col"><%= "#{guest.first_name} #{guest.last_name}" %></th>
   <th scope="col"><%= guest.bath.remark_bath %></th>

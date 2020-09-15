@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   root to: "guests#index"
   resources :guests
-  resources :baths
-  resources :drinks
+  resources :baths, only: [:index, :edit, :update]
+  resources :drinks, only: [:index, :edit, :update]
 end
