@@ -6,6 +6,7 @@ class Bath < ApplicationRecord
 
   belongs_to :guest
 
+  validates :remark_bath, length: { maximum: 20 }
   with_options presence: true do
     validates :bathing_id
     validates :infection_id

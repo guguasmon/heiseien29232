@@ -59,7 +59,7 @@
     <div class="form-row my-3">
       <div class="form-group col-sm-12">
         <label for="description">利用者の備考</label>
-        <%= f.text_area :description, class:"form-control", id:"description", placeholder:"利用者の備考（ADL、生活歴、既往歴、コミュニケーション、注意点など）例）加茂市在住で独居。趣味は手芸。"  %>
+        <%= f.text_area :description, class:"form-control", id:"description", placeholder:"利用者の備考（ADL、生活歴、既往歴、コミュニケーション、注意点など）"  %>
       </div>
     </div>
     <%# /guestテーブルの情報入力 %>
@@ -87,7 +87,7 @@
     <div class="form-row my-3">
       <div class="form-group col-sm-12">
         <label for="remark-bath">入浴の備考</label>
-        <%= f.text_field :remark_bath, class:"form-control", id:"remark-bath", placeholder:"例）女性対応。"  %>
+        <%= f.text_field :remark_bath, class:"form-control", id:"remark-bath", placeholder:"例）女性対応。（20文字まで）"  %>
       </div>
     </div>
     <%# /bathsテーブルの情報入力 %>
@@ -119,7 +119,7 @@
     <div class="form-row my-3">
       <div class="form-group col-sm-12">
         <label for="remark-drink">水分提供の備考</label>
-        <%= f.text_field :remark_drink, class:"form-control", id:"remark-drink", placeholder:"例）コーヒーが苦手"  %>
+        <%= f.text_field :remark_drink, class:"form-control", id:"remark-drink", placeholder:"例）コーヒーが苦手（20文字まで）"  %>
       </div>
     </div>
     <%# /drinksテーブルの情報入力 %>
