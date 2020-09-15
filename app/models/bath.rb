@@ -11,7 +11,7 @@ class Bath < ApplicationRecord
     validates :bathing_id
     validates :infection_id
     validates :timing_id
-    with_options numericality: { other_than: 0, message: "の選択肢を選んでください" } do
+    with_options numericality: { other_than: 0, message: 'の選択肢を選んでください' } do
       validates :bathing_id
       validates :infection_id
     end

@@ -4,7 +4,7 @@ FactoryBot.define do
     thickness_id       { 1 }
     warm               { 'false' }
     diabetes           { 'false' }
-    remark_drink       { "12345678901234567890" }
+    remark_drink       { '12345678901234567890' }
     association :guest
   end
 end

@@ -8,15 +8,15 @@ FactoryBot.define do
     visit1_id              { 1 }
     visit2_id              { 2 }
     adl_id                 { 1 }
-    description            { "12345678901234567890" }
+    description            { '12345678901234567890' }
     bathing_id             { 1 }
     infection_id           { 1 }
     timing_id              { 3 }
-    remark_bath            { "12345678901234567890" }
+    remark_bath            { '12345678901234567890' }
     drink_type_id          { 1 }
     thickness_id           { 1 }
     warm                   { 'false' }
     diabetes               { 'false' }
-    remark_drink           { "12345678901234567890" }
+    remark_drink           { '12345678901234567890' }
   end
 end

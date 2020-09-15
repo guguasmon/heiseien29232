@@ -27,12 +27,12 @@ RSpec.describe Drink, type: :model do
       it 'drink_type_idが0（未選択）では登録できない' do
         @drink.drink_type_id = '0'
         @drink.valid?
-        expect(@drink.errors.full_messages).to include("Drink type の選択肢を選んでください")
+        expect(@drink.errors.full_messages).to include('Drink type の選択肢を選んでください')
       end
       it 'thickness_idが0（未選択）では登録できない' do
         @drink.thickness_id = '0'
         @drink.valid?
-        expect(@drink.errors.full_messages).to include("Thickness の選択肢を選んでください")
+        expect(@drink.errors.full_messages).to include('Thickness の選択肢を選んでください')
       end
       it 'warmが空では登録できない' do
         @drink.warm = nil
@@ -47,7 +47,7 @@ RSpec.describe Drink, type: :model do
       it 'remark_drinkが20文字以上では登録できない' do
         @drink.remark_drink = '123456789012345678901'
         @drink.valid?
-        expect(@drink.errors.full_messages).to include("Remark drink is too long (maximum is 20 characters)")
+        expect(@drink.errors.full_messages).to include('Remark drink is too long (maximum is 20 characters)')
       end
     end
   end

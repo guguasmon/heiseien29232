@@ -26,7 +26,7 @@ class Guest < ApplicationRecord
   end
   # 入浴形態表
   def self.bath_search(user, gender, bathing)
-    Guest.joins(:user, :bath).where(users: { id: user }).where(gender_id: gender).where(baths: {bathing_id: bathing}).order('timing_id  ASC')
+    Guest.joins(:user, :bath).where(users: { id: user }).where(gender_id: gender).where(baths: { bathing_id: bathing}).order('timing_id  ASC')
   end
 
   # 水分提供表

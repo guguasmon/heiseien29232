@@ -9,11 +9,11 @@ class Drink < ApplicationRecord
   validates :warm, inclusion: { in: [true, false] }
   validates :diabetes, inclusion: { in: [true, false] }
   validates :remark_drink, length: { maximum: 20 }
-  
+
   with_options presence: true do
     validates :drink_type_id
     validates :thickness_id
-    with_options numericality: { other_than: 0, message: "の選択肢を選んでください" } do
+    with_options numericality: { other_than: 0, message: 'の選択肢を選んでください' } do
       validates :drink_type_id
       validates :thickness_id
     end
