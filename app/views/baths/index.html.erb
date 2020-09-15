@@ -1,0 +1,173 @@
+<div>
+ <%= render "shared/header" %>
+</div>
+<div class="container-fluid">
+  <%# 曜日ボタン %>
+  <div class="btn-group" role="group" aria-label="Day-of-the-week">
+    <%= link_to '月曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '火曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '水曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '木曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '金曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '土曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '日曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
+  </div>
+  <%# /曜日ボタン %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center">入浴表</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-left">
+        <h3>　月　日　曜日</h3>
+      </div>
+      <div class="col text-right">
+       <h3>本日の利用者　　　名</h3>
+      </div>
+    </div>
+  </div>
+
+  <%# 一般浴 %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <h3 class="text-center bg-info text-white">一般浴</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">名前</th>
+              <th scope="col">備考</th>
+              <th scope="col">入浴の順番</th>
+              <th scope="col">感染症など</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @normal_males.each do |guest| %>
+              <%= render partial: "shared/bath", locals: { guest: guest } %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-6">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">名前</th>
+              <th scope="col">備考</th>
+              <th scope="col">入浴の順番</th>
+              <th scope="col">感染症など</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @normal_females.each do |guest| %>
+              <%= render partial: "shared/bath", locals: { guest: guest } %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <%# /一般浴 %>
+  <%# 一般チェア浴 %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <h3 class="text-center bg-info text-white">一般チェアー浴</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">名前</th>
+              <th scope="col">備考</th>
+              <th scope="col">入浴の順番</th>
+              <th scope="col">感染症など</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @normal_chair_males.each do |guest| %>
+              <%= render partial: "shared/bath", locals: { guest: guest } %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-6">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">名前</th>
+              <th scope="col">備考</th>
+              <th scope="col">入浴の順番</th>
+              <th scope="col">感染症など</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @normal_chair_females.each do |guest| %>
+              <%= render partial: "shared/bath", locals: { guest: guest } %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <%# /一般チェア浴 %>
+  <%# チェア浴 %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <h3 class="text-center bg-info text-white">チェアー浴</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">名前</th>
+              <th scope="col">備考</th>
+              <th scope="col">入浴の順番</th>
+              <th scope="col">感染症など</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @chair_males.each do |guest| %>
+              <%= render partial: "shared/bath", locals: { guest: guest } %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-6">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">名前</th>
+              <th scope="col">備考</th>
+              <th scope="col">入浴の順番</th>
+              <th scope="col">感染症など</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @chair_females.each do |guest| %>
+              <%= render partial: "shared/bath", locals: { guest: guest } %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <%# /チェア浴 %>
+</div>
