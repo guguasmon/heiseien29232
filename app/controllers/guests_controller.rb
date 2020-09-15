@@ -3,8 +3,7 @@ class GuestsController < ApplicationController
   before_action :move_to_index, except: [:index, :new, :create, :update]
   def index
     if user_signed_in?
-      user = User.find(current_user.id)
-      @guests = user.guests.includes([:bath, :drink])
+      @guests = current_user.guests.includes([:bath, :drink])
     end
   end
 

@@ -80,7 +80,7 @@
       </div>
       <div class="form-group col-sm-4">
         <label for="timing-id">入浴の順番</label>
-        <%= f.collection_select(:timing_id, Timing.all, :id, :name, {}, {class:"form-control", id:"timing-id"}) %>
+        <%= f.collection_select(:timing_id, Timing.all, :id, :name, {selected: 3}, {class:"form-control", id:"timing-id"}) %>
       </div>
     </div>
 
