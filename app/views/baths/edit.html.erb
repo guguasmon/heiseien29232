@@ -68,6 +68,7 @@
       </div>
     </div>
     <%# /guestテーブルの情報入力 %>
+
     <%# bathsテーブルの情報入力 %>
     <div class="row">
       <div class="col">
@@ -88,7 +89,6 @@
         <%= f.collection_select(:timing_id, Timing.all, :id, :name, {}, {class:"form-control", id:"timing-id"}) %>
       </div>
     </div>
-
     <div class="form-row my-3">
       <div class="form-group col-sm-12">
         <label for="remark-bath">入浴の備考</label>

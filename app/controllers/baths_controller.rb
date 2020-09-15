@@ -53,6 +53,7 @@ class BathsController < ApplicationController
   end
 
   private
+  
   def set_guest
     @guest = Guest.find(params[:id])
   end
@@ -63,10 +64,6 @@ class BathsController < ApplicationController
       :bathing_id, :infection_id, :timing_id, :remark_bath,
       :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink
     ).merge(id: params[:id], user_id: current_user.id)
-  end
-
-  def bath_params
-    params.require(:bath).permit(:bathing_id, :infection_id, :timing_id, :remark_bath)
   end
 
   def move_to_index_bath
