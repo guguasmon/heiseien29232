@@ -2,9 +2,7 @@ class GuestsController < ApplicationController
   before_action :set_guest, only: [:show, :destroy, :edit, :update]
   before_action :move_to_index, except: [:index, :new, :create, :update]
   def index
-    if user_signed_in?
-      @guests = current_user.guests.includes([:bath, :drink])
-    end
+    @guests = current_user.guests.includes([:bath, :drink]) if user_signed_in?
   end
 
   def new

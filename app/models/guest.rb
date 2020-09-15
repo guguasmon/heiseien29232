@@ -26,6 +26,6 @@ class Guest < ApplicationRecord
   end
   # 入浴表
   def self.bath_search(user, gender, bathing)
-    Guest.joins(:user, :bath).where(users: {id: user}).where(gender_id: gender).where(baths: {bathing_id: bathing}).order("timing_id  ASC")
+    Guest.joins(:user, :bath).where(users: { id: user}).where(gender_id: gender).where(baths: {bathing_id: bathing}).order('timing_id  ASC')
   end
 end

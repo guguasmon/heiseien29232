@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "Baths", type: :request do
-
+RSpec.describe 'Baths', type: :request do
 end
