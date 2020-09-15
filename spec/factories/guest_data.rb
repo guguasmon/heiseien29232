@@ -11,7 +11,7 @@ FactoryBot.define do
     description            { Faker::Lorem.sentence }
     bathing_id             { 1 }
     infection_id           { 1 }
-    timing_id              { 1 }
+    timing_id              { 3 }
     remark_bath            { Faker::Lorem.sentence }
     drink_type_id          { 1 }
     thickness_id           { 1 }

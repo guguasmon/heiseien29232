@@ -1,0 +1,7 @@
+<tr class="guest-no-<%= guest.id %>">
+  <th scope="col"></th>
+  <th scope="col"><%= "#{guest.first_name} #{guest.last_name}" %></th>
+  <th scope="col"><%= guest.bath.remark_bath %></th>
+  <th scope="col"><%= guest.bath.timing.name %></th>
+  <th scope="col"><%= guest.bath.infection_id == 1 ? "" : "#{guest.bath.infection.name}"%></th>
+</tr>

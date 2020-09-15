@@ -23,7 +23,7 @@ RSpec.describe '利用者の新規登録', type: :system do
       select '月曜日', from: '利用日１'
       select '火曜日', from: '利用日２'
       fill_in 'guest_data[description]', with: @guestdata.description
-      select '一般浴', from: '入浴の種類'
+      select '一般浴', from: '入浴形態'
       select '感染症なし', from: '対応が必要な感染症の有無について'
       select '最初', from: '入浴の順番'
       fill_in 'guest_data[remark_bath]', with: @guestdata.remark_bath
