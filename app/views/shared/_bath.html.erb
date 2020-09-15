@@ -1,7 +1,7 @@
-<tr class="guest-no-<%= guest.id %>">
-  <th scope="col"></th>
-  <th scope="col"><%= "#{guest.first_name} #{guest.last_name}" %></th>
-  <th scope="col"><%= guest.bath.remark_bath %></th>
-  <th scope="col"><%= guest.bath.timing.name %></th>
-  <th scope="col"><%= guest.bath.infection_id == 1 ? "" : "#{guest.bath.infection.name}" %></th>
+<tr class="bath guest-no-<%= guest.id %>" data-href="<%= edit_bath_path(guest.bath.id ) %>" >
+  <th scope="col" style="width:5%"></th>
+  <th scope="col" style="width:35%"><%= "#{guest.first_name} #{guest.last_name}" %></th>
+  <th scope="col" style="width:25%"><%= guest.bath.remark_bath %></th>
+  <th scope="col" style="width:10%"><%= guest.bath.timing.name %></th>
+  <th scope="col" style="width:25%"><%= guest.bath.infection_id == 1 ? "" : "#{guest.bath.infection.name}" %></th>
 </tr>

@@ -1,8 +1,8 @@
-<tr class="guest-no-<%= guest.id %>">
-  <th scope="col"></th>
-  <th scope="col"><%= "#{guest.first_name} #{guest.last_name}" %></th>
-  <th scope="col"><%= guest.drink.remark_drink %></th>
-  <th scope="col"><%= guest.drink.thickness_id == 1 ? "" : "#{guest.drink.thickness.name}" %></th>
-  <th scope="col"><%= guest.drink.warm ? "●" : "" %></th>
-  <th scope="col"><%= guest.drink.diabetes ? "●" : "" %></th>
+<tr class="guest-no-<%= guest.id %>" data-href="<%= edit_drink_path(guest.drink.id ) %>" >
+  <th scope="col" style="width:5%"></th>
+  <th scope="col" style="width:30%"><%= "#{guest.first_name} #{guest.last_name}" %></th>
+  <th scope="col" style="width:30%"><%= guest.drink.remark_drink %></th>
+  <th scope="col" style="width:25%"><%= guest.drink.thickness_id == 1 ? "" : "#{guest.drink.thickness.name}" %></th>
+  <th scope="col" style="width:5%"><%= guest.drink.warm ? "●" : "" %></th>
+  <th scope="col" style="width:5%"><%= guest.drink.diabetes ? "●" : "" %></th>
 </tr>

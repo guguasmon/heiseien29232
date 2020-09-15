@@ -9,6 +9,9 @@ class GuestData
   validates :warm, inclusion: { in: [true, false] }
   validates :diabetes, inclusion: { in: [true, false] }
 
+  validates :remark_bath, length: { maximum: 20 }
+  validates :remark_drink, length: { maximum: 20 }
+
   with_options presence: true do
     # guestテーブル
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'は全角で入力してください' }

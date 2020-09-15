@@ -149,6 +149,11 @@ RSpec.describe GuestData, type: :model do
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Infection の選択肢を選んでください')
       end
+      it 'remark_bathが20文字以上では登録できない' do
+        @guestdata.remark_bath = '123456789012345678901'
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Remark bath is too long (maximum is 20 characters)')
+      end
       it 'drink_type_idが0（未選択）では登録できない' do
         @guestdata.drink_type_id = '0'
         @guestdata.valid?
@@ -168,6 +173,11 @@ RSpec.describe GuestData, type: :model do
         @guestdata.diabetes = nil
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Diabetes is not included in the list')
+      end
+      it 'remark_drinkが20文字以上では登録できない' do
+        @guestdata.remark_drink = '123456789012345678901'
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Remark drink is too long (maximum is 20 characters)')
       end
     end
   end
