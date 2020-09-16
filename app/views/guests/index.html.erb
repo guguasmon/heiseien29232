@@ -20,14 +20,47 @@
       </span>
     </div>
   </div>
+<%# 曜日ボタン %>
+<% if user_signed_in? %>
+  <div class="container d-flex justify-content-center my-3">
+    <div class="btn-group" role="group" aria-label="Day-of-the-week">
+      <%= link_to '全表示', guests_path, class: "btn btn-outline-info nav-link", role: "button" %>
+      <%= link_to '月曜日', search_guest_path(1), class: "btn btn-outline-info nav-link", role: "button" %>
+      <%= link_to '火曜日', search_guest_path(2), class: "btn btn-outline-info nav-link", role: "button" %>
+      <%= link_to '水曜日', search_guest_path(3), class: "btn btn-outline-info nav-link", role: "button" %>
+      <%= link_to '木曜日', search_guest_path(4), class: "btn btn-outline-info nav-link", role: "button" %>
+      <%= link_to '金曜日', search_guest_path(5), class: "btn btn-outline-info nav-link", role: "button" %>
+      <%= link_to '土曜日', search_guest_path(6), class: "btn btn-outline-info nav-link", role: "button" %>
+      <%= link_to '日曜日', search_guest_path(7), class: "btn btn-outline-info nav-link", role: "button" %>
+    </div>
+  </div>
+<% end %>
+<%# /曜日ボタン %>
 
   <div class="container">
   <% unless user_signed_in? %>
     <h1 class="text-center">兵声援とは </h1>
     <p class="text-center">兵声援は登録した利用者データを用いて,曜日毎の利用者表や入浴表及び水分提供表を自動作成するサービスです。</p>
     <p class="text-center">これを利用することで、利用者の増減や状態の変化に応じて各表を手動で手直しする必要がなくなります。</p>
-    <p class="text-center">このアプリはデジタル化の進んでいない紙媒体がメインのデイサービスの現場を想定しています。</p>
+    <p class="text-center">このアプリはデジタル化の進んでいない紙媒体がメインのデイサービスの現場での使用を想定しています。</p>
   <% else%>
+    <%# タイトル %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <h1 class="text-center">利用者一覧表</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-left">
+          <h3><%= @day_of_the_week  ? "#{@day_of_the_week}曜日" : "全表示" %></h3>
+        </div>
+        <div class="col text-right">
+        <h3><%= "利用予定者　#{@count}名" if @count %></h3>
+        </div>
+      </div>
+    </div>
+    <%# /タイトル %>
     <table class="table table-striped table-bordered table-hover">
       <caption>利用者一覧</caption>
       <thead class="thead-dark">
