@@ -1,8 +1,26 @@
 class GuestsController < ApplicationController
+  before_action :move_to_index, except: :index
+  before_action :move_to_index_from_edit, only: :edit
   before_action :set_guest, only: [:show, :destroy, :edit, :update]
-  before_action :move_to_index, except: [:index, :new, :create, :update]
+  before_action :set_day_of_the_week, only: :search
+
   def index
-    @guests = current_user.guests.includes([:bath, :drink]) if user_signed_in?
+    if user_signed_in?
+      @guests = current_user.guests.includes([:bath, :drink])
+      @count = @guests.size
+    end
+  end
+
+  def search
+    @guests = SearchGuestsService.search_guest_day(current_user.id, @day)
+    # 曜日情報を入力
+    day_of_the_week = %w[全 月 火 水 木 金 土 日]
+    today = @day.to_i
+    @day_of_the_week = day_of_the_week[today]
+    # 利用者数集計
+    @count = @guests.size
+    # 検索結果を表示し直す
+    render action: :index
   end
 
   def new
@@ -81,9 +99,20 @@ class GuestsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in? && current_user.id == @guest.user.id
-      flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
-      redirect_to action: :index
+    unless user_signed_in?
+      flash[:notice] = 'ログインしたユーザーでないと利用が認められていません'
+      redirect_to root_path
     end
+  end
+
+  def move_to_index_from_edit
+    unless current_user.id == @guest.user.id
+      flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
+      redirect_to root_path
+    end
+  end
+
+  def set_day_of_the_week
+    @day = params[:id]
   end
 end

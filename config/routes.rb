@@ -4,7 +4,19 @@ Rails.application.routes.draw do
 }
 
   root to: "guests#index"
-  resources :guests
-  resources :baths, only: [:index, :edit, :update]
-  resources :drinks, only: [:index, :edit, :update]
+  resources :guests do
+  member do
+      get 'search'
+    end
+  end
+  resources :baths, only: [:index, :edit, :update] do
+    member do
+      get 'search'
+    end
+  end
+  resources :drinks, only: [:index, :edit, :update] do
+    member do
+      get 'search'
+    end
+  end
 end
