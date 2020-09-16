@@ -2,10 +2,16 @@
  <%= render "shared/header" %>
 </div>
 <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center m-3"><%="#{@guest.first_name} #{@guest.last_name}" %>様の情報編集画面</h1>
+      </div>
+    </div>
+
   <%= form_with(model: @guestdata, url: "/guests/#{@guest.id}", method: :patch, local: true) do |f| %>
     <div class="row">
       <div class="col">
-        <h1 class="text-center m-3">利用者情報編集画面</h1>
         <%= render 'shared/error_messages', model: f.object %>
       </div>
     </div>

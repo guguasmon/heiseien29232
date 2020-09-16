@@ -5,19 +5,76 @@
 
     <div class="row">
       <div class="col">
-        <h1 class="text-center m-3"><%="#{@bath.guest.first_name} #{@bath.guest.last_name}" %>様の入浴情報編集画面</h1>
+        <h1 class="text-center m-3"><%="#{@guest.first_name} #{@guest.last_name}" %>様の情報編集画面</h1>
       </div>
     </div>
 
-  <%= form_with(model: @bath, local: true) do |f| %>
-
-    <%# bathsテーブルの情報入力 %>
+  <%= form_with(model: @guestdata, url: "/baths/#{@guest.id}", method: :patch, local: true) do |f| %>
     <div class="row">
       <div class="col">
         <%= render 'shared/error_messages', model: f.object %>
       </div>
     </div>
 
+    <%# guestテーブルの情報入力 %>
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+        <label for="first-name">苗字（全角）<span class="text-danger">必須</span></label>
+        <%= f.text_field :first_name, class:"form-control", id:"first-name" %>
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="last-name">名前（全角）<span class="text-danger">必須</span></label>
+        <%= f.text_field :last_name, class:"form-control", id:"last-name" %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+        <label for="first-name_kana">苗字カナ（全角）<span class="text-danger">必須</span></label>
+        <%= f.text_field :first_name_kana, class:"form-control", id:"first-name_kana" %>
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="last-name_kana">名前カナ（全角）<span class="text-danger">必須</span></label>
+        <%= f.text_field :last_name_kana, class:"form-control", id:"last-name_kana" %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+        <label for="adl-id">利用者の歩行状態<span class="text-danger pl-3">必須</span></label>
+        <%= f.collection_select(:adl_id, Adl.all, :id, :name, {}, {class:"form-control", id:"adl-id"}) %>
+      </div>
+      <div class="col-2">
+        <label for="male">性別:男<span class="text-danger pl-3">必須</span></label>
+        <%= f.radio_button :gender_id, 1, class:"form-control", id: "male" %>
+      </div>
+      <div class="col-2">
+          <label for="male">性別:女<span class="text-danger pl-3">必須</span></label>
+        <%= f.radio_button :gender_id, 2, class:"form-control", id: "female" %>
+      </div>
+    </div>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-6">
+        <label for="visit1-id">利用日１<span class="text-danger pl-3">必須</span></label>
+        <%= f.collection_select(:visit1_id, Visit1.all, :id, :name, {}, {class:"form-control", id:"visit1-id"}) %>
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="visit2-id">利用日２<span class="text-danger pl-3"></span></label>
+        <%= f.collection_select(:visit2_id, Visit2.all, :id, :name, {}, {class:"form-control", id:"visit2-id"}) %>
+      </div>
+    </div>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-12">
+        <label for="description">利用者の備考</label>
+        <%= f.text_area :description, class:"form-control", id:"description"  %>
+      </div>
+    </div>
+    <%# /guestテーブルの情報入力 %>
+
+    <%# bathsテーブルの情報入力 %>
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center m-3">入浴情報編集画面</h1>
+      </div>
+    </div>
     <div class="form-row my-3">
       <div class="form-group col-sm-4">
         <label for="bathing-id">入浴形態<span class="text-danger pl-3">必須</span></label>
@@ -32,7 +89,6 @@
         <%= f.collection_select(:timing_id, Timing.all, :id, :name, {}, {class:"form-control", id:"timing-id"}) %>
       </div>
     </div>
-
     <div class="form-row my-3">
       <div class="form-group col-sm-12">
         <label for="remark-bath">入浴の備考</label>
@@ -40,6 +96,38 @@
       </div>
     </div>
     <%# /bathsテーブルの情報入力 %>
+
+    <%# drinksテーブルの情報入力 %>
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center m-3">水分情報編集画面</h1>
+      </div>
+    </div>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-3">
+        <label for="drink-type-id">飲み物の種類<span class="text-danger pl-3">必須</span></label>
+        <%= f.collection_select(:drink_type_id, DrinkType.all, :id, :name, {}, {class:"form-control", id:"drink-type-id"}) %>
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="thickness-id">とろみの量<span class="text-danger pl-3">必須</span></label>
+        <%= f.collection_select(:thickness_id, Thickness.all, :id, :name, {}, {class:"form-control", id:"thickness-id"}) %>
+      </div>
+      <div class="form-group col-sm-3 form-check px-5">
+        <%= f.check_box :warm ,{ class: "form-check-input", id: "worm", style: "transform:scale(2.0);" }, "true", "false" %>
+        <label class="form-check-label pl-2" for="warm">温めて提供する</label>
+      </div>
+      <div class="form-group col-sm-3 form-check px-5">
+        <%= f.check_box :diabetes ,{ class: "form-check-input", id: "diabetes", style: "transform:scale(2.0);" }, "true", "false" %>
+        <label class="form-check-label pl-2" for="diabetes">糖尿病あり</label>
+      </div>
+    </div>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-12">
+        <label for="remark-drink">水分提供の備考</label>
+        <%= f.text_field :remark_drink, class:"form-control", id:"remark-drink"  %>
+      </div>
+    </div>
+    <%# /drinksテーブルの情報入力 %>
     
     <%# 登録ボタン %>
     <div class="form-row my-3">
