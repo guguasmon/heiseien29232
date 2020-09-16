@@ -1,19 +1,22 @@
 <div>
  <%= render "shared/header" %>
 </div>
-<div class="container-fluid">
-  <%# 曜日ボタン %>
+<%# 曜日ボタン %>
+<div class="container d-flex justify-content-center my-3">
   <div class="btn-group" role="group" aria-label="Day-of-the-week">
-    <%= link_to '月曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
-    <%= link_to '火曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
-    <%= link_to '水曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
-    <%= link_to '木曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
-    <%= link_to '金曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
-    <%= link_to '土曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
-    <%= link_to '日曜日', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '全表示', baths_path, class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '月曜日', search_bath_path(1), class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '火曜日', search_bath_path(2), class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '水曜日', search_bath_path(3), class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '木曜日', search_bath_path(4), class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '金曜日', search_bath_path(5), class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '土曜日', search_bath_path(6), class: "btn btn-outline-info nav-link", role: "button" %>
+    <%= link_to '日曜日', search_bath_path(7), class: "btn btn-outline-info nav-link", role: "button" %>
   </div>
-  <%# /曜日ボタン %>
-  
+</div>
+ <%# /曜日ボタン %>
+<div class="container-fluid">
+  <%# タイトル %>
   <div class="container-fluid">
     <div class="row">
       <div class="col">
@@ -22,14 +25,14 @@
     </div>
     <div class="row">
       <div class="col text-left">
-        <h3>　月　日　曜日</h3>
+        <h3><%= @day_of_the_week  ? "#{@day_of_the_week}曜日" : "全表示" %></h3>
       </div>
       <div class="col text-right">
-       <h3>本日の利用者　　　名</h3>
+       <h3><%= "利用予定者　#{@count}名" if @count %></h3>
       </div>
     </div>
   </div>
-
+  <%# /タイトル %>
   <%# 一般浴 %>
   <div class="container-fluid">
     <div class="row">
