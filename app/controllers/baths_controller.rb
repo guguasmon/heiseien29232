@@ -53,7 +53,7 @@ class BathsController < ApplicationController
   end
 
   private
-  
+
   def set_guest
     @guest = Guest.find(params[:id])
   end

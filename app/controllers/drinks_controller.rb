@@ -2,7 +2,6 @@ class DrinksController < ApplicationController
   before_action :move_to_index_drink
   before_action :set_guest, only: [:edit, :update]
 
-
   def index
     @guests = current_user.guests.includes(:bath)
     # 牛乳
