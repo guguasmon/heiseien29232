@@ -1,5 +1,6 @@
 class DrinksController < ApplicationController
-  before_action :move_to_index_drink
+  before_action :move_to_index
+  before_action :move_to_index_from_edit, only: :edit
   before_action :set_guest, only: [:edit, :update]
   before_action :set_day_of_the_week, only: :search
 
@@ -105,9 +106,16 @@ class DrinksController < ApplicationController
     ).merge(id: params[:id], user_id: current_user.id)
   end
 
-  def move_to_index_drink
+  def move_to_index
     unless user_signed_in?
-      flash[:notice] = 'ログインしたユーザーでないと閲覧が認められていません'
+      flash[:notice] = 'ログインしたユーザーでないと利用が認められていません'
+      redirect_to root_path
+    end
+  end
+
+  def move_to_index_from_edit
+    unless  current_user.id == @guest.user.id
+      flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
       redirect_to root_path
     end
   end

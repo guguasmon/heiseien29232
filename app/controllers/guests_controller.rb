@@ -1,6 +1,7 @@
 class GuestsController < ApplicationController
+  before_action :move_to_index, except: :index
+  before_action :move_to_index_from_edit, only: :edit
   before_action :set_guest, only: [:show, :destroy, :edit, :update]
-  before_action :move_to_index, except: [:index, :new, :create, :update, :search]
   before_action :set_day_of_the_week, only: :search
 
   def index
@@ -99,13 +100,16 @@ class GuestsController < ApplicationController
   end
 
   def move_to_index
-    if user_signed_in?
-      unless  current_user.id == @guest.user.id
-        flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
-        redirect_to action: :index
-      end
-    else
-      redirect_to action: :index
+    unless user_signed_in?
+      flash[:notice] = 'ログインしたユーザーでないと利用が認められていません'
+      redirect_to root_path
+    end
+  end
+
+  def move_to_index_from_edit
+    unless  current_user.id == @guest.user.id
+      flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
+      redirect_to root_path
     end
   end
 
