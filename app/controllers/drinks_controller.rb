@@ -1,8 +1,8 @@
 class DrinksController < ApplicationController
-  before_action :move_to_index
-  before_action :move_to_index_from_edit, only: :edit
   before_action :set_guest, only: [:edit, :update]
   before_action :set_day_of_the_week, only: :search
+  before_action :move_to_index
+  before_action :move_to_index_from_edit, only: :edit
 
   def index
     # 牛乳
