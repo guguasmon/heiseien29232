@@ -6,7 +6,7 @@ class GuestsController < ApplicationController
 
   def index
     if user_signed_in?
-      @guests = current_user.guests.includes([:bath, :drink]) 
+      @guests = current_user.guests.includes([:bath, :drink])
       @count = @guests.size
     end
   end
@@ -14,7 +14,7 @@ class GuestsController < ApplicationController
   def search
     @guests = SearchGuestsService.search_guest_day(current_user.id, @day)
     # 曜日情報を入力
-    day_of_the_week = ["全","月","火","水","木","金","土","日"]
+    day_of_the_week = %w[全 月 火 水 木 金 土 日]
     today = @day.to_i
     @day_of_the_week = day_of_the_week[today]
     # 利用者数集計
@@ -22,7 +22,6 @@ class GuestsController < ApplicationController
     # 検索結果を表示し直す
     render action: :index
   end
-
 
   def new
     @guestdata = GuestData.new
@@ -107,7 +106,7 @@ class GuestsController < ApplicationController
   end
 
   def move_to_index_from_edit
-    unless  current_user.id == @guest.user.id
+    unless current_user.id == @guest.user.id
       flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
       redirect_to root_path
     end
@@ -116,5 +115,4 @@ class GuestsController < ApplicationController
   def set_day_of_the_week
     @day = params[:id]
   end
-
 end

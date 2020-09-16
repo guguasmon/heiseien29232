@@ -33,7 +33,7 @@ class BathsController < ApplicationController
     # user/女子/チェアー浴
     @chair_females = SearchGuestsService.search_bath_day(current_user.id, 2, 3, @day)
     # 曜日情報を入力
-    day_of_the_week = ["全","月","火","水","木","金","土","日"]
+    day_of_the_week = %w[全 月 火 水 木 金 土 日]
     today = @day.to_i
     @day_of_the_week = day_of_the_week[today]
     # 利用者数を集計
@@ -104,7 +104,7 @@ class BathsController < ApplicationController
   end
 
   def move_to_index_from_edit
-    unless  current_user.id == @guest.user.id
+    unless current_user.id == @guest.user.id
       flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
       redirect_to root_path
     end
@@ -113,5 +113,4 @@ class BathsController < ApplicationController
   def set_day_of_the_week
     @day = params[:id]
   end
-
 end
