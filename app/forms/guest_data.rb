@@ -50,10 +50,10 @@ class GuestData
       gender_id: gender_id, visit1_id: visit1_id, visit2_id: visit2_id, description: description, user_id: user_id, adl_id: adl_id
     )
     # 利用日が被っていたら利用日２を0（未選択）にする
-    if guest.visit1_id == guest.visit2_id 
+    if guest.visit1_id == guest.visit2_id
       guest.update(visit2_id: 0)
     # 利用日の選択順によっては両者を入れ替える
-    elsif guest.visit1_id > guest.visit2_id && guest.visit2_id != 0 
+    elsif guest.visit1_id > guest.visit2_id && guest.visit2_id != 0
       guest.visit1_id, guest.visit2_id = guest.visit2_id, guest.visit1_id
       guest.update(visit1_id: guest.visit1_id, visit2_id: guest.visit2_id)
     end
@@ -73,10 +73,10 @@ class GuestData
     )
 
     # 利用日が被っていたら利用日２を0（未選択）にする
-    if guest.visit1_id == guest.visit2_id 
+    if guest.visit1_id == guest.visit2_id
       guest.update(visit2_id: 0)
     # 利用日の選択順によっては両者を入れ替える
-    elsif guest.visit1_id > guest.visit2_id && guest.visit2_id != 0 
+    elsif guest.visit1_id > guest.visit2_id && guest.visit2_id != 0
       guest.visit1_id, guest.visit2_id = guest.visit2_id, guest.visit1_id
       guest.update(visit1_id: guest.visit1_id, visit2_id: guest.visit2_id)
     end
