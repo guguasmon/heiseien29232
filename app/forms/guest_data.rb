@@ -50,7 +50,13 @@ class GuestData
       gender_id: gender_id, visit1_id: visit1_id, visit2_id: visit2_id, description: description, user_id: user_id, adl_id: adl_id
     )
     # 利用日が被っていたら利用日２を0（未選択）にする
-    guest.update(visit2_id: 0) if guest.visit1_id == guest.visit2_id
+    if guest.visit1_id == guest.visit2_id
+      guest.update(visit2_id: 0)
+    # 利用日の選択順によっては両者を入れ替える
+    elsif guest.visit1_id > guest.visit2_id && guest.visit2_id != 0
+      guest.visit1_id, guest.visit2_id = guest.visit2_id, guest.visit1_id
+      guest.update(visit1_id: guest.visit1_id, visit2_id: guest.visit2_id)
+    end
 
     # 入浴の情報を保存
     bath = Bath.create(bathing_id: bathing_id, infection_id: infection_id, timing_id: timing_id, remark_bath: remark_bath, guest_id: guest.id)
@@ -67,7 +73,13 @@ class GuestData
     )
 
     # 利用日が被っていたら利用日２を0（未選択）にする
-    guest.update!(visit2_id: 0) if guest.visit1_id == guest.visit2_id
+    if guest.visit1_id == guest.visit2_id
+      guest.update(visit2_id: 0)
+    # 利用日の選択順によっては両者を入れ替える
+    elsif guest.visit1_id > guest.visit2_id && guest.visit2_id != 0
+      guest.visit1_id, guest.visit2_id = guest.visit2_id, guest.visit1_id
+      guest.update(visit1_id: guest.visit1_id, visit2_id: guest.visit2_id)
+    end
 
     # 入浴の情報を保存
     bath = Bath.find_by(guest_id: guest.id)

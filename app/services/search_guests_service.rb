@@ -16,7 +16,7 @@ class SearchGuestsService
 
   # 水分提供表
   def self.search_drink(user, drink_type)
-    Guest.joins(:user, :drink).where(users: { id: user }).where(drinks: {drink_type_id: drink_type}).order('first_name_kana  ASC')
+    Guest.joins(:user, :drink).where(users: { id: user }).where(drinks: { drink_type_id: drink_type}).order('first_name_kana  ASC')
   end
 
   # 水分提供表曜日別

@@ -3,7 +3,7 @@ class GuestsController < ApplicationController
   before_action :set_day_of_the_week, only: :search
   before_action :move_to_index, except: :index
   before_action :move_to_index_from_edit, only: :edit
-  
+
   def index
     if user_signed_in?
       @guests = current_user.guests.includes([:bath, :drink])
@@ -31,7 +31,7 @@ class GuestsController < ApplicationController
     @guestdata = GuestData.new(guest_params)
     if @guestdata.valid?
       @guestdata.save
-      flash[:notice] = '利用者情報を登録しました'
+      flash[:success] = '利用者情報を登録しました'
       redirect_to root_path
     else
       render('guests/new')
@@ -40,7 +40,7 @@ class GuestsController < ApplicationController
 
   def destroy
     if @guest.destroy
-      flash[:notice] = '利用者情報を削除しました'
+      flash[:danger] = '利用者情報を削除しました'
       redirect_to root_path
     else
       redirect_to guest_path(@guest.id)
@@ -74,7 +74,7 @@ class GuestsController < ApplicationController
     @guestdata = GuestData.new(guest_params)
     if @guestdata.valid?
       @guestdata.update
-      flash[:notice] = '利用者情報を更新しました'
+      flash[:info] = '利用者情報を更新しました'
       redirect_to root_path
     else
       render('guests/edit')
@@ -100,14 +100,14 @@ class GuestsController < ApplicationController
 
   def move_to_index
     unless user_signed_in?
-      flash[:notice] = 'ログインしたユーザーでないと利用が認められていません'
+      flash[:warning] = 'ログインしたユーザーでないと利用が認められていません'
       redirect_to root_path
     end
   end
 
   def move_to_index_from_edit
     unless current_user.id == @guest.user.id
-      flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
+      flash[:warning] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
       redirect_to root_path
     end
   end
