@@ -85,7 +85,7 @@ class DrinksController < ApplicationController
     @guestdata = GuestData.new(guest_params)
     if @guestdata.valid?
       @guestdata.update
-      flash[:notice] = '利用者情報を更新しました'
+      flash[:info] = '利用者情報を更新しました'
       redirect_to action: :index
     else
       render action: :edit
@@ -108,14 +108,14 @@ class DrinksController < ApplicationController
 
   def move_to_index
     unless user_signed_in?
-      flash[:notice] = 'ログインしたユーザーでないと利用が認められていません'
+      flash[:warning] = 'ログインしたユーザーでないと利用が認められていません'
       redirect_to root_path
     end
   end
 
   def move_to_index_from_edit
     unless current_user.id == @guest.user.id
-      flash[:notice] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
+      flash[:warning] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
       redirect_to root_path
     end
   end
