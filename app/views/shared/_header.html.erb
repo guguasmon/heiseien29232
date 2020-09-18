@@ -5,10 +5,11 @@
     <div>
       <%= link_to '兵声援', root_path, class: "navbar-brand text-dark" %>
     </div>
-    <div>
-      <span class="navbar-brand text-dark"><%= "ようこそ #{current_user.name}さん" %></span>
-    </div>
-
+    <% if user_signed_in? %>
+      <div>
+        <span class="navbar-brand text-dark"><%= "ようこそ #{current_user.name}さん" %></span>
+      </div>
+    <% end %>
     <%# トグル %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

@@ -1,3 +1,10 @@
+user = User.create(
+  name: 'test',
+  email: 'test@example.com',
+  password: 'password123',
+  password_confirmation: 'password123'
+  )
+
 user_id = 1
 
 @data1 = {
