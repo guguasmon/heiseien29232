@@ -1,14 +1,4 @@
 <div class="container">
-  <%# メッセージヘッダー %>
-  <div class="row">
-    <div class="col">
-      <%# ログイン時の名前表示 %>
-      <% if user_signed_in? %>
-        <span class="navbar-text"><%= "ようこそ#{current_user.name}さん" %></span>
-      <% end %>
-    </div>
-  </div>
-  <%# /メッセージヘッダー %>
   <%# 曜日ボタン %>
   <% if user_signed_in? %>
     <div class="container d-flex justify-content-center my-3">

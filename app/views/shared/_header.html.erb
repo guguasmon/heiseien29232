@@ -1,9 +1,12 @@
 <header class="header bg-light">
-  <nav class="navbar navbar-expand-md navbar-light">
+  <nav class="navbar navbar-expand-xl navbar-white bg-light">
 
     <%# ブランドロゴ表示 %>
     <div>
-      <%= link_to '兵声援', root_path, class: "navbar-brand" %>
+      <%= link_to '兵声援', root_path, class: "navbar-brand text-dark" %>
+    </div>
+    <div>
+      <span class="navbar-brand text-dark"><%= "ようこそ #{current_user.name}さん" %></span>
     </div>
 
     <%# トグル %>
@@ -16,26 +19,29 @@
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "利用者を登録する", new_guest_path, class: "btn btn-outline-secondary nav-link", id: "entry", role: "button" %>
+
           </li>
           <li class="nav-item">
-            <%= link_to '利用者一覧', root_path, class: "btn btn-outline-secondary nav-link", id: "guest-index", role: "button" %>
+            <%= link_to "利用者を登録する", new_guest_path, class: "btn btn-outline-dark nav-link", id: "entry", role: "button" %>
           </li>
           <li class="nav-item">
-            <%= link_to '入浴形態表', baths_path, class: "btn btn-outline-secondary nav-link", id: "bath-index", role: "button" %>
+            <%= link_to '利用者一覧', root_path, class: "btn btn-outline-dark nav-link", id: "guest-index", role: "button" %>
           </li>
           <li class="nav-item">
-            <%= link_to '水分提供表', drinks_path, class: "btn btn-outline-secondary nav-link", id: "drink-index", role: "button" %>
+            <%= link_to '入浴形態表', baths_path, class: "btn btn-outline-dark nav-link", id: "bath-index", role: "button" %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary nav-link", role: "button" %>
+            <%= link_to '水分提供表', drinks_path, class: "btn btn-outline-dark nav-link", id: "drink-index", role: "button" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark nav-link", role: "button" %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark nav-link", role: "button" %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary nav-link", role: "button" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark nav-link", role: "button" %>
           </li>
         <% end %>
       </ul>
