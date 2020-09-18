@@ -71,7 +71,7 @@
         <%= f.collection_select(:bathing_id, Bathing.all, :id, :name, {}, {class:"form-control", id:"bathing-id"}) %>
       </div>
       <div class="form-group col-sm-4">
-        <label for="infection-id">対応が必要な感染症の有無について<span class="text-danger pl-3">必須</span></label>
+        <label for="infection-id">感染症の有無<span class="text-danger pl-3">必須</span></label>
         <%= f.collection_select(:infection_id, Infection.all, :id, :name, {}, {class:"form-control", id:"infection-id"}) %>
       </div>
       <div class="form-group col-sm-4">

@@ -1,26 +1,16 @@
 <div class="container">
-  <%# メッセージヘッダー %>
-  <div class="row">
-    <div class="col">
-      <%# ログイン時の名前表示 %>
-      <% if user_signed_in? %>
-        <span class="navbar-text"><%= "ようこそ#{current_user.name}さん" %></span>
-      <% end %>
-    </div>
-  </div>
-  <%# /メッセージヘッダー %>
   <%# 曜日ボタン %>
   <% if user_signed_in? %>
     <div class="container d-flex justify-content-center my-3">
       <div class="btn-group" role="group" aria-label="Day-of-the-week">
-        <%= link_to '全表示', guests_path, class: "btn btn-outline-info nav-link", role: "button" %>
-        <%= link_to '月曜日', search_guest_path(1), class: "btn btn-outline-info nav-link", role: "button" %>
-        <%= link_to '火曜日', search_guest_path(2), class: "btn btn-outline-info nav-link", role: "button" %>
-        <%= link_to '水曜日', search_guest_path(3), class: "btn btn-outline-info nav-link", role: "button" %>
-        <%= link_to '木曜日', search_guest_path(4), class: "btn btn-outline-info nav-link", role: "button" %>
-        <%= link_to '金曜日', search_guest_path(5), class: "btn btn-outline-info nav-link", role: "button" %>
-        <%= link_to '土曜日', search_guest_path(6), class: "btn btn-outline-info nav-link", role: "button" %>
-        <%= link_to '日曜日', search_guest_path(7), class: "btn btn-outline-info nav-link", role: "button" %>
+        <%= link_to '全表示', guests_path, class: "btn btn-outline-info nav-link", id: "allday", role: "button" %>
+        <%= link_to '月曜日', search_guest_path(1), class: "btn btn-outline-info nav-link", id: "monday", role: "button" %>
+        <%= link_to '火曜日', search_guest_path(2), class: "btn btn-outline-info nav-link", id: "tuesday", role: "button" %>
+        <%= link_to '水曜日', search_guest_path(3), class: "btn btn-outline-info nav-link", id: "wednesday", role: "button" %>
+        <%= link_to '木曜日', search_guest_path(4), class: "btn btn-outline-info nav-link", id: "thursday", role: "button" %>
+        <%= link_to '金曜日', search_guest_path(5), class: "btn btn-outline-info nav-link", id: "friday", role: "button" %>
+        <%= link_to '土曜日', search_guest_path(6), class: "btn btn-outline-info nav-link", id: "saturday", role: "button" %>
+        <%= link_to '日曜日', search_guest_path(7), class: "btn btn-outline-info nav-link", id: "sunday", role: "button" %>
       </div>
     </div>
   <% end %>
@@ -75,3 +65,4 @@
   <% end %>
   </div>
 </div>
+<%= javascript_pack_tag 'nav-active' %>
