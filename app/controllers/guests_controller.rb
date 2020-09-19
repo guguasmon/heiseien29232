@@ -75,7 +75,7 @@ class GuestsController < ApplicationController
     if @guestdata.valid?
       @guestdata.update
       flash[:info] = '利用者情報を更新しました'
-      redirect_to root_path
+      redirect_to action: :show
     else
       render('guests/edit')
     end
