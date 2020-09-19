@@ -24,7 +24,7 @@ RSpec.describe '利用者の新規登録', type: :system do
       select '火曜日', from: '利用日２'
       fill_in 'guest_data[description]', with: @guestdata.description
       select '一般浴', from: '入浴形態'
-      select '感染症なし', from: '対応が必要な感染症の有無について'
+      select '感染症なし', from: '感染症の有無'
       select '最初', from: '入浴の順番'
       fill_in 'guest_data[remark_bath]', with: @guestdata.remark_bath
       select '牛乳', from: '飲み物の種類'
@@ -86,8 +86,8 @@ RSpec.describe '利用者情報の編集', type: :system do
       expect  do
         find('input[name="commit"]').click
       end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
-      # トップページに戻ることを確認する
-      expect(current_path).to eq root_path
+      # 詳細ページに戻ることを確認する
+      expect(current_path).to eq guest_path(@guest1.id)
       # トップページには先ほど変更した内容の利用者情報が存在することを確認する
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
@@ -215,7 +215,7 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
         find('input[name="commit"]').click
       end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
       # トップページに戻ることを確認する
-      expect(current_path).to eq root_path
+      expect(current_path).to eq guest_path(@guest1.id)
       # トップページには先ほど変更した内容の利用者情報が存在することを確認する
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
