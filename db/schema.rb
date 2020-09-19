@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_033956) do
+ActiveRecord::Schema.define(version: 2020_09_19_011312) do
 
   create_table "baths", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "bathing_id", null: false
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 2020_09_14_033956) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "remark_bath"
     t.index ["guest_id"], name: "index_baths_on_guest_id"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.integer "comment_type_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "guest_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["guest_id"], name: "index_comments_on_guest_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "drinks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,6 +76,8 @@ ActiveRecord::Schema.define(version: 2020_09_14_033956) do
   end
 
   add_foreign_key "baths", "guests"
+  add_foreign_key "comments", "guests"
+  add_foreign_key "comments", "users"
   add_foreign_key "drinks", "guests"
   add_foreign_key "guests", "users"
 end
