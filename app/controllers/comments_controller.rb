@@ -11,10 +11,10 @@ def create
   path_id = @comment.guest.id
   if @comment.valid?
     @comment.save
-    flash[:success] = 'コメントを投稿しました'
+    flash[:success] = '記録をしました'
     redirect_to guest_path(path_id)
   else
-    flash[:danger] = 'コメントを入力してください'
+    flash[:danger] = '本文を入力してください'
     redirect_to guest_path(path_id)
   end
 end
@@ -22,7 +22,7 @@ end
   def destroy
     path_id = @comment.guest.id
     if @comment.destroy
-      flash[:danger] = '更新履歴を削除しました'
+      flash[:danger] = '削除をしました'
       redirect_to guest_path(path_id)
     else
       redirect_to guest_path(path_id)
