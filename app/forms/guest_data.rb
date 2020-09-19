@@ -3,7 +3,8 @@ class GuestData
   attr_accessor :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id,
                 :description, :user_id, :id, :adl_id,
                 :bathing_id, :infection_id, :timing_id, :remark_bath,
-                :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id
+                :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id,
+                :text, :comment_type_id
 
   # # boolean型のチェックはpresence:trueが使えない
   validates :warm, inclusion: { in: [true, false] }
@@ -31,6 +32,9 @@ class GuestData
     validates :bathing_id
     validates :infection_id
     validates :timing_id
+    # commentテーブル
+    validates :text
+    validates :comment_type_id
     with_options numericality: { other_than: 0, message: 'の選択肢を選んでください' } do
       # guestテーブル
       validates :gender_id
