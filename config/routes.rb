@@ -5,10 +5,12 @@ Rails.application.routes.draw do
 
   root to: "guests#index"
   resources :guests do
-  member do
+    resources :comments, only: [:edit, :update, :destroy]
+    member do
       get 'search'
     end
   end
+
   resources :baths, only: [:index, :edit, :update] do
     member do
       get 'search'
@@ -19,4 +21,5 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
 end
