@@ -128,7 +128,7 @@
     <%# commentsテーブルの情報入力 %>
     <div class="row">
       <div class="col">
-        <h1 class="text-center m-3">更新理由記入画面</h1>
+        <h1 class="text-center m-3">更新履歴記入画面</h1>
       </div>
     </div>
     <div class="form-row my-3">
@@ -137,7 +137,7 @@
         <%= f.hidden_field :comment_type_id, class:"form-control", id:"comment-type-id", value: 2 %>
       </div>
       <div class="form-group col-sm-12">
-        <label for="text">理由と内容<span class="text-danger pl-3">必須</span></label>
+        <label for="text">コメント<span class="text-danger pl-3">必須</span></label>
         <%= f.text_area :text, class:"form-control", id:"text", placeholder:"例１）本人希望により牛乳をコーヒー牛乳に変更した\n例２）歩行状態悪化により一般チェアー浴からチェアー浴に変更した" %>
       </div>
     </div>
