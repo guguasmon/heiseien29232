@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :guest
   belongs_to_active_hash :comment_type

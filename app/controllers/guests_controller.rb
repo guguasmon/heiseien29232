@@ -82,6 +82,7 @@ class GuestsController < ApplicationController
   end
 
   def show
+    @comments = Comment.joins(:guest).where(guests: { id: @guest.id }).order("created_at ASC")
   end
 
   private
@@ -94,7 +95,8 @@ class GuestsController < ApplicationController
     params.require(:guest_data).permit(
       :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id, :description, :adl_id,
       :bathing_id, :infection_id, :timing_id, :remark_bath,
-      :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink
+      :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink,
+      :text, :comment_type_id
     ).merge(id: params[:id], user_id: current_user.id)
   end
 

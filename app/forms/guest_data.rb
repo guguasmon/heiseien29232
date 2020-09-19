@@ -69,6 +69,8 @@ class GuestData
 
     # 水分の情報を保存
     drink = Drink.create(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink, guest_id: guest.id)
+    # コメントの情報を保存
+    comment = Comment.create(text: text, comment_type_id: comment_type_id, user_id: user_id, guest_id: guest.id)
   end
 
   def update
@@ -94,6 +96,8 @@ class GuestData
     # 水分の情報を保存
     drink = Drink.find_by(guest_id: guest.id)
     drink.update(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink)
+    # コメントの情報を保存
+    comment = Comment.create(text: text, comment_type_id: comment_type_id, user_id: user_id, guest_id: guest.id)
   end
 
   def warm
