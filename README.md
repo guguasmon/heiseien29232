@@ -64,11 +64,12 @@
 
 ## comments テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| text       | text       | null: false                    |
-| user       | references | null: false, foreign_key: true |
-| guests     | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| text            | text       | null: false                    |
+| comment_type_id | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
+| guests          | references | null: false, foreign_key: true |
 
 ### Association
 
