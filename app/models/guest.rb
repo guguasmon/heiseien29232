@@ -6,6 +6,7 @@ class Guest < ApplicationRecord
   belongs_to_active_hash :adl
 
   belongs_to :user
+  has_many   :comments, dependent: :destroy
   has_one    :bath, dependent: :destroy
   has_one    :drink, dependent: :destroy
 
