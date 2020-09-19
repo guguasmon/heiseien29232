@@ -8,9 +8,11 @@ class GuestData
   # # boolean型のチェックはpresence:trueが使えない
   validates :warm, inclusion: { in: [true, false] }
   validates :diabetes, inclusion: { in: [true, false] }
-
+  # 文字数の制限
+  validates :description, length: { maximum: 1000 }
   validates :remark_bath, length: { maximum: 20 }
   validates :remark_drink, length: { maximum: 20 }
+
 
   with_options presence: true do
     # guestテーブル
