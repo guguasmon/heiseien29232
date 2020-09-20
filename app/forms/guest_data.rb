@@ -4,7 +4,8 @@ class GuestData
                 :description, :user_id, :id, :adl_id,
                 :bathing_id, :infection_id, :timing_id, :remark_bath,
                 :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id,
-                :text, :comment_type_id
+                :text, :comment_type_id,
+                :before, :after
 
   # # boolean型のチェックはpresence:trueが使えない
   validates :warm, inclusion: { in: [true, false] }

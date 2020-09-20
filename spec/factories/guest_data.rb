@@ -18,5 +18,9 @@ FactoryBot.define do
     warm                   { 'false' }
     diabetes               { 'false' }
     remark_drink           { '12345678901234567890' }
+    text                   { "新規登録しました" }
+    comment_type_id        { 1 }
+    before                 { '変更前' }
+    after                  { '変更後' }
   end
 end
