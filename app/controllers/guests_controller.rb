@@ -2,7 +2,7 @@ class GuestsController < ApplicationController
   before_action :set_guest, only: [:show, :destroy, :edit, :update]
   before_action :set_day_of_the_week, only: :search
   before_action :move_to_index, except: :index
-  before_action :move_to_index_from_edit, only: :edit
+  before_action :move_to_index_non_editor, only: [:edit, :show]
 
   def index
     if user_signed_in?
@@ -108,7 +108,7 @@ class GuestsController < ApplicationController
     end
   end
 
-  def move_to_index_from_edit
+  def move_to_index_non_editor
     unless current_user.id == @guest.user.id
       flash[:warning] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
       redirect_to root_path
