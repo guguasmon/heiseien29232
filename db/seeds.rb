@@ -26,7 +26,9 @@ user_id = 1
   thickness_id: 2,
   warm: 1,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data2 = {
@@ -48,7 +50,9 @@ user_id = 1
   thickness_id: 2,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data3 = {
@@ -70,7 +74,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data4 = {
@@ -92,7 +98,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data5 = {
@@ -114,7 +122,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data6 = {
@@ -136,7 +146,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data7 = {
@@ -158,7 +170,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data8 = {
@@ -180,7 +194,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data9 = {
@@ -202,7 +218,9 @@ user_id = 1
   thickness_id: 2,
   warm: 1,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data10 = {
@@ -224,7 +242,9 @@ user_id = 1
   thickness_id: 2,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data11 = {
@@ -246,7 +266,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data12 = {
@@ -268,7 +290,9 @@ user_id = 1
   thickness_id: 3,
   warm: 0,
   diabetes: 0,
-  remark_drink: "少量で良い"
+  remark_drink: "少量で良い",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data13 = {
@@ -290,7 +314,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data14 = {
@@ -312,7 +338,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data15 = {
@@ -334,7 +362,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: "本人用スプーンをつける"
+  remark_drink: "本人用スプーンをつける",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data16 = {
@@ -356,7 +386,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data17 = {
@@ -378,7 +410,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data18 = {
@@ -400,7 +434,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data19 = {
@@ -422,7 +458,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data20 = {
@@ -444,7 +482,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data21 = {
@@ -466,7 +506,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: "自助スプーンをつける"
+  remark_drink: "自助スプーンをつける",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data22 = {
@@ -488,7 +530,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data23 = {
@@ -510,7 +554,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data24 = {
@@ -532,7 +578,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data25 = {
@@ -554,7 +602,9 @@ user_id = 1
   thickness_id: 3,
   warm: 1,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data26 = {
@@ -576,7 +626,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data27 = {
@@ -598,7 +650,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data28 = {
@@ -620,7 +674,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data29 = {
@@ -642,7 +698,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data30 = {
@@ -664,7 +722,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data31 = {
@@ -686,7 +746,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data32 = {
@@ -708,7 +770,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data33 = {
@@ -730,7 +794,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data34 = {
@@ -752,7 +818,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data35 = {
@@ -774,7 +842,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data36 = {
@@ -796,7 +866,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data37 = {
@@ -818,7 +890,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data38 = {
@@ -840,7 +914,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data39 = {
@@ -862,7 +938,9 @@ user_id = 1
   thickness_id: 2,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data40 = {
@@ -884,7 +962,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data41 = {
@@ -906,7 +986,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data42 = {
@@ -928,7 +1010,9 @@ user_id = 1
   thickness_id: 3,
   warm: 0,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data43 = {
@@ -950,7 +1034,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data44 = {
@@ -972,7 +1058,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data45 = {
@@ -994,7 +1082,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data46 = {
@@ -1016,7 +1106,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data47 = {
@@ -1038,7 +1130,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data48 = {
@@ -1060,7 +1154,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data49 = {
@@ -1082,7 +1178,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data50 = {
@@ -1104,7 +1202,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: "ストローをつける"
+  remark_drink: "ストローをつける",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data51 = {
@@ -1126,7 +1226,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data52 = {
@@ -1148,7 +1250,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: "マイコップに注ぐ"
+  remark_drink: "マイコップに注ぐ",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data53 = {
@@ -1170,7 +1274,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data54 = {
@@ -1192,7 +1298,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data55 = {
@@ -1214,7 +1322,9 @@ user_id = 1
   thickness_id: 2,
   warm: 1,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data56 = {
@@ -1236,7 +1346,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data57 = {
@@ -1258,7 +1370,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data58 = {
@@ -1280,7 +1394,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data59 = {
@@ -1302,7 +1418,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data60 = {
@@ -1324,7 +1442,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data61 = {
@@ -1346,7 +1466,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data62 = {
@@ -1368,7 +1490,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data63 = {
@@ -1390,7 +1514,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data64 = {
@@ -1412,7 +1538,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data65 = {
@@ -1434,7 +1562,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data66 = {
@@ -1456,7 +1586,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data67 = {
@@ -1478,7 +1610,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data68 = {
@@ -1500,7 +1634,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data69 = {
@@ -1522,7 +1658,9 @@ user_id = 1
   thickness_id: 2,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data70 = {
@@ -1544,7 +1682,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data71 = {
@@ -1566,7 +1706,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data72 = {
@@ -1588,7 +1730,9 @@ user_id = 1
   thickness_id: 3,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data73 = {
@@ -1610,7 +1754,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data74 = {
@@ -1632,7 +1778,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data75 = {
@@ -1654,7 +1802,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data76 = {
@@ -1676,7 +1826,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data77 = {
@@ -1698,7 +1850,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data78 = {
@@ -1720,7 +1874,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data79 = {
@@ -1742,7 +1898,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data80 = {
@@ -1764,7 +1922,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data81 = {
@@ -1786,7 +1946,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data82 = {
@@ -1808,7 +1970,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data83 = {
@@ -1830,7 +1994,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data84 = {
@@ -1852,7 +2018,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 1,
-  remark_drink: "最後に提供する"
+  remark_drink: "最後に提供する",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data85 = {
@@ -1874,7 +2042,9 @@ user_id = 1
   thickness_id: 2,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data86 = {
@@ -1896,7 +2066,9 @@ user_id = 1
   thickness_id: 3,
   warm: 0,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data87 = {
@@ -1918,7 +2090,9 @@ user_id = 1
   thickness_id: 2,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data88 = {
@@ -1940,7 +2114,9 @@ user_id = 1
   thickness_id: 2,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data89 = {
@@ -1962,7 +2138,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data90 = {
@@ -1984,7 +2162,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data91 = {
@@ -2006,7 +2186,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data92 = {
@@ -2028,7 +2210,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data93 = {
@@ -2050,7 +2234,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data94 = {
@@ -2072,7 +2258,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data95 = {
@@ -2094,7 +2282,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data96 = {
@@ -2116,7 +2306,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 1,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data97 = {
@@ -2138,7 +2330,9 @@ user_id = 1
   thickness_id: 1,
   warm: 1,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data98 = {
@@ -2160,7 +2354,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data99 = {
@@ -2182,7 +2378,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 @data100 = {
@@ -2204,7 +2402,9 @@ user_id = 1
   thickness_id: 1,
   warm: 0,
   diabetes: 0,
-  remark_drink: ""
+  remark_drink: "",
+  text: "新規登録を行いました",
+  comment_type_id: 1,
 }
 
 

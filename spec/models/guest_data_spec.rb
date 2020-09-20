@@ -6,7 +6,7 @@ RSpec.describe GuestData, type: :model do
   end
   describe '利用者一括新規登録' do
     context '一括新規登録がうまくいくとき' do
-      it 'first_name,last_name,first_name_kana,last_name_kana,gender_id,visit1_id,visit2_id,adl_id,bathing_id,infection_id,timing_id,drink_type_id,thickness_id,warm,diabetesが存在すれば登録できる' do
+      it 'first_name,last_name,first_name_kana,last_name_kana,gender_id,visit1_id,visit2_id,adl_id,bathing_id,infection_id,timing_id,drink_type_id,thickness_id,warm,diabetes,text,comment_type_idが存在すれば登録できる' do
         expect(@guestdata).to be_valid
       end
       it 'first_nameが全角（漢字・ひらがな・カタカナ）であれば登録できる' do
@@ -81,6 +81,18 @@ RSpec.describe GuestData, type: :model do
         @guestdata.remark_drink = ''
         expect(@guestdata).to be_valid
       end
+      it 'comment_type_idが1~3であれば登録できる' do
+        @guestdata.comment_type_id = '1'
+        expect(@guestdata).to be_valid
+      end
+      it 'beforeが空でも登録できる' do
+        @guestdata.before = ''
+        expect(@guestdata).to be_valid
+      end
+      it 'afterが空でも登録できる' do
+        @guestdata.after = ''
+        expect(@guestdata).to be_valid
+      end
     end
 
     context '一括新規登録がうまくいかないとき' do
@@ -124,40 +136,90 @@ RSpec.describe GuestData, type: :model do
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Last name kana はカタカナで入力してください')
       end
+      it 'gender_idが空では登録できない' do
+        @guestdata.gender_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Gender can't be blank", "Gender can't be blank", 'Gender の選択肢を選んでください')
+      end
       it 'gender_idが0（未選択）では登録できない' do
         @guestdata.gender_id = '0'
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Gender の選択肢を選んでください')
+      end
+      it 'visit1_idが空では登録できない' do
+        @guestdata.visit1_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Visit1 can't be blank", "Visit1 can't be blank", 'Visit1 の選択肢を選んでください')
       end
       it 'visit1_idが0（未選択）では登録できない' do
         @guestdata.visit1_id = '0'
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Visit1 の選択肢を選んでください')
       end
+      it 'visit2_idが空では登録できない' do
+        @guestdata.visit2_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Visit2 can't be blank")
+      end
+      it 'adl_idが空では登録できない' do
+        @guestdata.adl_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Adl can't be blank", "Adl can't be blank", 'Adl の選択肢を選んでください')
+      end
       it 'adl_idが0（未選択）では登録できない' do
         @guestdata.adl_id = '0'
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Adl の選択肢を選んでください')
+      end
+      it 'descriptionが1000文字以上では登録できない' do
+        @guestdata.description = '01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Description is too long (maximum is 1000 characters)')
+      end
+      it 'bathing_idが空では登録できない' do
+        @guestdata.bathing_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Bathing can't be blank", "Bathing can't be blank", 'Bathing の選択肢を選んでください')
       end
       it 'bathing_idが0（未選択）では登録できない' do
         @guestdata.bathing_id = '0'
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Bathing の選択肢を選んでください')
       end
+      it 'infection_idが空では登録できない' do
+        @guestdata.infection_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Infection can't be blank", "Infection can't be blank", 'Infection の選択肢を選んでください')
+      end
       it 'infection_idが0（未選択）では登録できない' do
         @guestdata.infection_id = '0'
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Infection の選択肢を選んでください')
+      end
+      it 'timing_idが空では登録できない' do
+        @guestdata.timing_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Timing can't be blank")
       end
       it 'remark_bathが20文字以上では登録できない' do
         @guestdata.remark_bath = '123456789012345678901'
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Remark bath is too long (maximum is 20 characters)')
       end
+      it 'drink_type_idが空では登録できない' do
+        @guestdata.drink_type_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Drink type can't be blank", "Drink type can't be blank", 'Drink type の選択肢を選んでください')
+      end
       it 'drink_type_idが0（未選択）では登録できない' do
         @guestdata.drink_type_id = '0'
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Drink type の選択肢を選んでください')
+      end
+      it 'thickness_idが空では登録できない' do
+        @guestdata.thickness_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Thickness can't be blank", "Thickness can't be blank", 'Thickness の選択肢を選んでください')
       end
       it 'thickness_idが0（未選択）では登録できない' do
         @guestdata.thickness_id = '0'
@@ -178,6 +240,16 @@ RSpec.describe GuestData, type: :model do
         @guestdata.remark_drink = '123456789012345678901'
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Remark drink is too long (maximum is 20 characters)')
+      end
+      it 'textが空では登録できない' do
+        @guestdata.text = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Text can't be blank")
+      end
+      it 'comment_type_idが空では登録できない' do
+        @guestdata.comment_type_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Comment type can't be blank")
       end
     end
   end

@@ -3,12 +3,15 @@ class GuestData
   attr_accessor :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id,
                 :description, :user_id, :id, :adl_id,
                 :bathing_id, :infection_id, :timing_id, :remark_bath,
-                :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id
+                :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id,
+                :text, :comment_type_id,
+                :before, :after
 
   # # boolean型のチェックはpresence:trueが使えない
   validates :warm, inclusion: { in: [true, false] }
   validates :diabetes, inclusion: { in: [true, false] }
-
+  # 文字数の制限
+  validates :description, length: { maximum: 1000 }
   validates :remark_bath, length: { maximum: 20 }
   validates :remark_drink, length: { maximum: 20 }
 
@@ -29,6 +32,9 @@ class GuestData
     validates :bathing_id
     validates :infection_id
     validates :timing_id
+    # commentテーブル
+    validates :text
+    validates :comment_type_id
     with_options numericality: { other_than: 0, message: 'の選択肢を選んでください' } do
       # guestテーブル
       validates :gender_id
@@ -63,6 +69,8 @@ class GuestData
 
     # 水分の情報を保存
     drink = Drink.create(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink, guest_id: guest.id)
+    # コメントの情報を保存
+    comment = Comment.create(text: text, comment_type_id: comment_type_id, user_id: user_id, guest_id: guest.id)
   end
 
   def update
@@ -88,6 +96,8 @@ class GuestData
     # 水分の情報を保存
     drink = Drink.find_by(guest_id: guest.id)
     drink.update(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink)
+    # コメントの情報を保存
+    comment = Comment.create(text: text, comment_type_id: comment_type_id, user_id: user_id, guest_id: guest.id)
   end
 
   def warm
