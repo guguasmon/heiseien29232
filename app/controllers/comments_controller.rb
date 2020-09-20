@@ -4,20 +4,18 @@ class CommentsController < ApplicationController
   before_action :move_to_index, except: :index
   before_action :move_to_index_from_edit, only: :edit
 
-
-
-def create
-  @comment = Comment.new(comment_params)
-  path_id = @comment.guest.id
-  if @comment.valid?
-    @comment.save
-    flash[:success] = '記録をしました'
-    redirect_to guest_path(path_id)
-  else
-    flash[:danger] = '本文を入力してください'
-    redirect_to guest_path(path_id)
+  def create
+    @comment = Comment.new(comment_params)
+    path_id = @comment.guest.id
+    if @comment.valid?
+      @comment.save
+      flash[:success] = '記録をしました'
+      redirect_to guest_path(path_id)
+    else
+      flash[:danger] = '本文を入力してください'
+      redirect_to guest_path(path_id)
+    end
   end
-end
 
   def destroy
     path_id = @comment.guest.id
@@ -27,7 +25,7 @@ end
     else
       redirect_to guest_path(path_id)
     end
-  end 
+  end
 
   def edit
   end
@@ -44,6 +42,7 @@ end
   end
 
   private
+
   def set_guest
     @guest = Guest.find(params[:id])
   end

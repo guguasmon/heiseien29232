@@ -30,7 +30,7 @@ RSpec.describe Bath, type: :model do
       it 'bathing_idが空では登録できない' do
         @bath.bathing_id = ''
         @bath.valid?
-        expect(@bath.errors.full_messages).to include("Bathing can't be blank", "Bathing can't be blank", "Bathing の選択肢を選んでください")
+        expect(@bath.errors.full_messages).to include("Bathing can't be blank", "Bathing can't be blank", 'Bathing の選択肢を選んでください')
       end
       it 'bathing_idが0（未選択）では登録できない' do
         @bath.bathing_id = '0'
@@ -40,7 +40,7 @@ RSpec.describe Bath, type: :model do
       it 'infection_idが空では登録できない' do
         @bath.infection_id = ''
         @bath.valid?
-        expect(@bath.errors.full_messages).to include("Infection can't be blank", "Infection can't be blank", "Infection の選択肢を選んでください")
+        expect(@bath.errors.full_messages).to include("Infection can't be blank", "Infection can't be blank", 'Infection の選択肢を選んでください')
       end
       it 'infection_idが0（未選択）では登録できない' do
         @bath.infection_id = '0'

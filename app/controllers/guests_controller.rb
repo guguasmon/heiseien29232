@@ -83,7 +83,7 @@ class GuestsController < ApplicationController
 
   def show
     @comment_new = Comment.new
-    @comments = Comment.joins(:guest).where(guests: { id: @guest.id }).order("created_at ASC")
+    @comments = Comment.joins(:guest).where(guests: { id: @guest.id }).order('created_at ASC')
   end
 
   private

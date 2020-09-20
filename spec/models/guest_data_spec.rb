@@ -137,9 +137,9 @@ RSpec.describe GuestData, type: :model do
         expect(@guestdata.errors.full_messages).to include('Last name kana はカタカナで入力してください')
       end
       it 'gender_idが空では登録できない' do
-        @guestdata.gender_id = ""
+        @guestdata.gender_id = ''
         @guestdata.valid?
-        expect(@guestdata.errors.full_messages).to include("Gender can't be blank", "Gender can't be blank", "Gender の選択肢を選んでください")
+        expect(@guestdata.errors.full_messages).to include("Gender can't be blank", "Gender can't be blank", 'Gender の選択肢を選んでください')
       end
       it 'gender_idが0（未選択）では登録できない' do
         @guestdata.gender_id = '0'
@@ -149,7 +149,7 @@ RSpec.describe GuestData, type: :model do
       it 'visit1_idが空では登録できない' do
         @guestdata.visit1_id = ''
         @guestdata.valid?
-        expect(@guestdata.errors.full_messages).to include("Visit1 can't be blank", "Visit1 can't be blank", "Visit1 の選択肢を選んでください")
+        expect(@guestdata.errors.full_messages).to include("Visit1 can't be blank", "Visit1 can't be blank", 'Visit1 の選択肢を選んでください')
       end
       it 'visit1_idが0（未選択）では登録できない' do
         @guestdata.visit1_id = '0'
@@ -164,7 +164,7 @@ RSpec.describe GuestData, type: :model do
       it 'adl_idが空では登録できない' do
         @guestdata.adl_id = ''
         @guestdata.valid?
-        expect(@guestdata.errors.full_messages).to include("Adl can't be blank", "Adl can't be blank", "Adl の選択肢を選んでください")
+        expect(@guestdata.errors.full_messages).to include("Adl can't be blank", "Adl can't be blank", 'Adl の選択肢を選んでください')
       end
       it 'adl_idが0（未選択）では登録できない' do
         @guestdata.adl_id = '0'
@@ -179,7 +179,7 @@ RSpec.describe GuestData, type: :model do
       it 'bathing_idが空では登録できない' do
         @guestdata.bathing_id = ''
         @guestdata.valid?
-        expect(@guestdata.errors.full_messages).to include("Bathing can't be blank", "Bathing can't be blank", "Bathing の選択肢を選んでください")
+        expect(@guestdata.errors.full_messages).to include("Bathing can't be blank", "Bathing can't be blank", 'Bathing の選択肢を選んでください')
       end
       it 'bathing_idが0（未選択）では登録できない' do
         @guestdata.bathing_id = '0'
@@ -189,7 +189,7 @@ RSpec.describe GuestData, type: :model do
       it 'infection_idが空では登録できない' do
         @guestdata.infection_id = ''
         @guestdata.valid?
-        expect(@guestdata.errors.full_messages).to include("Infection can't be blank", "Infection can't be blank", "Infection の選択肢を選んでください")
+        expect(@guestdata.errors.full_messages).to include("Infection can't be blank", "Infection can't be blank", 'Infection の選択肢を選んでください')
       end
       it 'infection_idが0（未選択）では登録できない' do
         @guestdata.infection_id = '0'
@@ -209,7 +209,7 @@ RSpec.describe GuestData, type: :model do
       it 'drink_type_idが空では登録できない' do
         @guestdata.drink_type_id = ''
         @guestdata.valid?
-        expect(@guestdata.errors.full_messages).to include("Drink type can't be blank", "Drink type can't be blank", "Drink type の選択肢を選んでください")
+        expect(@guestdata.errors.full_messages).to include("Drink type can't be blank", "Drink type can't be blank", 'Drink type の選択肢を選んでください')
       end
       it 'drink_type_idが0（未選択）では登録できない' do
         @guestdata.drink_type_id = '0'
@@ -219,7 +219,7 @@ RSpec.describe GuestData, type: :model do
       it 'thickness_idが空では登録できない' do
         @guestdata.thickness_id = ''
         @guestdata.valid?
-        expect(@guestdata.errors.full_messages).to include("Thickness can't be blank", "Thickness can't be blank", "Thickness の選択肢を選んでください")
+        expect(@guestdata.errors.full_messages).to include("Thickness can't be blank", "Thickness can't be blank", 'Thickness の選択肢を選んでください')
       end
       it 'thickness_idが0（未選択）では登録できない' do
         @guestdata.thickness_id = '0'

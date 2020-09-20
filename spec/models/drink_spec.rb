@@ -27,7 +27,7 @@ RSpec.describe Drink, type: :model do
       it 'drink_type_idが空では登録できない' do
         @drink.drink_type_id = ''
         @drink.valid?
-        expect(@drink.errors.full_messages).to include("Drink type can't be blank", "Drink type can't be blank", "Drink type の選択肢を選んでください")
+        expect(@drink.errors.full_messages).to include("Drink type can't be blank", "Drink type can't be blank", 'Drink type の選択肢を選んでください')
       end
       it 'drink_type_idが0（未選択）では登録できない' do
         @drink.drink_type_id = '0'
@@ -37,7 +37,7 @@ RSpec.describe Drink, type: :model do
       it 'thickness_idが空では登録できない' do
         @drink.thickness_id = ''
         @drink.valid?
-        expect(@drink.errors.full_messages).to include("Thickness can't be blank", "Thickness can't be blank", "Thickness の選択肢を選んでください")
+        expect(@drink.errors.full_messages).to include("Thickness can't be blank", "Thickness can't be blank", 'Thickness の選択肢を選んでください')
       end
       it 'thickness_idが0（未選択）では登録できない' do
         @drink.thickness_id = '0'
