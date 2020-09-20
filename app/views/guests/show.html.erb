@@ -160,7 +160,7 @@
                 </div>
               </div>
               <!-- /Modal -->
-              <%= link_to '削除', guest_comment_path(comment.guest.id, comment.id), method: :delete, class: "btn btn-danger", role: "button" %>
+              <%= link_to '削除', guest_comment_path(comment.guest.id, comment.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger", role: "button" %>
             </td>
           </tr>
         <% end %>
@@ -217,7 +217,7 @@
       <%= link_to '編集', edit_guest_path(@guest.id), method: :get, class: "btn btn-primary btn-block btn-lg", role: "button" %>
     </div>
     <div class="col">
-      <%= link_to '削除', guest_path(@guest.id), method: :delete, class: "btn btn-danger btn-block btn-lg", role: "button" %>
+      <%= link_to '削除', guest_path(@guest.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-block btn-lg", role: "button" %>
     </div>
   </div>
   <%# /編集あるいは削除ボタン %>
