@@ -1,6 +1,6 @@
 class LogType < ActiveHash::Base
   self.data = [
-    { id: 0, name: '新規' },
+    { id: 0, name: '新規登録' },
     { id: 1, name: '本人の希望' },
     { id: 2, name: '家族の要望' },
     { id: 3, name: 'ADLの低下' },
