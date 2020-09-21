@@ -4,7 +4,6 @@ class GuestData
                 :description, :user_id, :id, :adl_id,
                 :bathing_id, :infection_id, :timing_id, :remark_bath,
                 :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id,
-                :text, :comment_type_id,
                 :log, :log_type_id,
                 :before, :after
 
@@ -33,9 +32,6 @@ class GuestData
     validates :bathing_id
     validates :infection_id
     validates :timing_id
-    # commentテーブル
-    validates :text
-    validates :comment_type_id
     #historiesテーブル
     validates :log
     validates :log_type_id
@@ -73,8 +69,9 @@ class GuestData
 
     # 水分の情報を保存
     drink = Drink.create(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink, guest_id: guest.id)
-    # コメントの情報を保存
-    comment = Comment.create(text: text, comment_type_id: comment_type_id, user_id: user_id, guest_id: guest.id)
+    # 更新履歴の情報を保存
+    new_log = History.create(log: log, log_type_id: log_type_id, guest_id: guest.id)
+    binding.pry
   end
 
   def update
