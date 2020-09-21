@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:text, :comment_type_id).merge(user_id: current_user.id, guest_id: params[:guest_id])
+    params.require(:comment).permit(:text).merge(user_id: current_user.id, guest_id: params[:guest_id])
   end
 
   def move_to_index
