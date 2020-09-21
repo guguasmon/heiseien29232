@@ -22,8 +22,11 @@ ja:
        warm: 温めるか
        diabetes: 糖尿病
       comment:
-       text: 更新理由
-       comment_type_id: 更新の種別
+       text: コメント
+       comment_type_id: コメントの種別
+      history:
+       log: 更新理由
+       log_type_id: 更新の種別
   activemodel:
     attributes:
       guest_data:
@@ -44,5 +47,7 @@ ja:
         thickness_id: とろみの量
         warm: 温めるか
         diabetes: 糖尿病
-        text: 更新理由
-        comment_type_id: 更新の種別
+        text: コメント
+        comment_type_id: コメントの種別
+        log: 更新理由
+        log_type_id: 更新の種別
