@@ -5,6 +5,7 @@ class GuestData
                 :bathing_id, :infection_id, :timing_id, :remark_bath,
                 :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id,
                 :text, :comment_type_id,
+                :log, :log_type_id,
                 :before, :after
 
   # # boolean型のチェックはpresence:trueが使えない
@@ -35,6 +36,9 @@ class GuestData
     # commentテーブル
     validates :text
     validates :comment_type_id
+    #historiesテーブル
+    validates :log
+    validates :log_type_id
     with_options numericality: { other_than: 0, message: 'の選択肢を選んでください' } do
       # guestテーブル
       validates :gender_id
