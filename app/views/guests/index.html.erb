@@ -31,7 +31,10 @@
           <h1 class="text-center">利用者一覧表</h1>
         </div>
       </div>
-      <div class="row">
+      <div class="mb-3 d-flex justify-content-end">
+        <button type="button" class="btn btn-success print printing"><i class="fas fa-print" aria-hidden="true"></i>この表を印刷する</button> 
+      </div>
+      <div class="row mb-3">
         <div class="col text-left">
           <h3><%= @day_of_the_week  ? "#{@day_of_the_week}曜日" : "全表示" %></h3>
         </div>
@@ -53,7 +56,7 @@
           <th scope="col">歩行状態</th>
           <th scope="col">入浴形態</th>
           <th scope="col">飲み物の種類</th>
-          <th scope="col">詳細/編集/削除</th>
+          <th scope="col" class="print">詳細/編集/削除</th>
         </tr>
       </thead>
       <tbody>

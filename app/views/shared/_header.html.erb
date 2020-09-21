@@ -23,26 +23,40 @@
 
           </li>
           <li class="nav-item">
-            <%= link_to "利用者を登録する", new_guest_path, class: "btn btn-outline-dark nav-link", id: "entry", role: "button" %>
+            <%= link_to new_guest_path, class: "btn btn-outline-dark nav-link", id: "entry", role: "button"  do %>
+            <i class="fas fa-user-plus"></i>利用者を登録する
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to '利用者一覧', root_path, class: "btn btn-outline-dark nav-link", id: "guest-index", role: "button" %>
+            <%= link_to root_path, class: "btn btn-outline-dark nav-link", id: "guest-index", role: "button" do %>
+            <i class="fas fa-users"></i>利用者一覧
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to '入浴形態表', baths_path, class: "btn btn-outline-dark nav-link", id: "bath-index", role: "button" %>
+            <%= link_to baths_path, class: "btn btn-outline-dark nav-link", id: "bath-index", role: "button" do %>
+            <i class="fas fa-bath"></i>入浴形態表
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to '水分提供表', drinks_path, class: "btn btn-outline-dark nav-link", id: "drink-index", role: "button" %>
+            <%= link_to drinks_path, class: "btn btn-outline-dark nav-link", id: "drink-index", role: "button" do %>
+            <i class="fas fa-coffee"></i>水分提供表
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark nav-link", role: "button" %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-dark nav-link", role: "button" do %>
+            <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark nav-link", role: "button" %>
+            <%= link_to new_user_registration_path, class: "btn btn-outline-dark nav-link", role: "button" do %>
+            <i class="fas fa-user-circle"></i>新規登録
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark nav-link", role: "button" %>
+            <%= link_to new_user_session_path, class: "btn btn-outline-dark nav-link", role: "button" do %>
+            <i class="fas fa-sign-in-alt"></i>ログイン
+            <% end %>
           </li>
         <% end %>
       </ul>
