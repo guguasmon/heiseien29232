@@ -27,8 +27,8 @@ user_id = 1
   warm: 1,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data2 = {
@@ -51,8 +51,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data3 = {
@@ -75,8 +75,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data4 = {
@@ -99,8 +99,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data5 = {
@@ -123,8 +123,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data6 = {
@@ -147,8 +147,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data7 = {
@@ -171,8 +171,8 @@ user_id = 1
   warm: 0,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data8 = {
@@ -195,8 +195,8 @@ user_id = 1
   warm: 1,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data9 = {
@@ -219,8 +219,8 @@ user_id = 1
   warm: 1,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data10 = {
@@ -243,8 +243,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data11 = {
@@ -267,8 +267,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data12 = {
@@ -291,8 +291,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "少量で良い",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data13 = {
@@ -315,8 +315,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data14 = {
@@ -339,8 +339,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data15 = {
@@ -363,8 +363,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "本人用スプーンをつける",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data16 = {
@@ -387,8 +387,8 @@ user_id = 1
   warm: 1,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data17 = {
@@ -411,8 +411,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data18 = {
@@ -435,8 +435,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data19 = {
@@ -459,8 +459,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data20 = {
@@ -483,8 +483,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data21 = {
@@ -507,8 +507,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "自助スプーンをつける",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data22 = {
@@ -531,8 +531,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data23 = {
@@ -555,8 +555,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data24 = {
@@ -579,8 +579,8 @@ user_id = 1
   warm: 0,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data25 = {
@@ -603,8 +603,8 @@ user_id = 1
   warm: 1,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data26 = {
@@ -627,8 +627,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data27 = {
@@ -651,8 +651,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data28 = {
@@ -675,8 +675,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data29 = {
@@ -699,8 +699,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data30 = {
@@ -723,8 +723,8 @@ user_id = 1
   warm: 0,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data31 = {
@@ -747,8 +747,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data32 = {
@@ -771,8 +771,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data33 = {
@@ -795,8 +795,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data34 = {
@@ -819,8 +819,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data35 = {
@@ -843,8 +843,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data36 = {
@@ -867,8 +867,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data37 = {
@@ -891,8 +891,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data38 = {
@@ -915,8 +915,8 @@ user_id = 1
   warm: 0,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data39 = {
@@ -939,8 +939,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data40 = {
@@ -963,8 +963,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data41 = {
@@ -987,8 +987,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data42 = {
@@ -1011,8 +1011,8 @@ user_id = 1
   warm: 0,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data43 = {
@@ -1035,8 +1035,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data44 = {
@@ -1059,8 +1059,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data45 = {
@@ -1083,8 +1083,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data46 = {
@@ -1107,8 +1107,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data47 = {
@@ -1131,8 +1131,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data48 = {
@@ -1155,8 +1155,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data49 = {
@@ -1179,8 +1179,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data50 = {
@@ -1203,8 +1203,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "ストローをつける",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data51 = {
@@ -1227,8 +1227,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data52 = {
@@ -1251,8 +1251,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "マイコップに注ぐ",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data53 = {
@@ -1275,8 +1275,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data54 = {
@@ -1299,8 +1299,8 @@ user_id = 1
   warm: 0,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data55 = {
@@ -1323,8 +1323,8 @@ user_id = 1
   warm: 1,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data56 = {
@@ -1347,8 +1347,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data57 = {
@@ -1371,8 +1371,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data58 = {
@@ -1395,8 +1395,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data59 = {
@@ -1419,8 +1419,8 @@ user_id = 1
   warm: 0,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data60 = {
@@ -1443,8 +1443,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data61 = {
@@ -1467,8 +1467,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data62 = {
@@ -1491,8 +1491,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data63 = {
@@ -1515,8 +1515,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data64 = {
@@ -1539,8 +1539,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data65 = {
@@ -1563,8 +1563,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data66 = {
@@ -1587,8 +1587,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data67 = {
@@ -1611,8 +1611,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data68 = {
@@ -1635,8 +1635,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data69 = {
@@ -1659,8 +1659,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data70 = {
@@ -1683,8 +1683,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data71 = {
@@ -1707,8 +1707,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data72 = {
@@ -1731,8 +1731,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data73 = {
@@ -1755,8 +1755,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data74 = {
@@ -1779,8 +1779,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data75 = {
@@ -1803,8 +1803,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data76 = {
@@ -1827,8 +1827,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data77 = {
@@ -1851,8 +1851,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data78 = {
@@ -1875,8 +1875,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data79 = {
@@ -1899,8 +1899,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data80 = {
@@ -1923,8 +1923,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data81 = {
@@ -1947,8 +1947,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data82 = {
@@ -1971,8 +1971,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data83 = {
@@ -1995,8 +1995,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data84 = {
@@ -2019,8 +2019,8 @@ user_id = 1
   warm: 0,
   diabetes: 1,
   remark_drink: "最後に提供する",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data85 = {
@@ -2043,8 +2043,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data86 = {
@@ -2067,8 +2067,8 @@ user_id = 1
   warm: 0,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data87 = {
@@ -2091,8 +2091,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data88 = {
@@ -2115,8 +2115,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data89 = {
@@ -2139,8 +2139,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data90 = {
@@ -2163,8 +2163,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data91 = {
@@ -2187,8 +2187,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data92 = {
@@ -2211,8 +2211,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data93 = {
@@ -2235,8 +2235,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data94 = {
@@ -2259,8 +2259,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data95 = {
@@ -2283,8 +2283,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data96 = {
@@ -2307,8 +2307,8 @@ user_id = 1
   warm: 1,
   diabetes: 1,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data97 = {
@@ -2331,8 +2331,8 @@ user_id = 1
   warm: 1,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data98 = {
@@ -2355,8 +2355,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data99 = {
@@ -2379,8 +2379,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 @data100 = {
@@ -2403,8 +2403,8 @@ user_id = 1
   warm: 0,
   diabetes: 0,
   remark_drink: "",
-  text: "新規登録を行いました",
-  comment_type_id: 1,
+  log: "新規登録を行いました",
+  log_type_id: 0,
 }
 
 
