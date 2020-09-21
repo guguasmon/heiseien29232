@@ -190,7 +190,7 @@
       <div class="col">
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#commentNew">
-                コメントをする
+                <i class="far fa-comment-dots"></i> コメントをする
               </button>
 
               <!-- Modal -->
@@ -227,10 +227,14 @@
               <!-- /Modal -->
     </div>
     <div class="col">
-      <%= link_to '編集', edit_guest_path(@guest.id), method: :get, class: "btn btn-primary btn-block btn-lg", role: "button" %>
+      <%= link_to edit_guest_path(@guest.id), method: :get, class: "btn btn-primary btn-block btn-lg", role: "button" do %>
+      <i class="fas fa-edit"></i> 編集
+      <% end %>
     </div>
     <div class="col">
-      <%= link_to '削除', guest_path(@guest.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-block btn-lg", role: "button" %>
+      <%= link_to guest_path(@guest.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-block btn-lg", role: "button" do %>
+      <i class="far fa-trash-alt"></i> 削除
+      <% end %>
     </div>
   </div>
   <%# /編集あるいは削除ボタン %>
