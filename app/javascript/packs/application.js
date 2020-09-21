@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("./table-show.js")
 require("./header-active.js")
+require("./print.js")
 
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all'
