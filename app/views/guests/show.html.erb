@@ -99,6 +99,29 @@
     </table>
   </div>
   <%# /利用者の水分詳細テーブル %>
+  <%# 利用者の更新履歴テーブル %>
+  <div class="container">
+    <table class="table table-bordered">
+      <caption>更新履歴</caption>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">種別</th>
+          <th scope="col">本文</th>
+          <th scope="col">日付</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @histories.each do |history| %>
+          <tr>
+            <td scope="col" style="width:10%"><%= history.log_type.name %></td>
+            <td scope="col" style="width:70%"><%= history.log %></td>
+            <td scope="col" style="width:20%"><%= history.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%# /利用者の更新履歴テーブル %>
   <%# 利用者のコメントテーブル %>
   <div class="container">
     <table class="table table-bordered">
@@ -167,7 +190,7 @@
       </tbody>
     </table>
   </div>
-  <%# /利用者の水分詳細テーブル %>
+  <%# /利用者のコメントテーブル %>
   <%# 編集あるいは削除ボタン %>
   <div class="row">
       <div class="col">
