@@ -6,7 +6,7 @@ RSpec.describe GuestData, type: :model do
   end
   describe '利用者一括新規登録' do
     context '一括新規登録がうまくいくとき' do
-      it 'first_name,last_name,first_name_kana,last_name_kana,gender_id,visit1_id,visit2_id,adl_id,bathing_id,infection_id,timing_id,drink_type_id,thickness_id,warm,diabetes,text,comment_type_idが存在すれば登録できる' do
+      it 'first_name,last_name,first_name_kana,last_name_kana,gender_id,visit1_id,visit2_id,adl_id,bathing_id,infection_id,timing_id,drink_type_id,thickness_id,warm,diabetes,log,log_type_idが存在すれば登録できる' do
         expect(@guestdata).to be_valid
       end
       it 'first_nameが全角（漢字・ひらがな・カタカナ）であれば登録できる' do
@@ -79,18 +79,6 @@ RSpec.describe GuestData, type: :model do
       end
       it 'remark_drinkが空でも登録できる' do
         @guestdata.remark_drink = ''
-        expect(@guestdata).to be_valid
-      end
-      it 'comment_type_idが1~3であれば登録できる' do
-        @guestdata.comment_type_id = '1'
-        expect(@guestdata).to be_valid
-      end
-      it 'beforeが空でも登録できる' do
-        @guestdata.before = ''
-        expect(@guestdata).to be_valid
-      end
-      it 'afterが空でも登録できる' do
-        @guestdata.after = ''
         expect(@guestdata).to be_valid
       end
     end
@@ -241,15 +229,15 @@ RSpec.describe GuestData, type: :model do
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Remark drink is too long (maximum is 20 characters)')
       end
-      it 'textが空では登録できない' do
-        @guestdata.text = ''
+      it 'logが空では登録できない要修正' do
+        @guestdata.log = ''
         @guestdata.valid?
-        expect(@guestdata.errors.full_messages).to include("Text can't be blank")
+        expect(@guestdata.errors.full_messages).to include("Log can't be blank")
       end
-      it 'comment_type_idが空では登録できない' do
-        @guestdata.comment_type_id = ''
+      it 'log_type_idが空では登録できない' do
+        @guestdata.log_type_id = ''
         @guestdata.valid?
-        expect(@guestdata.errors.full_messages).to include("Comment type can't be blank")
+        expect(@guestdata.errors.full_messages).to include("Log type can't be blank")
       end
     end
   end

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     path_id = @comment.guest.id
     if @comment.valid?
       @comment.save
-      flash[:success] = '記録をしました'
+      flash[:success] = 'コメントをしました'
       redirect_to guest_path(path_id)
     else
       flash[:danger] = '本文を入力してください'
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
   def destroy
     path_id = @comment.guest.id
     if @comment.destroy
-      flash[:danger] = '削除をしました'
+      flash[:danger] = 'コメントの削除をしました'
       redirect_to guest_path(path_id)
     else
       redirect_to guest_path(path_id)
@@ -28,10 +28,10 @@ class CommentsController < ApplicationController
   def update
     path_id = @comment.guest.id
     if @comment.update(comment_params)
-      flash[:info] = '利用者情報を更新しました'
+      flash[:info] = 'コメントの更新をしました'
       redirect_to guest_path(path_id)
     else
-      flash[:danger] = '更新理由を入力してください'
+      flash[:danger] = '本文を入力してください'
       redirect_to guest_path(path_id)
     end
   end
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:text, :comment_type_id).merge(user_id: current_user.id, guest_id: params[:guest_id])
+    params.require(:comment).permit(:text).merge(user_id: current_user.id, guest_id: params[:guest_id])
   end
 
   def move_to_index

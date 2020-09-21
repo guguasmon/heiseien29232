@@ -35,6 +35,7 @@
 - has_one :bath
 - has_one :drink
 - has_many :comments
+- has_many :histories
 
 ## baths テーブル
 
@@ -76,3 +77,14 @@
 - belongs_to :guests
 - belongs_to :users
 
+## histories テーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| log             | text       | null: false                    |
+| log_type_id     | integer    | null: false                    |
+| guests          | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :guests

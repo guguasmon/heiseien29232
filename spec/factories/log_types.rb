@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :comment_type do
+  factory :log_type do
   end
 end

@@ -99,25 +99,46 @@
     </table>
   </div>
   <%# /利用者の水分詳細テーブル %>
+  <%# 利用者の更新履歴テーブル %>
+  <div class="container">
+    <table class="table table-bordered">
+      <caption>更新履歴</caption>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">理由</th>
+          <th scope="col">更新内容</th>
+          <th scope="col">日付</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @histories.each do |history| %>
+          <tr>
+            <td scope="col" style="width:30%"><%= history.log_type.name %></td>
+            <td scope="col" style="width:50%"><%= history.log %></td>
+            <td scope="col" style="width:20%"><%= history.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%# /利用者の更新履歴テーブル %>
   <%# 利用者のコメントテーブル %>
   <div class="container">
     <table class="table table-bordered">
       <caption>コメント</caption>
       <thead class="thead-dark">
         <tr>
-          <th scope="col">種別</th>
+          <th scope="col">日付</th>
           <th scope="col">本文</th>
-          <th scope="col">日付</th>
           <th scope="col">編集/削除</th>
         </tr>
       </thead>
       <tbody>
         <% @comments.each do |comment| %>
           <tr>
-            <td scope="col" style="width:10%"><%= comment.comment_type.name %></td>
-            <td scope="col" style="width:55%"><%= comment.text %></td>
             <td scope="col" style="width:20%"><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-            <td scope="col" style="width:15%">
+            <td scope="col" style="width:55%"><%= comment.text %></td>
+            <td scope="col" style="width:25%">
 
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentEdit-<%= "#{comment.id}" %>">
@@ -129,7 +150,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="commentEdit-<%= "#{comment.id}" %>Title">更新履歴を編集する</h5>
+                      <h5 class="modal-title" id="commentEdit-<%= "#{comment.id}" %>Title">コメントを編集する</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -137,10 +158,6 @@
                     <div class="modal-body">
                       <%= form_with(model: comment, url: "/guests/#{comment.guest_id}/comments/#{comment.id}", method: :patch, local: true) do |f| %>
                         <div class="form-row my-3">
-                          <div class="form-group">
-                            <label for="comment-type-id"></label>
-                            <%= f.hidden_field :comment_type_id, class:"form-control", id:"comment-type-id", value: 2 %>
-                          </div>
                           <div class="form-group col-sm-12">
                             <label for="text">コメント<span class="text-danger pl-3">必須</span></label>
                             <%= f.text_area :text, class:"form-control", id:"text" %>
@@ -149,7 +166,7 @@
                         <%# 登録ボタン %>
                         <div class="form-row my-3">
                           <div class="form-group col-sm-12 modal-footer">
-                            <%= f.submit "更新履歴を編集する" ,class:"btn btn-primary", role: "button" %>
+                            <%= f.submit "コメントを編集する" ,class:"btn btn-primary", role: "button" %>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">編集を中止する</button>
                           </div>
                         </div>
@@ -167,13 +184,13 @@
       </tbody>
     </table>
   </div>
-  <%# /利用者の水分詳細テーブル %>
+  <%# /利用者のコメントテーブル %>
   <%# 編集あるいは削除ボタン %>
   <div class="row">
       <div class="col">
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#commentNew">
-                記録をする
+                コメントをする
               </button>
 
               <!-- Modal -->
@@ -181,7 +198,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="commentNewTitle">記録をする</h5>
+                      <h5 class="modal-title" id="commentNewTitle">コメントをする</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -189,10 +206,6 @@
                     <div class="modal-body">
                       <%= form_with(model: [@guest, @comment_new], local: true) do |f| %>
                         <div class="form-row my-3">
-                          <div class="form-group">
-                            <label for="comment-type-id"></label>
-                            <%= f.hidden_field :comment_type_id, class:"form-control", id:"comment-type-id", value: 3 %>
-                          </div>
                           <div class="form-group col-sm-12">
                             <label for="text">本文<span class="text-danger pl-3">必須</span></label>
                             <%= f.text_area :text, class:"form-control", id:"text" %>
@@ -201,7 +214,7 @@
                         <%# 登録ボタン %>
                         <div class="form-row my-3">
                           <div class="form-group col-sm-12 modal-footer">
-                            <%= f.submit "記録をする" ,class:"btn btn-primary", role: "button" %>
+                            <%= f.submit "コメントをする" ,class:"btn btn-primary", role: "button" %>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">中止する</button>
                           </div>
                         </div>

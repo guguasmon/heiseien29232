@@ -120,18 +120,18 @@
     </div>
     <%# /drinksテーブルの情報入力 %>
 
-    <%# commentsテーブルの情報入力 %>
+    <%# historiesテーブルの情報入力 %>
     <div class="form-row my-3">
       <div class="form-group">
-        <label for="comment-type-id"></label>
-        <%= f.hidden_field :comment_type_id, class:"form-control", id:"comment-type-id", value: 1 %>
+        <label for="log-type-id"></label>
+        <%= f.hidden_field :log_type_id, class:"form-control", id:"log-type-id", value: 0 %>
       </div>
       <div class="form-group col-sm-12">
-        <label for="text"></label>
-        <%= f.hidden_field :text, class:"form-control", id:"text", value: "新規登録を行った" %>
+        <label for="log"></label>
+        <%= f.hidden_field :log, class:"form-control", id:"log", value: "新規登録を行いました" %>
       </div>
     </div>
-    <%# /commentsテーブルの情報入力 %>
+    <%# /historiesテーブルの情報入力 %>
 
     <%# 登録ボタン %>
     <div class="form-row my-3">

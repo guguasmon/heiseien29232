@@ -2,7 +2,7 @@ class DrinksController < ApplicationController
   before_action :set_guest, only: [:edit, :update]
   before_action :set_day_of_the_week, only: :search
   before_action :move_to_index
-  before_action :move_to_index_from_edit, only: :edit
+  before_action :move_to_index_non_editor, only: :edit
 
   def index
     # 牛乳
@@ -103,7 +103,7 @@ class DrinksController < ApplicationController
       :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id, :description, :adl_id,
       :bathing_id, :infection_id, :timing_id, :remark_bath,
       :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink,
-      :text, :comment_type_id
+      :log, :log_type_id
     ).merge(id: params[:id], user_id: current_user.id)
   end
 
@@ -114,7 +114,7 @@ class DrinksController < ApplicationController
     end
   end
 
-  def move_to_index_from_edit
+  def move_to_index_non_editor
     unless current_user.id == @guest.user.id
       flash[:warning] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
       redirect_to root_path
