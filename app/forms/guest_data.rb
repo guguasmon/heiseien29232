@@ -201,9 +201,16 @@ class GuestData
       change_logs << "水分の備考:#{comparison_old.remark_drink}→#{comparison_new.remark_drink}"
     end
     #変更内容を変数へ入力
-    change_log = change_logs.join("//")     
+    unless change_logs.empty?
+      change_log = change_logs.join("//")
+    else
+      change_log = nil
+    end
     # 更新履歴の情報を保存
-    update_log = History.create(log: change_log, log_type_id: log_type_id, guest_id: guest.id)
+    update_log = History.new(log: change_log, log_type_id: log_type_id, guest_id: guest.id)
+    if update_log.valid?
+      update_log.save
+    end
   end
 
   def warm
