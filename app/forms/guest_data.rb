@@ -4,8 +4,7 @@ class GuestData
                 :description, :user_id, :id, :adl_id,
                 :bathing_id, :infection_id, :timing_id, :remark_bath,
                 :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id,
-                :log, :log_type_id,
-                :before, :after
+                :log, :log_type_id
 
   # # boolean型のチェックはpresence:trueが使えない
   validates :warm, inclusion: { in: [true, false] }
@@ -71,7 +70,6 @@ class GuestData
     drink = Drink.create(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink, guest_id: guest.id)
     # 更新履歴の情報を保存
     new_log = History.create(log: log, log_type_id: log_type_id, guest_id: guest.id)
-    binding.pry
   end
 
   def update
@@ -146,7 +144,7 @@ class GuestData
     # アクティブハッシュとの繋がりが途切れているため改めて記述
     change_logs = []
     genders = ["", "男性", "女性"]
-    visits = ["", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日", "日曜日"]
+    visits = ["利用なし", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日", "日曜日"]
     adls = ["", "独歩", "杖歩行", "歩行器", "車椅子"]
     bath_types = ["", "独歩", "杖歩行", "歩行器", "車椅子"]
     infections = ["", "感染症なし", "B型肝炎", "C型肝炎", "疥癬"]
@@ -202,15 +200,10 @@ class GuestData
     if comparison_old.remark_drink != comparison_new.remark_drink
       change_logs << "水分の備考:#{comparison_old.remark_drink}→#{comparison_new.remark_drink}"
     end
-    #変更内容をカラムへ入力
-    unless change_logs.empty?
-      before = change_logs.join("//")     
-    else
-      before = ""
-    end
-
-    # コメントの情報を保存
-    comment = Comment.create(text: text, comment_type_id: comment_type_id, user_id: user_id, guest_id: guest.id, before: before)
+    #変更内容を変数へ入力
+    change_log = change_logs.join("//")     
+    # 更新履歴の情報を保存
+    update_log = History.create(log: change_log, log_type_id: log_type_id, guest_id: guest.id)
   end
 
   def warm
