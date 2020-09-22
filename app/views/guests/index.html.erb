@@ -1,21 +1,20 @@
 <div class="container">
-  <%# 曜日ボタン %>
+  <%# 曜日ボタン ransack %>
   <% if user_signed_in? %>
     <div class="container d-flex justify-content-center my-3">
       <div class="btn-group" role="group" aria-label="Day-of-the-week">
         <%= link_to '全表示', guests_path, class: "btn btn-outline-info nav-link", id: "allday", role: "button" %>
-        <%= link_to '月曜日', search_guest_path(1), class: "btn btn-outline-info nav-link", id: "monday", role: "button" %>
-        <%= link_to '火曜日', search_guest_path(2), class: "btn btn-outline-info nav-link", id: "tuesday", role: "button" %>
-        <%= link_to '水曜日', search_guest_path(3), class: "btn btn-outline-info nav-link", id: "wednesday", role: "button" %>
-        <%= link_to '木曜日', search_guest_path(4), class: "btn btn-outline-info nav-link", id: "thursday", role: "button" %>
-        <%= link_to '金曜日', search_guest_path(5), class: "btn btn-outline-info nav-link", id: "friday", role: "button" %>
-        <%= link_to '土曜日', search_guest_path(6), class: "btn btn-outline-info nav-link", id: "saturday", role: "button" %>
-        <%= link_to '日曜日', search_guest_path(7), class: "btn btn-outline-info nav-link", id: "sunday", role: "button" %>
+        <%= link_to '月曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 1, visit2_id_eq: 1}}}), class: "btn btn-outline-info nav-link", id: "monday", role: "button" %>
+        <%= link_to '火曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 2, visit2_id_eq: 2}}}), class: "btn btn-outline-info nav-link", id: "tuesday", role: "button" %>
+        <%= link_to '水曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 3, visit2_id_eq: 3}}}), class: "btn btn-outline-info nav-link", id: "wednesday", role: "button" %>
+        <%= link_to '木曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 4, visit2_id_eq: 4}}}), class: "btn btn-outline-info nav-link", id: "thursday", role: "button" %>
+        <%= link_to '金曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 5, visit2_id_eq: 5}}}), class: "btn btn-outline-info nav-link", id: "friday", role: "button" %>
+        <%= link_to '土曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 6, visit2_id_eq: 6}}}), class: "btn btn-outline-info nav-link", id: "saturday", role: "button" %>
+        <%= link_to '日曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 7, visit2_id_eq: 7}}}), class: "btn btn-outline-info nav-link", id: "sunday", role: "button" %>
       </div>
     </div>
   <% end %>
   <%# /曜日ボタン %>
-
   <div class="container">
   <% unless user_signed_in? %>
     <h1 class="text-center">兵声援とは </h1>
@@ -36,7 +35,7 @@
       </div>
       <div class="row mb-3">
         <div class="col text-left">
-          <h3><%= @day_of_the_week  ? "#{@day_of_the_week}曜日" : "全表示" %></h3>
+          <h3 id="day-of-the-week">全表示</h3>
         </div>
         <div class="col text-right">
         <h3><%= "利用者　#{@count}名" if @count %></h3>
@@ -48,14 +47,14 @@
       <caption>利用者一覧</caption>
       <thead class="thead-dark">
         <tr>
-          <th scope="col"><%= sort_link(@p, :id) %></th>
-          <th scope="col"><%= sort_link(@p, :first_name_kana, "名前") %></th>
-          <th scope="col"><%= sort_link(@p, :gender_id) %></th>
-          <th scope="col"><%= sort_link(@p, :visit1_id, "利用日１") %></th>
-          <th scope="col"><%= sort_link(@p, :visit2_id, "利用日２") %></th>
-          <th scope="col"><%= sort_link(@p, :adl_id, "歩行状態") %></th>
-          <th scope="col"><%= sort_link(@p, :bath_bathing_id) %></th>
-          <th scope="col"><%= sort_link(@p, :drink_drink_type_id) %></th>
+          <th scope="col">ID</th>
+          <th scope="col">名前</th>
+          <th scope="col">性別</th>
+          <th scope="col">利用日１</th>
+          <th scope="col">利用日２</th>
+          <th scope="col">歩行状態</th>
+          <th scope="col">入浴形態</th>
+          <th scope="col">飲み物の種類</th>
           <th scope="col" class="print">詳細/編集/削除</th>
         </tr>
       </thead>
@@ -68,4 +67,4 @@
   <% end %>
   </div>
 </div>
-<%= javascript_pack_tag 'nav-active' %>
+<%= javascript_pack_tag 'day-active' %>
