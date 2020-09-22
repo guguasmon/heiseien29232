@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     member do
       get 'search'
     end
+    collection do
+      get 'lookup'
+    end
   end
 
   resources :baths, only: [:index, :edit, :update] do
