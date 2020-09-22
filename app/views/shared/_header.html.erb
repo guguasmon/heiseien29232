@@ -33,6 +33,11 @@
             <% end %>
           </li>
           <li class="nav-item">
+            <%= link_to lookup_guests_path, class: "btn btn-outline-dark nav-link", id: "lookup-index", role: "button" do %>
+            <i class="fas fa-search"></i>詳細検索
+            <% end %>
+          </li>
+          <li class="nav-item">
             <%= link_to baths_path, class: "btn btn-outline-dark nav-link", id: "bath-index", role: "button" do %>
             <i class="fas fa-bath"></i>入浴形態表
             <% end %>

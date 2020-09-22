@@ -3,10 +3,11 @@ class GuestsController < ApplicationController
   before_action :set_day_of_the_week, only: :search
   before_action :move_to_index, except: :index
   before_action :move_to_index_non_editor, only: [:edit, :show]
+  before_action :lookup_guest, only: [:index, :lookup]
 
   def index
     if user_signed_in?
-      @guests = current_user.guests.includes([:bath, :drink])
+      @guests = @p.result.includes([:bath, :drink])
       @count = @guests.size
     end
   end
@@ -23,12 +24,16 @@ class GuestsController < ApplicationController
     render action: :index
   end
 
+  def lookup
+    @guests = @p.result.includes([:bath, :drink]) # 検索条件にマッチした利用者の情報を取得
+    @count = @guests.size
+  end
+
   def new
     @guestdata = GuestData.new
   end
 
   def create
-    binding.pry
     @guestdata = GuestData.new(guest_params)
     if @guestdata.valid?
       @guestdata.save
@@ -119,5 +124,12 @@ class GuestsController < ApplicationController
 
   def set_day_of_the_week
     @day = params[:id]
+  end
+
+  def lookup_guest
+    @p = Guest.ransack(params[:q]) # 検索オブジェクトを生成
+    if user_signed_in?
+      @p.user_id_eq = current_user.id unless params[:q] # デフォルトでユーザーが管理する利用者のみを表示
+    end
   end
 end

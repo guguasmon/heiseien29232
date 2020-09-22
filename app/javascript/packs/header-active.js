@@ -4,6 +4,9 @@ $(document).on('turbolinks:load', function(){
     case x.includes('/guests/new'):
       $('#entry').addClass('active');
     break;
+    case x.includes('lookup'):
+      $('#lookup-index').addClass('active');
+    break;
     case x.includes('baths'):
       $('#bath-index').addClass('active');
     break;
