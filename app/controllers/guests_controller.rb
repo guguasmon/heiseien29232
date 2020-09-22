@@ -7,7 +7,7 @@ class GuestsController < ApplicationController
 
   def index
     if user_signed_in?
-      @guests = @p.result.includes([:bath, :drink]) 
+      @guests = @p.result.includes([:bath, :drink])
       @count = @guests.size
     end
   end
@@ -25,7 +25,7 @@ class GuestsController < ApplicationController
   end
 
   def lookup
-    @guests = @p.result.includes([:bath, :drink])  # 検索条件にマッチした利用者の情報を取得
+    @guests = @p.result.includes([:bath, :drink]) # 検索条件にマッチした利用者の情報を取得
     @count = @guests.size
   end
 
@@ -127,9 +127,9 @@ class GuestsController < ApplicationController
   end
 
   def lookup_guest
-    @p = Guest.ransack(params[:q])  # 検索オブジェクトを生成
+    @p = Guest.ransack(params[:q]) # 検索オブジェクトを生成
     if user_signed_in?
-      @p.user_id_eq = current_user.id unless params[:q] #デフォルトでユーザーが管理する利用者のみを表示
+      @p.user_id_eq = current_user.id unless params[:q] # デフォルトでユーザーが管理する利用者のみを表示
     end
   end
 end

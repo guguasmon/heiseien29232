@@ -1,124 +1,128 @@
 <div class="container-fluid">
-
-  <!-- Button trigger modal -->
-  <div class="mb-3 d-flex justify-content-end">
-    <button type="button" class="btn btn-primary btn-lg print" data-toggle="modal" data-target="#lookUp">
-      <i class="fas fa-search"></i>詳細検索</button>
-    </button>
-  </div>
-  <!-- Modal -->
-  <div class="modal fade" id="lookUp" tabindex="-1" role="dialog" aria-labelledby="lookUpTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="commentNewTitle">利用者詳細検索</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <h1 class="text-center my-3 print">利用者の詳細検索機能</h1>
         </div>
-        <div class="modal-body">
-        <%= search_form_for @p, url: lookup_guests_path do |f| %>
-        <%# guestテーブルの検索情報入力 %>
-        <div class="form-row">
-          <div class="form-group col-lg-4">
-            <label for="first-name">名前</label>
-            <%= f.search_field :name_cont, class:"form-control", id:"first-name" %>
+      </div>
+    <!-- Button trigger modal -->
+    <div class="my-3 d-flex justify-content-center">
+      <button type="button" class="btn btn-primary btn-lg print" data-toggle="modal" data-target="#lookUp">
+        <i class="fas fa-search"></i>利用者の詳細検索をする</button>
+      </button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="lookUp" tabindex="-1" role="dialog" aria-labelledby="lookUpTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="commentNewTitle">利用者詳細検索</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div class="form-group col-lg-4">
-            <label for="gender-id">性別</label>
-            <%= f.collection_select(:gender_id_eq, Gender.where(id: 1..2), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"gender-id"}) %>
-          </div>
-          <div class="form-group col-lg-4">
-            <label for="adl-id">歩行状態</label>
-            <%= f.collection_select(:adl_id_eq, Adl.where(id: 1..4), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"adl-id"}) %>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-lg-4">
-            <label for="visit1-id">利用日１</label>
-            <%= f.collection_select(:visit1_id_eq, Visit1.where(id: 1..7), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"visit1-id"}) %>
-          </div>
-          <div class="form-group col-lg-4">
-            <label for="visit2-id">利用日２</label>
-            <%= f.collection_select(:visit2_id_eq, Visit2.where(id: 1..7), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"visit2-id"}) %>
-          </div>
-        </div>
-        <%# /guestテーブルの検索情報入力 %>
-        <%# bathテーブルの検索情報入力 %>
-        <div class="form-row">
-          <div class="form-group col-lg-3">
-            <label for="bathing-id">入浴形態</label>
-            <%= f.collection_select(:bath_bathing_id_eq, Bathing.where(id: 1..3), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"bathing-id"}) %>
-          </div>
-          <div class="form-group col-lg-3">
-            <label for="infection-id">感染症の有無</label>
-            <%= f.collection_select(:bath_infection_id_eq, Infection.where(id: 1..5), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"infection-id"}) %>
-          </div>
-          <div class="form-group col-lg-3">
-            <label for="timing-id">入浴の順番</label>
-            <%= f.collection_select(:bath_timing_id_eq, Timing.where(id: 1..5), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"timing-id"}) %>
-          </div>
-        </div>
-        <%# bathテーブルの検索情報入力 %>
-        <%# drinkテーブルの検索情報入力 %>
-        <div class="form-row">
-          <div class="form-group col-lg-3">
-            <label for="drink-type-id">飲み物の種類</label>
-            <%= f.collection_select(:drink_drink_type_id_eq, DrinkType.where(id: 1..8), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"drink-type-id"}) %>
-          </div>
-          <div class="form-group col-lg-3">
-            <label for="thickness-id">とろみの量</label>
-            <%= f.collection_select(:drink_thickness_id_eq, Thickness.where(id: 1..3), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"thickness-id"}) %>
-          </div>
-          <div class="form-group col-lg-3 form-check">
-            <%= f.check_box :drink_warm_eq ,{ class: "form-check-input ml-3", id: "worm", style: "transform:scale(2.0);" },checked_value = "true", unchecked_value = ""  %>
-            <label class="form-check-label pl-5" for="warm">温めて提供</label>
-          </div>
-          <div class="form-group col-lg-3 form-check">
-            <%= f.check_box :drink_diabetes_eq ,{ class: "form-check-input ml-3", id: "diabetes", style: "transform:scale(2.0);" },checked_value = "true", unchecked_value = ""  %>
-            <label class="form-check-label pl-5" for="diabetes">糖尿病あり</label>
-          </div>
-        </div>
-        <%# /drinkテーブルの検索情報入力 %>
-        <%# 入力検索 %>
-        <div class="form-row">
-          <div class="form-group col-lg-12">
-            <label for="description">利用者の備考(詳細/入浴/水分)</label>
-            <%= f.search_field :remarks_cont, class:"form-control", id:"description"  %>
-          </div>
-        </div>
-          <div class="form-group">
-            <label for="user-id"></label>
-            <%= f.hidden_field :user_id_eq, class:"form-control", id:"user-id", value: current_user.id %>
-          </div>
-        <%# /入力検索 %>
-            <%# 登録ボタン %>
-            <div class="form-row my-3">
-              <div class="form-group col-xl-12 modal-footer">
-                <%= f.submit "利用者を検索する" ,class:"btn btn-primary", role: "button" %>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">中止する</button>
-              </div>
+          <div class="modal-body">
+          <%= search_form_for @p, url: lookup_guests_path do |f| %>
+          <%# guestテーブルの検索情報入力 %>
+          <div class="form-row">
+            <div class="form-group col-lg-4">
+              <label for="first-name">名前</label>
+              <%= f.search_field :name_cont, class:"form-control", id:"first-name" %>
             </div>
-            <%# /登録ボタン %>
-          <% end %>
+            <div class="form-group col-lg-4">
+              <label for="gender-id">性別</label>
+              <%= f.collection_select(:gender_id_eq, Gender.where(id: 1..2), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"gender-id"}) %>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="adl-id">歩行状態</label>
+              <%= f.collection_select(:adl_id_eq, Adl.where(id: 1..4), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"adl-id"}) %>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-4">
+              <label for="visit1-id">利用日１</label>
+              <%= f.collection_select(:visit1_id_eq, Visit1.where(id: 1..7), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"visit1-id"}) %>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="visit2-id">利用日２</label>
+              <%= f.collection_select(:visit2_id_eq, Visit2.where(id: 1..7), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"visit2-id"}) %>
+            </div>
+          </div>
+          <%# /guestテーブルの検索情報入力 %>
+          <%# bathテーブルの検索情報入力 %>
+          <div class="form-row">
+            <div class="form-group col-lg-3">
+              <label for="bathing-id">入浴形態</label>
+              <%= f.collection_select(:bath_bathing_id_eq, Bathing.where(id: 1..3), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"bathing-id"}) %>
+            </div>
+            <div class="form-group col-lg-3">
+              <label for="infection-id">感染症の有無</label>
+              <%= f.collection_select(:bath_infection_id_eq, Infection.where(id: 1..5), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"infection-id"}) %>
+            </div>
+            <div class="form-group col-lg-3">
+              <label for="timing-id">入浴の順番</label>
+              <%= f.collection_select(:bath_timing_id_eq, Timing.where(id: 1..5), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"timing-id"}) %>
+            </div>
+          </div>
+          <%# bathテーブルの検索情報入力 %>
+          <%# drinkテーブルの検索情報入力 %>
+          <div class="form-row">
+            <div class="form-group col-lg-3">
+              <label for="drink-type-id">飲み物の種類</label>
+              <%= f.collection_select(:drink_drink_type_id_eq, DrinkType.where(id: 1..8), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"drink-type-id"}) %>
+            </div>
+            <div class="form-group col-lg-3">
+              <label for="thickness-id">とろみの量</label>
+              <%= f.collection_select(:drink_thickness_id_eq, Thickness.where(id: 1..3), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"thickness-id"}) %>
+            </div>
+            <div class="form-group col-lg-3 form-check">
+              <%= f.check_box :drink_warm_eq ,{ class: "form-check-input ml-3", id: "worm", style: "transform:scale(2.0);" },checked_value = "true", unchecked_value = ""  %>
+              <label class="form-check-label pl-5" for="warm">温めて提供</label>
+            </div>
+            <div class="form-group col-lg-3 form-check">
+              <%= f.check_box :drink_diabetes_eq ,{ class: "form-check-input ml-3", id: "diabetes", style: "transform:scale(2.0);" },checked_value = "true", unchecked_value = ""  %>
+              <label class="form-check-label pl-5" for="diabetes">糖尿病あり</label>
+            </div>
+          </div>
+          <%# /drinkテーブルの検索情報入力 %>
+          <%# 入力検索 %>
+          <div class="form-row">
+            <div class="form-group col-lg-12">
+              <label for="description">利用者の備考(詳細/入浴/水分)</label>
+              <%= f.search_field :remarks_cont, class:"form-control", id:"description"  %>
+            </div>
+          </div>
+            <div class="form-group">
+              <label for="user-id"></label>
+              <%= f.hidden_field :user_id_eq, class:"form-control", id:"user-id", value: current_user.id %>
+            </div>
+          <%# /入力検索 %>
+              <%# 登録ボタン %>
+              <div class="form-row my-3">
+                <div class="form-group col-xl-12 modal-footer">
+                  <%= f.submit "利用者を検索する" ,class:"btn btn-primary", role: "button" %>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">中止する</button>
+                </div>
+              </div>
+              <%# /登録ボタン %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- /Modal -->
+    <!-- /Modal -->
+    <div class="mb-3 d-flex justify-content-end">
+      <button type="button" class="btn btn-success print printing"><i class="fas fa-print" aria-hidden="true"></i>この表を印刷する</button> 
+    </div>
 
-
-  <div class="mb-3 d-flex justify-content-end">
-    <button type="button" class="btn btn-success print printing"><i class="fas fa-print" aria-hidden="true"></i>この表を印刷する</button> 
-  </div>
-
-  <div class="row mb-3">
-    <div class="col text-right">
-      <h3><%= "利用者　#{@count}名" if @count %></h3>
+    <div class="row mb-3">
+      <div class="col text-right">
+        <h3 class="print"><%= "利用者　#{@count}名" if @count %></h3>
+      </div>
     </div>
   </div>
   <%# テーブル表示 %>
-  <div class="container--fluid">
+  <div class="container-fluid">
     <table class="table table-striped table-bordered table-hover">
       <caption>利用者一覧</caption>
       <thead class="thead-dark">
