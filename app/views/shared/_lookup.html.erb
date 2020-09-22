@@ -1,0 +1,22 @@
+<tr class="guest-no-<%= guest.id %>">
+  <th scope="col"><%= "#{guest.first_name} #{guest.last_name} (#{guest.first_name_kana}#{guest.last_name_kana})" %></th>
+  <th scope="col"><%= guest.gender.name %></th>
+  <th scope="col"><%= guest.visit1.name %></th>
+  <th scope="col"><%= guest.visit2.name %></th>
+  <th scope="col"><%= guest.adl.name %></th>
+  <th scope="col"><span class="d-inline-block text-truncate" style="max-width: 150px;"><%= guest.description %></span></th>
+  <th scope="col"><%= guest.bath.bathing.name %></th>
+  <th scope="col"><%= guest.bath.infection.name %></th>
+  <th scope="col"><%= guest.bath.timing.name %></th>
+  <th scope="col"><%= guest.bath.remark_bath %></th>
+  <th scope="col"><%= guest.drink.drink_type.name %></th>
+  <th scope="col"><%= guest.drink.thickness.name %></th>
+  <th scope="col"><%= guest.drink.warm ? "●" : "" %></th>
+  <th scope="col"><%= guest.drink.diabetes ? "●" : ""  %></th>
+  <th scope="col"><%= guest.drink.remark_drink %></th>
+  <th scope="col" class="print">
+    <%= link_to '詳細', guest_path(guest.id), method: :get, class: "btn btn-success", role: "button" %>
+    <%= link_to '編集', edit_guest_path(guest.id), method: :get, class: "btn btn-primary", role: "button" %>
+    <%= link_to '削除', guest_path(guest.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger", role: "button" %>
+  </th>
+</tr>
