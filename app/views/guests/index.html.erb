@@ -48,14 +48,14 @@
       <caption>利用者一覧</caption>
       <thead class="thead-dark">
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">名前</th>
-          <th scope="col">性別</th>
-          <th scope="col">利用日１</th>
-          <th scope="col">利用日２</th>
-          <th scope="col">歩行状態</th>
-          <th scope="col">入浴形態</th>
-          <th scope="col">飲み物の種類</th>
+          <th scope="col"><%= sort_link(@p, :id) %></th>
+          <th scope="col"><%= sort_link(@p, :first_name_kana, "名前") %></th>
+          <th scope="col"><%= sort_link(@p, :gender_id) %></th>
+          <th scope="col"><%= sort_link(@p, :visit1_id, "利用日１") %></th>
+          <th scope="col"><%= sort_link(@p, :visit2_id, "利用日２") %></th>
+          <th scope="col"><%= sort_link(@p, :adl_id, "歩行状態") %></th>
+          <th scope="col"><%= sort_link(@p, :bath_bathing_id) %></th>
+          <th scope="col"><%= sort_link(@p, :drink_drink_type_id) %></th>
           <th scope="col" class="print">詳細/編集/削除</th>
         </tr>
       </thead>
