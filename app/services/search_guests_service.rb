@@ -11,11 +11,11 @@ class SearchGuestsService
 
   # 水分提供表
   def self.search_drink(user, drink_type)
-    Guest.joins(:user, :drink).where(users: { id: user }).where(drinks: { drink_type_id: drink_type }).order('first_name_kana  ASC')
+    Guest.joins(:user, :drink).where(users: { id: user }).where(drinks: { drink_type_id: drink_type })
   end
 
   # 水分提供表曜日別
   def self.search_drink_day(user, drink_type, day)
-    Guest.joins(:user, :drink).where(visit1_id: day).or(Guest.joins(:user, :drink).where(visit2_id: day)).where(users: { id: user }).where(drinks: { drink_type_id: drink_type }).order('first_name_kana  ASC')
+    Guest.joins(:user, :drink).where(visit1_id: day).or(Guest.joins(:user, :drink).where(visit2_id: day)).where(users: { id: user }).where(drinks: { drink_type_id: drink_type })
   end
 end
