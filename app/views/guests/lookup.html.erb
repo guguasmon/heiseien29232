@@ -2,7 +2,7 @@
   <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <h1 class="text-center my-3 print">利用者の詳細検索機能</h1>
+          <h1 class="text-center my-3">利用者の詳細検索</h1>
         </div>
       </div>
     <!-- Button trigger modal -->
@@ -117,7 +117,7 @@
 
     <div class="row mb-3">
       <div class="col text-right">
-        <h3 class="print"><%= "利用者　#{@count}名" if @count %></h3>
+        <h3><%= "利用者　#{@count}名" if @count %></h3>
       </div>
     </div>
   </div>
@@ -127,21 +127,21 @@
       <caption>利用者一覧</caption>
       <thead class="thead-dark">
         <tr>
-          <th scope="col">名前</th>
-          <th scope="col">性別</th>
-          <th scope="col">利用日１</th>
-          <th scope="col">利用日２</th>
-          <th scope="col">歩行状態</th>
-          <th scope="col">利用者の備考</th>
-          <th scope="col">入浴形態</th>
-          <th scope="col">感染症</th>
-          <th scope="col">入浴の順番</th>
-          <th scope="col">入浴の備考</th>
-          <th scope="col">飲み物の種類</th>
-          <th scope="col">とろみの量</th>
-          <th scope="col">温めの有無</th>
-          <th scope="col">糖尿病の有無</th>
-          <th scope="col">水分の備考</th>
+          <th scope="col"><%= sort_link(@p, :first_name_kana, "名前") %></th>
+          <th scope="col"><%= sort_link(@p, :gender_id) %></th>
+          <th scope="col"><%= sort_link(@p, :visit1_id, "利用日１") %></th>
+          <th scope="col"><%= sort_link(@p, :visit2_id, "利用日２") %></th>
+          <th scope="col"><%= sort_link(@p, :adl_id) %></th>
+          <th scope="col"><%= sort_link(@p, :description) %></th>
+          <th scope="col"><%= sort_link(@p, :bath_bathing_id) %></th>
+          <th scope="col"><%= sort_link(@p, :bath_infection_id, "感染症") %></th>
+          <th scope="col"><%= sort_link(@p, :bath_timing_id) %></th>
+          <th scope="col"><%= sort_link(@p, :bath_remark_bath) %></th>
+          <th scope="col"><%= sort_link(@p, :drink_drink_type_id) %></th>
+          <th scope="col"><%= sort_link(@p, :drink_thickness_id, "とろみ")%></th>
+          <th scope="col"><%= sort_link(@p, :drink_warm) %></th>
+          <th scope="col"><%= sort_link(@p, :drink_diabetes) %></th>
+          <th scope="col"><%= sort_link(@p, :drink_remark_drink, "水分の備考") %></th>
           <th scope="col" class="print">詳細/編集/削除</th>
         </tr>
       </thead>
