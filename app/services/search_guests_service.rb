@@ -1,9 +1,4 @@
 class SearchGuestsService
-  # 曜日別利用者
-  def self.search_guest_day(user, day)
-    Guest.joins(:user).where(visit1_id: day).or(Guest.joins(:user).where(visit2_id: day)).where(users: { id: user })
-  end
-
   # 入浴形態表
   def self.search_bath(user, gender, bathing)
     Guest.joins(:user, :bath).where(users: { id: user }).where(gender_id: gender).where(baths: { bathing_id: bathing }).order('timing_id  ASC')
