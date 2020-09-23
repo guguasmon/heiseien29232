@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function(){
       $('#day-of-the-week').text('日曜日');
     break;
     default:
-      $('#allday').addClass('active');
+      $('#all').addClass('active');
     break;
     }
 });
