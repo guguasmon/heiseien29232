@@ -3,7 +3,7 @@
   <% if user_signed_in? %>
     <div class="container d-flex justify-content-center my-3">
       <div class="btn-group" role="group" aria-label="Day-of-the-week">
-        <%= link_to '全表示', guests_path, class: "btn btn-outline-info nav-link", id: "allday", role: "button" %>
+        <%= link_to '全表示', guests_path, class: "btn btn-outline-info nav-link", id: "all", role: "button" %>
         <%= link_to '月曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 1, visit2_id_eq: 1}}}), class: "btn btn-outline-info nav-link", id: "monday", role: "button" %>
         <%= link_to '火曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 2, visit2_id_eq: 2}}}), class: "btn btn-outline-info nav-link", id: "tuesday", role: "button" %>
         <%= link_to '水曜日', guests_path(q: {g: {'0': {m: 'or', visit1_id_eq: 3, visit2_id_eq: 3}}}), class: "btn btn-outline-info nav-link", id: "wednesday", role: "button" %>
