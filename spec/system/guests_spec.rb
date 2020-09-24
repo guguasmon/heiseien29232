@@ -378,7 +378,7 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
   end
 end
 
-RSpec.describe '利用者一覧の曜日別簡易表示', type: :system do
+RSpec.describe '利用者一覧の曜日別表示', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) #月曜日利用者
@@ -462,50 +462,129 @@ RSpec.describe '利用者一覧の曜日別簡易表示', type: :system do
   end
 end
 
-RSpec.describe '利用者一覧のソート機能', type: :system do
+RSpec.describe '利用者の詳細検索機能', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 2, visit2_id: 0) #火曜日利用者
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id) 
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
-    @guest2 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 3, visit2_id: 0) #水曜日利用者
+    @guest2 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) #月曜日利用者
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
-    @guest3 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 4, visit2_id: 0) #木曜日利用者
+    @guest3 = FactoryBot.create(:guest) #別ユーザーが登録した利用者
     @bath3 = FactoryBot.create(:bath, guest_id: @guest3.id)
     @drink3 = FactoryBot.create(:drink, guest_id: @guest3.id)
-    @guest4 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 5, visit2_id: 0) #金曜日利用者
-    @bath4 = FactoryBot.create(:bath, guest_id: @guest4.id)
-    @drink4 = FactoryBot.create(:drink, guest_id: @guest4.id)
-    @guest5 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 6, visit2_id: 0) #土曜日利用者
-    @bath5 = FactoryBot.create(:bath, guest_id: @guest5.id)
-    @drink5 = FactoryBot.create(:drink, guest_id: @guest5.id)
-    @guest6 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 7, visit2_id: 0) #日曜日利用者
-    @bath6 = FactoryBot.create(:bath, guest_id: @guest6.id)
-    @drink6 = FactoryBot.create(:drink, guest_id: @guest6.id)
-    @guest7 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) #月曜日利用者
-    @bath7 = FactoryBot.create(:bath, guest_id: @guest7.id)
-    @drink7 = FactoryBot.create(:drink, guest_id: @guest7.id)
   end
 
-  context '利用者をソートできる時', js: true do
-    it 'ログインしたユーザーはトップページで自分が登録した利用者情報をソート表示できる' do
-      # 利用者を登録したユーザーでログインする
+  context '利用者の詳細検索ができるとき' do
+    it 'ログインしたユーザーは登録した利用者の詳細検索ができる', js: true do
+      # ログインする
       sign_in(@user)
-      # 登録した利用者の名前が全て表示されていることを確認する
+      # 利用者新規登録ページへのリンクがあることを確認する
+      expect(page).to have_link '詳細検索', href: lookup_guests_path
+      # 詳細検索ページに移動する
+      visit lookup_guests_path
+      # ログインしたユーザーが登録した利用者の名前が全て表示されていることを確認する
       expect(page).to have_content(@guest1.first_name)
       expect(page).to have_content(@guest2.first_name)
-      expect(page).to have_content(@guest3.first_name)
-      expect(page).to have_content(@guest4.first_name)
-      expect(page).to have_content(@guest5.first_name)
-      expect(page).to have_content(@guest6.first_name)
-      expect(page).to have_content(@guest7.first_name)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest3.first_name)
+      # 「利用者の詳細検索をする」ボタンがあることを確認する
+      expect(page).to have_content ('利用者の詳細検索をする')
+      # 詳細検索ボタンをクリックする
+      click_on '利用者の詳細検索をする'
+      # 利用者詳細検索フォームが表示されることを確認する
+      expect(page).to have_content ('利用者詳細検索フォーム')
+      # 詳細検索フォームに情報を入力する
+      fill_in 'q[name_cont]', with: "#{@guest1.first_name}"
+      # 利用者を検索するボタンをクリックする
+      find('input[name="commit"]').click
+      # 先ほど検索した利用者の情報が表示されていることを確認する
+      expect(page).to have_content(@guest1.first_name)
+      # それ以外の利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s)
+    end
+  end
+  context '利用者の詳細検索ができないとき' do
+    it 'ログインしていないと利用者の詳細検索ページに遷移できない' do
+      # トップページに遷移する
+      visit root_path
+      # 詳細検索ページへのリンクがない
+      expect(page).to have_no_content('詳細検索')
+    end
+  end
+end
+
+RSpec.describe '利用者のソート機能', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 2, visit2_id: 0) #火曜日利用者
+    @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id) 
+    @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
+    @guest2 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) #月曜日利用者
+    @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
+    @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
+    @guest3 = FactoryBot.create(:guest) #別ユーザーが登録した利用者
+    @bath3 = FactoryBot.create(:bath, guest_id: @guest3.id)
+    @drink3 = FactoryBot.create(:drink, guest_id: @guest3.id)
+  end
+
+  context '利用者のソートができるとき' do
+    it 'ログインしたユーザーはトップページでソート機能が使える' do
+      # 利用者を登録したユーザーでログインする
+      sign_in(@user)
+      # ログインしたユーザーが登録した利用者の名前が全て表示されていることを確認する
+      expect(page).to have_content(@guest1.first_name)
+      expect(page).to have_content(@guest2.first_name)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest3.first_name)
       # 「利用日１」ボタンをクリックして曜日順に並び替える
       click_on '利用日１'
+      # 要素を確認して並び替えを反映させる時間を作る
+      expect(page).to have_content(@guest1.first_name)
+      expect(page).to have_content(@guest2.first_name)
       # 曜日別に並び替えた時、月曜日利用の利用者の名前が一番上の欄に表示されていることを確認する
       guest_list = all('tbody tr') 
-      expect(guest_list[0]).to have_content(@guest1.first_name)
-      expect(guest_list[1]).to have_content(@guest2.first_name)
+      expect(guest_list[0]).to have_content(@guest2.first_name)
+      expect(guest_list[1]).to have_content(@guest1.first_name)
+    end
+    it 'ログインしたユーザーは詳細検索ページでソート機能が使える', js: true do
+      # ログインする
+      sign_in(@user)
+      # 利用者新規登録ページへのリンクがあることを確認する
+      expect(page).to have_link '詳細検索', href: lookup_guests_path
+      # 詳細検索ページに移動する
+      visit lookup_guests_path
+      # ログインしたユーザーが登録した利用者の名前が全て表示されていることを確認する
+      expect(page).to have_content(@guest1.first_name)
+      expect(page).to have_content(@guest2.first_name)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest3.first_name)
+      # 「利用日１」ボタンをクリックして曜日順に並び替える
+      click_on '利用日１'
+      # 要素を確認して並び替えを反映させる時間を作る
+      expect(page).to have_content(@guest1.first_name)
+      expect(page).to have_content(@guest2.first_name)
+      # 曜日別に並び替えた時、月曜日利用の利用者の名前が一番上の欄に表示されていることを確認する
+      guest_list = all('tbody tr') 
+      expect(guest_list[0]).to have_content(@guest2.first_name)
+      expect(guest_list[1]).to have_content(@guest1.first_name)
+    end
+  end
+  context '利用者のソートができないとき' do
+    it 'ログインしていないとトップページに利用者の情報が表示されない' do
+      # トップページに遷移する
+      visit root_path
+      # 利用者情報が表示されていないことを確認する
+      expect(page).to have_no_content(@guest1.first_name)
+      expect(page).to have_no_content(@guest2.first_name)
+      expect(page).to have_no_content(@guest3.first_name)
+    end
+    it 'ログインしていないと利用者の詳細検索ページに遷移できない' do
+      # トップページに遷移する
+      visit root_path
+      # 詳細検索ページへのリンクがない
+      expect(page).to have_no_content('詳細検索')
     end
   end
 end
