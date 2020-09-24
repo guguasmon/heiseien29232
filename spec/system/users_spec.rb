@@ -69,6 +69,8 @@ RSpec.describe 'ログイン', type: :system do
       find('input[name="commit"]').click
       # トップページへ遷移することを確認する
       expect(current_path).to eq root_path
+      #フラッシュメッセージが表示されていることを確認する
+      expect(page).to have_content ('ログインしました。')
       # サインアップページへ遷移するボタンが表示されていないことを確認する
       expect(page).to have_no_content('新規登録')
     end
