@@ -141,7 +141,7 @@
             <td scope="col" style="width:25%">
 
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentEdit-<%= "#{comment.id}" %>">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentEdit-<%= "#{comment.id}" %>" id="edit-start-<%= "#{comment.id}" %>">
                 編集
               </button>
 
@@ -150,7 +150,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="commentEdit-<%= "#{comment.id}" %>Title">コメントを編集する</h5>
+                      <h5 class="modal-title" id="commentEdit-<%= "#{comment.id}" %>Title">コメント編集フォーム</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -159,8 +159,8 @@
                       <%= form_with(model: comment, url: "/guests/#{comment.guest_id}/comments/#{comment.id}", method: :patch, local: true) do |f| %>
                         <div class="form-row my-3">
                           <div class="form-group col-sm-12">
-                            <label for="text">コメント<span class="text-danger pl-3">必須</span></label>
-                            <%= f.text_area :text, class:"form-control", id:"text" %>
+                            <label for="edit-text">本文<span class="text-danger pl-3">必須</span></label>
+                            <%= f.text_area :text, class:"form-control", id:"edit-text" %>
                           </div>
                         </div>
                         <%# 登録ボタン %>
@@ -198,7 +198,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="commentNewTitle">コメントをする</h5>
+                      <h5 class="modal-title" id="commentNewTitle">コメントフォーム</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>

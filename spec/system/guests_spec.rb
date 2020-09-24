@@ -82,15 +82,20 @@ RSpec.describe '利用者情報の編集', type: :system do
       # 登録内容を編集する
       fill_in 'guest_data[first_name]', with: "#{@guest1.first_name}編集済み"
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
-      # 編集してもTweetモデルのカウントは変わらないことを確認する
+      select 'チェアー浴', from: '入浴形態'
+      select 'コーヒー牛乳', from: '飲み物の種類'
+      select '本人の希望', from: '更新の理由'
+      # 編集してもGuestモデル/Bathモデル/Drinkモデルのカウントは変わらないことを確認する
       expect  do
         find('input[name="commit"]').click
       end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
       # 詳細ページに戻ることを確認する
       expect(current_path).to eq guest_path(@guest1.id)
-      # トップページには先ほど変更した内容の利用者情報が存在することを確認する
+      # 詳細ページには先ほど変更した内容の利用者情報が存在することを確認する
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
+      # 詳細ページの更新履歴には先ほど変更した内容の履歴が存在することを確認する
+      expect(page).to have_content("入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳")
     end
   end
   context '利用者情報の編集ができないとき' do
@@ -129,10 +134,13 @@ RSpec.describe '利用者情報の削除', type: :system do
       expect(
         find(".guest-no-#{@guest1.id}")
       ).to have_link '削除', href: guest_path(@guest1.id)
+      # 削除ボタンを一回押して確認ウィンドウを開く
+      find_link('削除', href: guest_path(@guest1)).click
       # 削除するとGuestテーブル・Bathテーブル・Drinkテーブルのレコードの数が1減ることを確認する
-      expect do
-        find_link('削除', href: guest_path(@guest1)).click
-      end.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
+      expect {
+        page.accept_confirm "本当に削除しますか？"
+        expect(page).to have_content "利用者情報を削除しました"
+      }.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
       # トップページに戻ることを確認する
       expect(current_path).to eq root_path
       # トップページには利用者１の内容が存在しないことを確認する
@@ -162,9 +170,11 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
     @guest1 = FactoryBot.create(:guest)
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
+    @comment1 = FactoryBot.create(:comment, guest_id: @guest1.id)
     @guest2 = FactoryBot.create(:guest)
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
+    @comment2 = FactoryBot.create(:comment, guest_id: @guest2.id)
   end
 
   context '利用者の詳細情報が表示される時' do
@@ -210,15 +220,20 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
       # 登録内容を編集する
       fill_in 'guest_data[first_name]', with: "#{@guest1.first_name}編集済み"
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
-      # 編集してもTweetモデルのカウントは変わらないことを確認する
+      select 'チェアー浴', from: '入浴形態'
+      select 'コーヒー牛乳', from: '飲み物の種類'
+      select '本人の希望', from: '更新の理由'
+      # 編集してもGuestモデル/Bathモデル/Drinkモデルのカウントは変わらないことを確認する
       expect  do
         find('input[name="commit"]').click
       end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
-      # トップページに戻ることを確認する
+      # 詳細ページに戻ることを確認する
       expect(current_path).to eq guest_path(@guest1.id)
-      # トップページには先ほど変更した内容の利用者情報が存在することを確認する
+      # 詳細ページには先ほど変更した内容の利用者情報が存在することを確認する
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
+      # 詳細ページの更新履歴に先ほど変更した内容の履歴が存在することを確認する
+      expect(page).to have_content("入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳")
     end
     it 'ログインしたユーザーは詳細画面からでも自分が登録した利用者情報の削除ができる' do
       # 利用者1を投稿したユーザーでログインする
@@ -233,14 +248,105 @@ RSpec.describe '利用者情報の詳細表示', type: :system do
       expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s)
       # 利用者１の「削除」ボタンがあることを確認する
       expect(page).to have_link '削除', href: guest_path(@guest1.id)
+      # 削除ボタンを一回押して確認ウィンドウを開く
+      find_link('削除', href: guest_path(@guest1)).click
       # 削除するとGuestテーブル・Bathテーブル・Drinkテーブルのレコードの数が1減ることを確認する
-      expect do
-        find_link('削除', href: guest_path(@guest1)).click
-      end.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
+      expect {
+        page.accept_confirm "本当に削除しますか？"
+        expect(page).to have_content "利用者情報を削除しました"
+      }.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
       # トップページに戻ることを確認する
       expect(current_path).to eq root_path
       # トップページには利用者１の内容が存在しないことを確認する
       expect(page).to have_no_content(@guest1.first_name.to_s)
+    end
+    it 'ログインしたユーザーは詳細画面から自分が登録した利用者へのコメントができる', js: true do
+      # 利用者1を投稿したユーザーでログインする
+      user1_sign_in(@guest1)
+      # 利用者１の「詳細」ボタンがあることを確認する
+      expect(
+        find(".guest-no-#{@guest1.id}")
+      ).to have_link '詳細', href: guest_path(@guest1.id)
+      # 詳細ページへ遷移する
+      visit guest_path(@guest1.id)
+      # 詳細ページに登録した内容が表示されていることを確認する
+      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.last_name.to_s).and have_content(@guest1.first_name_kana.to_s).and have_content(@guest1.last_name_kana.to_s).and have_content(@guest1.visit1.name.to_s).and have_content(@guest1.visit2.name.to_s).and have_content(@guest1.adl.name.to_s).and have_content(@guest1.description.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.bath.infection.name.to_s).and have_content(@guest1.bath.timing.name.to_s)
+        .and have_content(@guest1.bath.remark_bath.to_s).and have_content(@guest1.drink.drink_type.name.to_s).and have_content(@guest1.drink.thickness.name.to_s).and have_content(@guest1.drink.warm ? '温める' : '温めない').and have_content(@guest1.drink.diabetes ? '有り' : '無し').and have_content(@guest1.drink.remark_drink.to_s)
+      # 利用者１の「コメント」ボタンがあることを確認する
+      expect(page).to have_content ('コメントをする')
+      # コメントボタンをクリックする
+      click_button 'コメントをする'
+      # コメントフォームが表示されることを確認する
+      expect(page).to have_content ('コメントフォーム')
+      # コメント本文を記入する
+      fill_in '本文', with: "テスト"
+      # 投稿するとcommentモデルのカウントが１増えることを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Comment.count }.by(1)
+      # 詳細ページに戻ることを確認する
+      expect(current_path).to eq guest_path(@guest1.id)
+      # 詳細ページには先ほど投稿した内容のコメントが存在することを確認する
+      expect(page).to have_content("テスト")
+    end
+    it 'ログインしたユーザーは詳細画面から自分が登録した利用者のコメントの編集ができる', js: true  do
+      # 利用者1を投稿したユーザーでログインする
+      user1_sign_in(@guest1)
+      # 利用者１の「詳細」ボタンがあることを確認する
+      expect(
+        find(".guest-no-#{@guest1.id}")
+      ).to have_link '詳細', href: guest_path(@guest1.id)
+      # 詳細ページへ遷移する
+      visit guest_path(@guest1.id)
+      # 詳細ページに登録したコメントが表示されていることを確認する
+      expect(page).to have_content(@comment1.text)
+      # 利用者１のコメントの編集ボタンがあることを確認する
+      expect(page).to have_button ("編集")
+      # 利用者１のコメントの編集ボタンをクリックする
+      find("#edit-start-#{@comment1.id}").click
+      # コメントフォームが表示されることを確認する
+      expect(page).to have_content ('コメント編集フォーム')
+      # 登録したコメントが表示されていることを確認する
+      expect(
+        find('#edit-text').value
+      ).to eq @comment1.text
+      # コメント本文を編集する
+      fill_in '本文', with: "ヘンシュウ"
+      # 投稿してもcommentモデルのカウントが変わらないことを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Comment.count }.by(0)
+      # 詳細ページに戻ることを確認する
+      expect(current_path).to eq guest_path(@guest1.id)
+      #フラッシュメッセージが表示されていることを確認する
+      expect(page).to have_content ('コメントの編集をしました')
+      # 詳細ページには先ほど編集した内容のコメントが存在することを確認する
+      expect(page).to have_content("ヘンシュウ")
+    end
+    it 'ログインしたユーザーは詳細画面から自分が登録した利用者のコメントの削除ができる', js: true  do
+      # 利用者1を投稿したユーザーでログインする
+      user1_sign_in(@guest1)
+      # 利用者１の「詳細」ボタンがあることを確認する
+      expect(
+        find(".guest-no-#{@guest1.id}")
+      ).to have_link '詳細', href: guest_path(@guest1.id)
+      # 詳細ページへ遷移する
+      visit guest_path(@guest1.id)
+      # 詳細ページに登録したコメントが表示されていることを確認する
+      expect(page).to have_content(@comment1.text)
+      # 利用者１のコメントの削除ボタンがあることを確認する
+      expect(page).to have_link '削除', href: guest_comment_path(@comment1.guest.id, @comment1.id)
+      # 利用者１のコメントの削除ボタンを一回押して確認ウィンドウを開く
+      find_link('削除', href: guest_comment_path(@comment1.guest.id, @comment1.id)).click
+      # 削除するとCommentテーブルのレコードの数が1減ることを確認する
+      expect {
+        page.accept_confirm "本当に削除しますか？"
+        expect(page).to have_content "コメントの削除をしました"
+      }.to change { Comment.count }.by(-1)
+      # 詳細ページに戻ることを確認する
+      expect(current_path).to eq guest_path(@guest1.id)
+      # 詳細ページには利用者１のコメントが存在しないことを確認する
+      expect(page).to have_no_content(@comment1.text)
     end
   end
   context '利用者の詳細情報が表示されない時' do

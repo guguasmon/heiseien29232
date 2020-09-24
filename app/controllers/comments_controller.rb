@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   def update
     path_id = @comment.guest.id
     if @comment.update(comment_params)
-      flash[:info] = 'コメントの更新をしました'
+      flash[:info] = 'コメントの編集をしました'
       redirect_to guest_path(path_id)
     else
       flash[:danger] = '本文を入力してください'
