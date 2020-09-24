@@ -96,15 +96,35 @@ RSpec.describe Guest, type: :model do
         @guest.valid?
         expect(@guest.errors.full_messages).to include('Last name kana full-width katakana characters.')
       end
+      it 'gender_idが空では登録できない' do
+        @guest.gender_id = ''
+        @guest.valid?
+        expect(@guest.errors.full_messages).to include("Gender can't be blank")
+      end
       it 'gender_idが0（未選択）では登録できない' do
         @guest.gender_id = '0'
         @guest.valid?
         expect(@guest.errors.full_messages).to include("Gender can't be blank")
       end
+      it 'visit1_idが空では登録できない' do
+        @guest.visit1_id = ''
+        @guest.valid?
+        expect(@guest.errors.full_messages).to include("Visit1 can't be blank")
+      end
       it 'visit1_idが0（未選択）では登録できない' do
         @guest.visit1_id = '0'
         @guest.valid?
         expect(@guest.errors.full_messages).to include("Visit1 can't be blank")
+      end
+      it 'visit2_idが空では登録できない' do
+        @guest.visit2_id = ''
+        @guest.valid?
+        expect(@guest.errors.full_messages).to include("Visit2 can't be blank")
+      end
+      it 'adl_idが空では登録できない' do
+        @guest.adl_id = ''
+        @guest.valid?
+        expect(@guest.errors.full_messages).to include("Adl can't be blank")
       end
       it 'adl_idが0（未選択）では登録できない' do
         @guest.adl_id = '0'

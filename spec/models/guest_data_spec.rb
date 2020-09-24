@@ -229,7 +229,7 @@ RSpec.describe GuestData, type: :model do
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Remark drink is too long (maximum is 20 characters)')
       end
-      it 'logが空では登録できない要修正' do
+      it 'logが空では登録できない' do
         @guestdata.log = ''
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include("Log can't be blank")

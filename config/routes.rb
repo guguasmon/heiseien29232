@@ -6,9 +6,6 @@ Rails.application.routes.draw do
   root to: "guests#index"
   resources :guests do
     resources :comments, only: [:create, :update, :destroy]
-    member do
-      get 'search'
-    end
     collection do
       get 'lookup'
     end
