@@ -92,10 +92,12 @@
               <%= f.search_field :remarks_cont, class:"form-control", id:"description"  %>
             </div>
           </div>
+            <%# ユーザーIDを非表示で埋め込む %>
             <div class="form-group">
               <label for="user-id"></label>
               <%= f.hidden_field :user_id_eq, class:"form-control", id:"user-id", value: current_user.id %>
             </div>
+            <%# /ユーザーIDを非表示で埋め込む %>
           <%# /入力検索 %>
               <%# 登録ボタン %>
               <div class="form-row my-3">
