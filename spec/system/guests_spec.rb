@@ -378,7 +378,7 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
   end
 end
 
-RSpec.describe '利用者一覧の曜日別表示', type: :system do
+RSpec.describe '利用者情報の一覧表示', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) #月曜日利用者
@@ -402,13 +402,16 @@ RSpec.describe '利用者一覧の曜日別表示', type: :system do
     @guest7 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 7, visit2_id: 0) #日曜日利用者
     @bath7 = FactoryBot.create(:bath, guest_id: @guest7.id)
     @drink7 = FactoryBot.create(:drink, guest_id: @guest7.id)
+    @guest8 = FactoryBot.create(:guest) #別ユーザーが登録した利用者
+    @bath8 = FactoryBot.create(:bath, guest_id: @guest8.id)
+    @drink8 = FactoryBot.create(:drink, guest_id: @guest8.id)
   end
 
-  context '利用者が曜日別に表示される時' do
-    it 'ログインしたユーザーはトップページで自分が登録した利用者情報を曜日別に表示できる' do
+  context '利用者情報が一覧表示される時' do
+    it 'ログインしたユーザーはトップページに自分が登録した利用者情報が一覧表示される' do
       # 利用者を登録したユーザーでログインする
       sign_in(@user)
-      # 登録した利用者の名前が全て表示されていることを確認する
+      # ユーザーが登録した利用者の名前が全て表示されていることを確認する
       expect(page).to have_content(@guest1.first_name)
       expect(page).to have_content(@guest2.first_name)
       expect(page).to have_content(@guest3.first_name)
@@ -416,6 +419,22 @@ RSpec.describe '利用者一覧の曜日別表示', type: :system do
       expect(page).to have_content(@guest5.first_name)
       expect(page).to have_content(@guest6.first_name)
       expect(page).to have_content(@guest7.first_name)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
+    end
+    it 'ログインしたユーザーは自分が登録した利用者情報を曜日別に表示できる' do
+      # 利用者を登録したユーザーでログインする
+      sign_in(@user)
+      # ユーザーが登録した利用者の名前が全て表示されていることを確認する
+      expect(page).to have_content(@guest1.first_name)
+      expect(page).to have_content(@guest2.first_name)
+      expect(page).to have_content(@guest3.first_name)
+      expect(page).to have_content(@guest4.first_name)
+      expect(page).to have_content(@guest5.first_name)
+      expect(page).to have_content(@guest6.first_name)
+      expect(page).to have_content(@guest7.first_name)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
       # 「月曜日」ボタンをクリックする
       click_on '月曜日'
       # 月曜日利用の利用者の名前が表示されていることを確認する
@@ -458,6 +477,19 @@ RSpec.describe '利用者一覧の曜日別表示', type: :system do
       expect(page).to have_content(@guest7.first_name.to_s)
       # 日曜日以外の利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s)
+    end
+  end
+
+  context '利用者情報が一覧表示されない時' do
+    it 'ログインしていないユーザーは利用者情報が表示されない' do
+      # トップページに遷移する
+      visit root_path
+      # ユーザーが登録した利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest1.first_name)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
+      # ログインしていないときはアプリの紹介文が表示されることを確認する
+      expect(page).to have_content("兵声援とは")
     end
   end
 end
