@@ -112,7 +112,7 @@ class GuestsController < ApplicationController
   def lookup_guest
     @p = Guest.ransack(params[:q]) # 検索オブジェクトを生成
     if user_signed_in?
-      @p.user_id_eq = current_user.id unless params[:q] # デフォルトでユーザーが管理する利用者のみを表示
+      @p.user_id_eq = current_user.id # デフォルトでユーザーが管理する利用者のみを表示
     end
   end
 end
