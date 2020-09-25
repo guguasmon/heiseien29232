@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     path_id = @comment.guest.id
     if @comment.valid?
       @comment.save
-      flash[:success] = 'コメントをしました'
+      flash[:success] = 'コメントの投稿をしました'
       redirect_to guest_path(path_id)
     else
       flash[:danger] = '本文を入力してください'

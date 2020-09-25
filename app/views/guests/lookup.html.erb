@@ -16,7 +16,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="commentNewTitle">利用者詳細検索</h5>
+            <h5 class="modal-title" id="commentNewTitle">利用者詳細検索フォーム</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -92,10 +92,12 @@
               <%= f.search_field :remarks_cont, class:"form-control", id:"description"  %>
             </div>
           </div>
+            <%# ユーザーIDを非表示で埋め込む %>
             <div class="form-group">
               <label for="user-id"></label>
               <%= f.hidden_field :user_id_eq, class:"form-control", id:"user-id", value: current_user.id %>
             </div>
+            <%# /ユーザーIDを非表示で埋め込む %>
           <%# /入力検索 %>
               <%# 登録ボタン %>
               <div class="form-row my-3">
