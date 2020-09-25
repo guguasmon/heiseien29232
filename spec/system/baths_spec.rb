@@ -28,7 +28,7 @@ RSpec.describe "入浴形態表機能", type: :system do
     @bath8 = FactoryBot.create(:bath, guest_id: @guest8.id)
     @drink8 = FactoryBot.create(:drink, guest_id: @guest8.id)
   end
-  context '入浴形態表の表示ができるとき' do
+  context '入浴形態表の閲覧ができるとき' do
     it 'ログインしたユーザーは自分が登録した利用者の入浴形態表ページが閲覧できる' do
       # 利用者1を投稿したユーザーでログインする
       sign_in(@user)
@@ -131,6 +131,8 @@ RSpec.describe "入浴形態表機能", type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「月曜日」ボタンをクリックする
       click_on '月曜日'
+      # 入浴形態表の月曜日ページにいることを確認する
+      expect(current_path).to eq search_bath_path(1)
       # 月曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest1.first_name)
       # テーブル要素を取得する
@@ -143,6 +145,8 @@ RSpec.describe "入浴形態表機能", type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「火曜日」ボタンをクリックする
       click_on '火曜日'
+      # 入浴形態表の火曜日ページにいることを確認する
+      expect(current_path).to eq search_bath_path(2)
       # 火曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest2.first_name)
       # テーブル要素を取得する
@@ -155,6 +159,8 @@ RSpec.describe "入浴形態表機能", type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「水曜日」ボタンをクリックする
       click_on '水曜日'
+      # 入浴形態表の水曜日ページにいることを確認する
+      expect(current_path).to eq search_bath_path(3)
       # 水曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest3.first_name)
       # テーブル要素を取得する
@@ -167,6 +173,8 @@ RSpec.describe "入浴形態表機能", type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「木曜日」ボタンをクリックする
       click_on '木曜日'
+      # 入浴形態表の木曜日ページにいることを確認する
+      expect(current_path).to eq search_bath_path(4)
       # 木曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest4.first_name)
       # テーブル要素を取得する
@@ -179,6 +187,8 @@ RSpec.describe "入浴形態表機能", type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「金曜日」ボタンをクリックする
       click_on '金曜日'
+      # 入浴形態表の金曜日ページにいることを確認する
+      expect(current_path).to eq search_bath_path(5)
       # 金曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest5.first_name)
       # テーブル要素を取得する
@@ -191,6 +201,8 @@ RSpec.describe "入浴形態表機能", type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「土曜日」ボタンをクリックする
       click_on '土曜日'
+      # 入浴形態表の土曜日ページにいることを確認する
+      expect(current_path).to eq search_bath_path(6)
       # 土曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest6.first_name)
       # テーブル要素を取得する
@@ -203,6 +215,8 @@ RSpec.describe "入浴形態表機能", type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「日曜日」ボタンをクリックする
       click_on '日曜日'
+      # 入浴形態表の日曜日ページにいることを確認する
+      expect(current_path).to eq search_bath_path(7)
       # 日曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest7.first_name)
       # テーブル要素を取得する
@@ -215,7 +229,7 @@ RSpec.describe "入浴形態表機能", type: :system do
       expect(page).to have_no_content(@guest8.first_name)
     end
   end
-  context '入浴形態表の表示ができないとき' do
+  context '入浴形態表の閲覧ができないとき' do
     it 'ログインしていないユーザーは入浴形態表が閲覧できない' do
       # トップページに遷移する
       visit root_path
