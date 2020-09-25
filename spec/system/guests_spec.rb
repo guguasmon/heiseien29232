@@ -378,7 +378,7 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
   end
 end
 
-RSpec.describe '利用者情報の一覧表示', type: :system do
+RSpec.describe '利用者情報の一覧表示機能', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) #月曜日利用者
@@ -441,42 +441,56 @@ RSpec.describe '利用者情報の一覧表示', type: :system do
       expect(page).to have_content(@guest1.first_name.to_s)
       # 月曜日以外の利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
       # 「火曜日」ボタンをクリックする
       click_on '火曜日'
       # 火曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest2.first_name.to_s)
       # 火曜日以外の利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
       # 「水曜日」ボタンをクリックする
       click_on '水曜日'
       # 水曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest3.first_name.to_s)
       # 水曜日以外の利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
       # 「木曜日」ボタンをクリックする
       click_on '木曜日'
       # 木曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest4.first_name.to_s)
       # 木曜日以外の利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
       # 「金曜日」ボタンをクリックする
       click_on '金曜日'
       # 金曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest5.first_name.to_s)
       # 金曜日以外の利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
       # 「土曜日」ボタンをクリックする
       click_on '土曜日'
       # 土曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest6.first_name.to_s)
       # 土曜日以外の利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
       # 「日曜日」ボタンをクリックする
       click_on '日曜日'
       # 日曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest7.first_name.to_s)
       # 日曜日以外の利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s)
+      # ユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
     end
   end
 
