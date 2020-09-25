@@ -170,7 +170,7 @@ RSpec.describe '利用者情報の削除', type: :system do
   end
 end
 
-RSpec.describe '利用者情報の詳細表示', type: :system do
+RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/コメント機能', type: :system do
   before do
     @guest1 = FactoryBot.create(:guest)
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)

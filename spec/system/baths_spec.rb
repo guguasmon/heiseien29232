@@ -29,7 +29,7 @@ RSpec.describe "入浴形態表機能", type: :system do
     @drink8 = FactoryBot.create(:drink, guest_id: @guest8.id)
   end
   context '入浴形態表の表示ができるとき' do
-    it 'ログインしたユーザーは自分が登録した利用者の入浴形態表が閲覧できる' do
+    it 'ログインしたユーザーは自分が登録した利用者の入浴形態表ページが閲覧できる' do
       # 利用者1を投稿したユーザーでログインする
       sign_in(@user)
       # 「入浴形態表」のリンクがあることを確認する
@@ -54,7 +54,7 @@ RSpec.describe "入浴形態表機能", type: :system do
       # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest8.first_name)
     end
-    it 'ログインしたユーザーは入浴形態表から自分が登録した利用者の情報を編集できる', js: true do
+    it 'ログインしたユーザーは入浴形態表ページから自分が登録した利用者の情報を編集できる', js: true do
       # 利用者1を投稿したユーザーでログインする
       sign_in(@user)
       # 「入浴形態表」のリンクがあることを確認する
@@ -104,6 +104,115 @@ RSpec.describe "入浴形態表機能", type: :system do
       expect(page).to have_content(@guest1.first_name)
       # チェアー浴男子テーブルに先ほど変更した内容の利用者が表示されているかを確認する
       expect(bath_list[4]).to have_content("#{@guest1.first_name}編集済み")
+    end
+    it 'ログインしたユーザーは入浴形態表ページで自分が登録した利用者情報を曜日別に表示できる' do
+      # 利用者を登録したユーザーでログインする
+      sign_in(@user)
+      # 「入浴形態表」のリンクがあることを確認する
+      expect(page).to have_link '入浴形態表'
+      # 入浴形態表ページへ遷移する
+      visit baths_path
+      # テーブル要素を取得する
+      bath_list = all('table') 
+      # 一般浴男子テーブルに該当利用者が表示されているかを確認する
+      expect(bath_list[0]).to have_content(@guest1.first_name)
+      # 一般浴女子テーブルに該当利用者が表示されているかを確認する
+      expect(bath_list[1]).to have_content(@guest2.first_name)
+      # 一般チェアー浴男子テーブルに該当利用者が表示されているかを確認する
+      expect(bath_list[2]).to have_content(@guest3.first_name)
+      # 一般チェアー浴女子テーブルに該当利用者が表示されているかを確認する
+      expect(bath_list[3]).to have_content(@guest4.first_name)
+      # チェアー浴男子テーブルに該当利用者が表示されているかを確認する
+      expect(bath_list[4]).to have_content(@guest5.first_name)
+      # チェアー浴女子テーブルに該当利用者が表示されているかを確認する
+      expect(bath_list[5]).to have_content(@guest6.first_name)
+      expect(bath_list[5]).to have_content(@guest7.first_name)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
+      # 「月曜日」ボタンをクリックする
+      click_on '月曜日'
+      # 月曜日利用の利用者の名前が表示されていることを確認する
+      expect(page).to have_content(@guest1.first_name)
+      # テーブル要素を取得する
+      bath_list = all('table') 
+      # 月曜日利用の利用者の名前が該当欄に表示されていることを確認する
+      expect(bath_list[0]).to have_content(@guest1.first_name)
+      # 月曜日以外の利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
+      # 「火曜日」ボタンをクリックする
+      click_on '火曜日'
+      # 火曜日利用の利用者の名前が表示されていることを確認する
+      expect(page).to have_content(@guest2.first_name)
+      # テーブル要素を取得する
+      bath_list = all('table') 
+      # 火曜日利用の利用者の名前が該当欄に表示されていることを確認する
+      expect(bath_list[1]).to have_content(@guest2.first_name)
+      # 火曜日以外の利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
+      # 「水曜日」ボタンをクリックする
+      click_on '水曜日'
+      # 水曜日利用の利用者の名前が表示されていることを確認する
+      expect(page).to have_content(@guest3.first_name)
+      # テーブル要素を取得する
+      bath_list = all('table') 
+      # 水曜日利用の利用者の名前が該当欄に表示されていることを確認する
+      expect(bath_list[2]).to have_content(@guest3.first_name)
+      # 水曜日以外の利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
+      # 「木曜日」ボタンをクリックする
+      click_on '木曜日'
+      # 木曜日利用の利用者の名前が表示されていることを確認する
+      expect(page).to have_content(@guest4.first_name)
+      # テーブル要素を取得する
+      bath_list = all('table') 
+      # 木曜日利用の利用者の名前が該当欄に表示されていることを確認する
+      expect(bath_list[3]).to have_content(@guest4.first_name)
+      # 木曜日以外の利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
+      # 「金曜日」ボタンをクリックする
+      click_on '金曜日'
+      # 金曜日利用の利用者の名前が表示されていることを確認する
+      expect(page).to have_content(@guest5.first_name)
+      # テーブル要素を取得する
+      bath_list = all('table') 
+      # 金曜日利用の利用者の名前が該当欄に表示されていることを確認する
+      expect(bath_list[4]).to have_content(@guest5.first_name)
+      # 金曜日以外の利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest6.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
+      # 「土曜日」ボタンをクリックする
+      click_on '土曜日'
+      # 土曜日利用の利用者の名前が表示されていることを確認する
+      expect(page).to have_content(@guest6.first_name)
+      # テーブル要素を取得する
+      bath_list = all('table') 
+      # 土曜日利用の利用者の名前が該当欄に表示されていることを確認する
+      expect(bath_list[5]).to have_content(@guest6.first_name)
+      # 土曜日以外の利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest7.first_name.to_s)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
+      # 「日曜日」ボタンをクリックする
+      click_on '日曜日'
+      # 日曜日利用の利用者の名前が表示されていることを確認する
+      expect(page).to have_content(@guest7.first_name)
+      # テーブル要素を取得する
+      bath_list = all('table') 
+      # 日曜日利用の利用者の名前が該当欄に表示されていることを確認する
+      expect(bath_list[5]).to have_content(@guest7.first_name)
+      # 日曜日以外の利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest1.first_name.to_s).and have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s).and have_no_content(@guest4.first_name.to_s).and have_no_content(@guest5.first_name.to_s).and have_no_content(@guest6.first_name.to_s)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest8.first_name)
     end
   end
   context '入浴形態表の表示ができないとき' do
