@@ -23,7 +23,7 @@
 Web URL:        https://heiseien29232.herokuapp.com/
 
 テスト用アカウント 
-メールアドレス：test@example.com\nパスワード：password123
+メールアドレス：test@example.com  パスワード：password123
 
 # 制作背景
   このアプリは利用者の情報を登録しておけば業務上で必要になる表を自動で出力してくれるアプリです。
