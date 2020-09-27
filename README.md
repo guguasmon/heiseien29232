@@ -23,7 +23,7 @@
 Web URL:        https://heiseien29232.herokuapp.com/
 
 テスト用アカウント 
-メールアドレス：test@example.com
+メールアドレス：test@example.com \n
 パスワード：password123
 
 # 制作背景
