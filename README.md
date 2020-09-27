@@ -49,7 +49,7 @@ Web URL:https://heiseien29232.herokuapp.com/<br>
 ![詳細検索ページ](showpage.png)
 ![水分提供表ページ](drinkpage.png)
 ![入浴形態表ページ](bathpage.png)
-![コメント機能](commentdemo.mp4)
+![コメント機能](https://gyazo.com/64497f92316e880a98daf4b43c33d996)
 
 # 工夫した点
   このアプリはデジタルに不慣れな人でも簡単に扱えるようにとシンプルな作りにしています。<br>
