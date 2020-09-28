@@ -101,7 +101,7 @@ Web URL:https://heiseien29232.herokuapp.com/<br>
 
 # DEMO
 ### 利用者一覧表（トップページ）
-![利用者一覧表](guestpage.png)
+![利用者一覧表](app/assets/images/guestpage.png)
 
 利用者が一覧となって表示されます。<br>
 ここでは利用者の状態把握に最低限必要となる登録した情報の一部（名前、性別、利用日、歩行状態、入浴形態、飲み物の状態など）が表示されます。<br>
@@ -110,13 +110,13 @@ Web URL:https://heiseien29232.herokuapp.com/<br>
 ソート機能もついています。<br>
 
 ### 詳細検索ページ
-![詳細検索ページ](showpage.png)
+![詳細検索ページ](app/assets/images/search.gif)
 
 ここでは登録した利用者の情報が全て表示されます。<br>
 詳細検索フォームで条件を指定し検索することで、条件にあった利用者を表示することができます。<br>
 
 ### 入浴形態表ページ
-![入浴形態表ページ](bathdemo.gif)
+![入浴形態表ページ](app/assets/images/bathdemo.gif)
 
 ここでは登録した情報に応じて、入浴形態表の該当テーブルに利用者の名前が表示されます。<br>
 入浴の備考、入浴の順番、感染症の有無などの情報も表示されます。<br>
@@ -129,7 +129,7 @@ Web URL:https://heiseien29232.herokuapp.com/<br>
 入浴形態表のレイアウトはそのまま印刷して使えるようになっています。<br>
 
 ### 水分提供表ページ
-![水分提供表ページ](drinkdemo.gif)
+![水分提供表ページ](app/assets/images/drinkdemo.gif)
 
 ここでは登録した情報に応じて、水分提供表の該当テーブルに利用者の名前が表示されます。<br>
 水分の備考、とろみの量、温めるか否か、糖尿病（DM）の有無などの情報も表示されます。<br>
@@ -141,12 +141,12 @@ Web URL:https://heiseien29232.herokuapp.com/<br>
 水分提供表のレイアウトはそのまま印刷して使えるようになっています。<br>
 
 ### 更新履歴自動記入機能
-![更新履歴自動記入機能](commentdemo.gif)
+![更新履歴自動記入機能](app/assets/images/commentdemo.gif)
 
 編集画面で編集した理由と内容が自動で記録されます。
 
 ### コメント機能
-![コメント機能](comment.gif)
+![コメント機能](app/assets/images/comment.gif)
 
 利用者詳細画面より日々のちょっとした記録などをコメントとして残すことができます。
 
