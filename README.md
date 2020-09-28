@@ -286,3 +286,21 @@ VScode
 ### Association
 
 - belongs_to :guests
+
+
+# ローカルでの動作方法
+```
+% git clone https://git.heroku.com/heiseien29232.git
+% cd heiseien29232
+% bundle install
+% rails db:create
+% rails db:migrate
+% rails db:seed #(必要であればテスト用データの読み込み)
+% yarn add bootstrap@4.5.2 jquery popper.js
+% yarn add @fortawesome/fontawesome-free
+% rails s
+👉 http://localhost:3000
+```
+テスト用アカウント <br>
+メールアドレス：test@example.com<br>
+パスワード：password123<br>
