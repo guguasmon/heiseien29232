@@ -10,6 +10,7 @@ require("channels")
 require("./table-show.js")
 require("./header-active.js")
 require("./print.js")
+require('./preview')
 
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all'
