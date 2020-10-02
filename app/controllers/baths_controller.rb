@@ -49,6 +49,7 @@ class BathsController < ApplicationController
   end
 
   def edit
+    session[:bath_day] = params[:bath_day]
     @guestdata = GuestData.new(
       first_name: @guest.first_name,
       last_name: @guest.last_name,
@@ -79,7 +80,11 @@ class BathsController < ApplicationController
         @guest.update(image: guest_params[:image]) if @guest.valid?
       end
       flash[:info] = '利用者情報を更新しました'
-      redirect_to action: :index
+        if session[:bath_day].present?
+          redirect_to search_bath_path(session[:bath_day])
+        else
+          redirect_to action: :index
+        end
     else
       render action: :edit
     end
