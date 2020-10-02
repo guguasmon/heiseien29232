@@ -4,7 +4,6 @@ $(document).on('turbolinks:load', function(){
     const file = e.target.files[0],
           reader = new FileReader(),
           $preview = $(".preview");
-          t = this;
 
     //画像でない場合は処理終了
     if(file.type.indexOf("image") < 0){
@@ -29,6 +28,5 @@ $(document).on('turbolinks:load', function(){
 
     reader.readAsDataURL(file);
 
-    // $('#image-list').append('<img src=`${blob}` class="guest-image rounded img-thumbnail" style="width: auto; height: 200px;">');
   });
 });
