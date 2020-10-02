@@ -10,9 +10,9 @@
     <%# guestテーブルの情報入力 %>
     <div class="form-row">
       <div class="form-group col">
-        <label for="guest-image">顔写真</label>
-        <%= f.file_field :image, class:"form-control-file", id:"guest-image", accept: "image/jpg,image/jpeg,image/png" %>
         <div class="preview"></div>
+        <label for="guest-image">本人の写真</label>
+        <%= f.file_field :image, class:"form-control-file", id:"guest-image", accept: "image/jpg,image/jpeg,image/png" %>
       </div>
     </div>
     <div class="form-row">

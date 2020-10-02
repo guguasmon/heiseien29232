@@ -23,7 +23,7 @@
             <%= image_tag @guest.image.variant(resize_to_fit: [200, 200]), class: 'guest-image rounded img-thumbnail' if @guest.image.present? %>
           </div>
         <% end %>
-        <label for="guest-image">顔写真</label>
+        <label for="guest-image">本人の写真</label>
         <%= f.file_field :image, class:"form-control-file", id:"guest-image", accept: "image/jpg,image/jpeg,image/png"  %> 
       </div>
     </div>
