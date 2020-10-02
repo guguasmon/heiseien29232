@@ -59,6 +59,7 @@ class DrinksController < ApplicationController
   end
 
   def edit
+    session[:drink_day] = params[:drink_day]
     @guestdata = GuestData.new(
       first_name: @guest.first_name,
       last_name: @guest.last_name,
@@ -89,7 +90,11 @@ class DrinksController < ApplicationController
         @guest.update(image: guest_params[:image]) if @guest.valid?
       end
       flash[:info] = '利用者情報を更新しました'
-      redirect_to action: :index
+      if session[:drink_day].present?
+        redirect_to search_drink_path(session[:drink_day])
+      else
+        redirect_to action: :index
+      end
     else
       render action: :edit
     end
