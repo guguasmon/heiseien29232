@@ -3,7 +3,11 @@
   <%# 利用者の詳細テーブル %>
   <div class="container">
     <div class="text-center my-3">
-      <%= image_tag @guest.image.variant(resize_to_fit: [200, 200]), class: 'guest-image rounded img-thumbnail' if @guest.image.attached? %>
+    <% if @guest.image.attached? %>
+      <%= image_tag @guest.image.variant(resize_to_fit: [256, 256]), class: 'guest-image rounded img-thumbnail', alt: '顔写真' %>
+    <% else %>
+      <%= image_tag '/assets/people.png', size: '256x256', class: 'guest-image rounded img-thumbnail', alt: '顔写真サンプル'  %>
+    <% end %>
     </div>
     <table class="table table-bordered">
       <caption>利用者の詳細</caption>
