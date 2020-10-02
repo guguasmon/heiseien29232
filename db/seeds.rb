@@ -2427,3 +2427,6 @@ user_id = 1
   @guestdata = GuestData.new(data)
   @guestdata.save
 end
+
+guest = Guest.find(1)
+guest.image.attach(io: File.open('public/images/test_man.jpg'), filename: 'test_man.jpg')

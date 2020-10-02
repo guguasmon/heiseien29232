@@ -75,6 +75,9 @@ class BathsController < ApplicationController
     @guestdata = GuestData.new(guest_params)
     if @guestdata.valid?
       @guestdata.update
+      if guest_params[:image].present?
+        @guest.update(image: guest_params[:image]) if @guest.valid?
+      end
       flash[:info] = '利用者情報を更新しました'
       redirect_to action: :index
     else
@@ -93,7 +96,8 @@ class BathsController < ApplicationController
       :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id, :description, :adl_id,
       :bathing_id, :infection_id, :timing_id, :remark_bath,
       :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink,
-      :log, :log_type_id
+      :log, :log_type_id,
+      :image
     ).merge(id: params[:id], user_id: current_user.id)
   end
 

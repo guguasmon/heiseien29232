@@ -15,6 +15,19 @@
 
     <%# guestテーブルの情報入力 %>
     <div class="form-row">
+      <div class="form-group col">
+        <% unless @guest.image.present? %>
+          <div class='preview', id: "preview-unless"></div>
+        <% else %>
+          <div class='preview', id: "preview-if">
+            <%= image_tag @guest.image.variant(resize_to_fit: [200, 200]), class: 'guest-image rounded img-thumbnail' if @guest.image.present? %>
+          </div>
+        <% end %>
+        <label for="guest-image">本人の写真</label>
+        <%= f.file_field :image, class:"form-control-file", id:"guest-image", accept: "image/jpg,image/jpeg,image/png"  %> 
+      </div>
+    </div>
+    <div class="form-row">
       <div class="form-group col-sm-6">
         <label for="first-name">苗字（全角）<span class="text-danger">必須</span></label>
         <%= f.text_field :first_name, class:"form-control", id:"first-name" %>

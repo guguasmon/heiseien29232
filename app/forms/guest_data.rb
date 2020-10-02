@@ -4,7 +4,8 @@ class GuestData
                 :description, :user_id, :id, :adl_id,
                 :bathing_id, :infection_id, :timing_id, :remark_bath,
                 :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id,
-                :log, :log_type_id
+                :log, :log_type_id,
+                :image
 
   # # boolean型のチェックはpresence:trueが使えない
   validates :warm, inclusion: { in: [true, false] }
@@ -52,7 +53,7 @@ class GuestData
     # 利用者の情報を保存し、「guest」という変数に入れている
     guest = Guest.create(
       first_name: first_name, last_name: last_name, first_name_kana: first_name_kana, last_name_kana: last_name_kana,
-      gender_id: gender_id, visit1_id: visit1_id, visit2_id: visit2_id, description: description, user_id: user_id, adl_id: adl_id
+      gender_id: gender_id, visit1_id: visit1_id, visit2_id: visit2_id, description: description, user_id: user_id, adl_id: adl_id, image: image
     )
     # 利用日が被っていたら利用日２を0（未選択）にする
     if guest.visit1_id == guest.visit2_id
@@ -200,6 +201,7 @@ class GuestData
     if comparison_old.remark_drink != comparison_new.remark_drink
       change_logs << "水分の備考:#{comparison_old.remark_drink}→#{comparison_new.remark_drink}"
     end
+    change_logs << '顔写真の変更' if image
     # 変更内容を変数へ入力
     change_log = (change_logs.join('//') unless change_logs.empty?)
     # 更新履歴の情報を保存

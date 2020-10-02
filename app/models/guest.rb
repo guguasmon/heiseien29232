@@ -5,6 +5,7 @@ class Guest < ApplicationRecord
   belongs_to_active_hash :visit2
   belongs_to_active_hash :adl
 
+  has_one_attached :image
   belongs_to :user
   has_many   :comments, dependent: :destroy
   has_many   :histories, dependent: :destroy

@@ -2,6 +2,13 @@
   <h1 class="text-center m-3"><%= "#{@guest.first_name} #{@guest.last_name}さんの詳細" %></h1>
   <%# 利用者の詳細テーブル %>
   <div class="container">
+    <div class="text-center my-3">
+    <% if @guest.image.attached? %>
+      <%= image_tag @guest.image.variant(resize_to_fit: [256, 256]), class: 'guest-image rounded img-thumbnail', alt: '顔写真' %>
+    <% else %>
+      <%= image_tag '/assets/people.png', size: '256x256', class: 'guest-image rounded img-thumbnail', alt: '顔写真サンプル'  %>
+    <% end %>
+    </div>
     <table class="table table-bordered">
       <caption>利用者の詳細</caption>
       <thead class="thead-dark">

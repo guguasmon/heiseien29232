@@ -80,6 +80,8 @@ RSpec.describe '入浴形態表機能', type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # テーブルの行をクリックし利用者１の編集ページへ遷移する
       find(".guest-no-#{@guest1.id}").click
+      # すでに登録済みの画像が表示されていることを確認する
+      expect(page).to have_selector "img[src$='test_man.jpg']"
       # すでに登録済みの内容がフォームに入っていることを確認する
       expect(
         find('#first-name').value
@@ -87,6 +89,14 @@ RSpec.describe '入浴形態表機能', type: :system do
       expect(
         find('#last-name').value
       ).to eq @guest1.last_name
+      # 添付する画像を定義する
+      image_path = Rails.root.join('public/images/test_woman.jpg')
+      # 画像選択フォームに画像を添付する
+      attach_file('guest_data[image]', image_path)
+      # 選択した画像がブラウザに表示されていることを確認する
+      expect(page).to have_selector("img")
+      # 登録済みの画像が表示されていないことを確認する
+      expect(page).to have_no_selector "img[src$='test_man.jpg']"
       # 登録内容を編集する
       fill_in 'guest_data[first_name]', with: "#{@guest1.first_name}編集済み"
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
@@ -135,6 +145,7 @@ RSpec.describe '入浴形態表機能', type: :system do
       expect(current_path).to eq search_bath_path(1)
       # 月曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest1.first_name)
+      expect(page).to have_content(@guest1.last_name)
       # テーブル要素を取得する
       bath_list = all('table')
       # 月曜日利用の利用者の名前が該当欄に表示されていることを確認する

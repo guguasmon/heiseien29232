@@ -53,6 +53,10 @@ RSpec.describe GuestData, type: :model do
         @guestdata.description = ''
         expect(@guestdata).to be_valid
       end
+      it 'imageが空でも登録できる' do
+        @guestdata.image = nil
+        expect(@guestdata).to be_valid
+      end
       it 'bating_idが0（未選択）以外であれば登録できる' do
         @guestdata.bathing_id = '1'
         expect(@guestdata).to be_valid
