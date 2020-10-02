@@ -157,7 +157,7 @@ Web URL:https://heiseien29232.herokuapp.com/<br>
 
 利用者詳細画面より日々のちょっとした記録などをコメントとして残すことができます。<br>
 
-## 顔写真機能　プレビュー機能
+## 顔写真機能 プレビュー機能
 ![顔写真機能](app/assets/images/imagedemo.gif)
 
 詳細画面では顔写真を登録することができます。<br>
