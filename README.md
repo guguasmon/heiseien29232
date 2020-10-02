@@ -315,7 +315,7 @@ VScode
 パスワード：password123<br>
 
 # 使用した素材
-[Icon rainbow](https://icon-rainbow.com/usage/)<br>
+[Icon rainbow](https://icon-rainbow.com/)<br>
 [muon-ashさんによる写真ACからの写真](https://www.photo-ac.com/profile/2020346)<br>
 [acworksさんによる写真ACからの写真](https://www.photo-ac.com/profile/43626)<br>
 [kscz58ynkさんによる写真ACからの写真](https://www.photo-ac.com/profile/824623)<br>
