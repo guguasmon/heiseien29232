@@ -201,9 +201,7 @@ class GuestData
     if comparison_old.remark_drink != comparison_new.remark_drink
       change_logs << "水分の備考:#{comparison_old.remark_drink}→#{comparison_new.remark_drink}"
     end
-    if image
-      change_logs << "顔写真の変更"
-    end
+    change_logs << '顔写真の変更' if image
     # 変更内容を変数へ入力
     change_log = (change_logs.join('//') unless change_logs.empty?)
     # 更新履歴の情報を保存

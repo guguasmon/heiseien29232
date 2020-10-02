@@ -18,7 +18,7 @@ RSpec.describe '利用者の新規登録', type: :system do
       # 画像選択フォームに画像を添付する
       attach_file('guest_data[image]', image_path)
       # 選択した画像がブラウザに表示されていることを確認する
-      expect(page).to have_selector("img")
+      expect(page).to have_selector('img')
       # フォームに情報を入力する
       fill_in 'guest_data[first_name]', with: @guestdata.first_name
       fill_in 'guest_data[last_name]', with: @guestdata.last_name
@@ -94,7 +94,7 @@ RSpec.describe '利用者情報の編集', type: :system do
       # 画像選択フォームに画像を添付する
       attach_file('guest_data[image]', image_path)
       # 選択した画像がブラウザに表示されていることを確認する
-      expect(page).to have_selector("img")
+      expect(page).to have_selector('img')
       # 登録済みの画像が表示されていないことを確認する
       expect(page).to have_no_selector "img[src$='test_man.jpg']"
       # 登録内容を編集する
@@ -249,7 +249,7 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       # 画像選択フォームに画像を添付する
       attach_file('guest_data[image]', image_path)
       # 選択した画像がブラウザに表示されていることを確認する
-      expect(page).to have_selector("img")
+      expect(page).to have_selector('img')
       # 登録済みの画像が表示されていないことを確認する
       expect(page).to have_no_selector "img[src$='test_man.jpg']"
       # 登録内容を編集する
