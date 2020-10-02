@@ -11,7 +11,7 @@ FactoryBot.define do
     description            { Faker::Lorem.sentence }
     association :user
     after(:build) do |item|
-      item.image.attach(io: File.open('public/images/muon-ash.jpg'), filename: 'muon-ash.jpg')
+      item.image.attach(io: File.open('public/images/test_man.jpg'), filename: 'test_man.jpg')
     end
   end
 end

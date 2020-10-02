@@ -6,13 +6,19 @@ RSpec.describe '利用者の新規登録', type: :system do
     @guestdata = FactoryBot.build(:guest_data)
   end
   context '利用者の新規登録ができるとき' do
-    it 'ログインしたユーザーは利用者の新規登録ができる' do
+    it 'ログインしたユーザーは利用者の新規登録ができる', js: true do
       # ログインする
       sign_in(@user)
       # 利用者新規登録ページへのリンクがあることを確認する
       expect(page).to have_content('利用者を登録する')
       # 利用者登録ページに移動する
       visit new_guest_path
+      # 添付する画像を定義する
+      image_path = Rails.root.join('public/images/test_man.jpg')
+      # 画像選択フォームに画像を添付する
+      attach_file('guest_data[image]', image_path)
+      # 選択した画像がブラウザに表示されていることを確認する
+      expect(page).to have_selector("img")
       # フォームに情報を入力する
       fill_in 'guest_data[first_name]', with: @guestdata.first_name
       fill_in 'guest_data[last_name]', with: @guestdata.last_name
@@ -65,7 +71,7 @@ RSpec.describe '利用者情報の編集', type: :system do
   end
 
   context '利用者情報の編集ができるとき' do
-    it 'ログインしたユーザーは自分が登録した利用者情報の編集ができる' do
+    it 'ログインしたユーザーは自分が登録した利用者情報の編集ができる', js: true do
       # 利用者1を投稿したユーザーでログインする
       user1_sign_in(@guest1)
       # 利用者１の「編集」ボタンがあることを確認する
@@ -74,6 +80,8 @@ RSpec.describe '利用者情報の編集', type: :system do
       ).to have_link '編集', href: edit_guest_path(@guest1.id)
       # 編集ページへ遷移する
       visit edit_guest_path(@guest1.id)
+      # すでに登録済みの画像が表示されていることを確認する
+      expect(page).to have_selector "img[src$='test_man.jpg']"
       # すでに登録済みの内容がフォームに入っていることを確認する
       expect(
         find('#first-name').value
@@ -81,6 +89,14 @@ RSpec.describe '利用者情報の編集', type: :system do
       expect(
         find('#last-name').value
       ).to eq @guest1.last_name
+      # 添付する画像を定義する
+      image_path = Rails.root.join('public/images/test_woman.jpg')
+      # 画像選択フォームに画像を添付する
+      attach_file('guest_data[image]', image_path)
+      # 選択した画像がブラウザに表示されていることを確認する
+      expect(page).to have_selector("img")
+      # 登録済みの画像が表示されていないことを確認する
+      expect(page).to have_no_selector "img[src$='test_man.jpg']"
       # 登録内容を編集する
       fill_in 'guest_data[first_name]', with: "#{@guest1.first_name}編集済み"
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
@@ -192,6 +208,8 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       ).to have_link '詳細', href: guest_path(@guest1.id)
       # 詳細ページへ遷移する
       visit guest_path(@guest1.id)
+      # 詳細ページに登録済みの画像が表示されていることを確認する
+      expect(page).to have_selector "img[src$='test_man.jpg']"
       # 詳細ページに登録した内容が表示されていることを確認する
       expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s)
       # 利用者１の「編集」ボタンがあることを確認する
@@ -208,6 +226,8 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       ).to have_link '詳細', href: guest_path(@guest1.id)
       # 詳細ページへ遷移する
       visit guest_path(@guest1.id)
+      # 詳細ページに登録済みの画像が表示されていることを確認する
+      expect(page).to have_selector "img[src$='test_man.jpg']"
       # 詳細ページに登録した内容が表示されていることを確認する
       expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.last_name.to_s).and have_content(@guest1.first_name_kana.to_s).and have_content(@guest1.last_name_kana.to_s).and have_content(@guest1.visit1.name.to_s).and have_content(@guest1.visit2.name.to_s).and have_content(@guest1.adl.name.to_s).and have_content(@guest1.description.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.bath.infection.name.to_s).and have_content(@guest1.bath.timing.name.to_s)
         .and have_content(@guest1.bath.remark_bath.to_s).and have_content(@guest1.drink.drink_type.name.to_s).and have_content(@guest1.drink.thickness.name.to_s).and have_content(@guest1.drink.warm ? '温める' : '温めない').and have_content(@guest1.drink.diabetes ? '有り' : '無し').and have_content(@guest1.drink.remark_drink.to_s)
@@ -215,6 +235,8 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       expect(page).to have_link '編集', href: edit_guest_path(@guest1.id)
       # 編集ページへ遷移する
       visit edit_guest_path(@guest1.id)
+      # すでに登録済みの画像が表示されていることを確認する
+      expect(page).to have_selector "img[src$='test_man.jpg']"
       # すでに登録済みの内容がフォームに入っていることを確認する
       expect(
         find('#first-name').value
@@ -222,6 +244,14 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       expect(
         find('#last-name').value
       ).to eq @guest1.last_name
+      # 添付する画像を定義する
+      image_path = Rails.root.join('public/images/test_woman.jpg')
+      # 画像選択フォームに画像を添付する
+      attach_file('guest_data[image]', image_path)
+      # 選択した画像がブラウザに表示されていることを確認する
+      expect(page).to have_selector("img")
+      # 登録済みの画像が表示されていないことを確認する
+      expect(page).to have_no_selector "img[src$='test_man.jpg']"
       # 登録内容を編集する
       fill_in 'guest_data[first_name]', with: "#{@guest1.first_name}編集済み"
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
@@ -236,11 +266,13 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       expect(current_path).to eq guest_path(@guest1.id)
       # フラッシュメッセージが表示されていることを確認する
       expect(page).to have_content '利用者情報を更新しました'
+      # 詳細ページに先ほど変更した画像が表示されていることを確認する
+      expect(page).to have_selector "img[src$='test_woman.jpg']"
       # 詳細ページには先ほど変更した内容の利用者情報が存在することを確認する
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
       # 詳細ページの更新履歴に先ほど変更した内容の履歴が存在することを確認する
-      expect(page).to have_content('入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳')
+      expect(page).to have_content('入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳//顔写真の変更')
     end
     it 'ログインしたユーザーは詳細画面からでも自分が登録した利用者情報の削除ができる' do
       # 利用者1を投稿したユーザーでログインする
@@ -251,6 +283,8 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       ).to have_link '詳細', href: guest_path(@guest1.id)
       # 詳細ページへ遷移する
       visit guest_path(@guest1.id)
+      # 詳細ページに登録済みの画像が表示されていることを確認する
+      expect(page).to have_selector "img[src$='test_man.jpg']"
       # 詳細ページに登録した内容が表示されていることを確認する
       expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s)
       # 利用者１の「削除」ボタンがあることを確認する
@@ -277,6 +311,8 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       ).to have_link '詳細', href: guest_path(@guest1.id)
       # 詳細ページへ遷移する
       visit guest_path(@guest1.id)
+      # 詳細ページに登録済みの画像が表示されていることを確認する
+      expect(page).to have_selector "img[src$='test_man.jpg']"
       # 詳細ページに登録した内容が表示されていることを確認する
       expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.last_name.to_s).and have_content(@guest1.first_name_kana.to_s).and have_content(@guest1.last_name_kana.to_s).and have_content(@guest1.visit1.name.to_s).and have_content(@guest1.visit2.name.to_s).and have_content(@guest1.adl.name.to_s).and have_content(@guest1.description.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.bath.infection.name.to_s).and have_content(@guest1.bath.timing.name.to_s)
         .and have_content(@guest1.bath.remark_bath.to_s).and have_content(@guest1.drink.drink_type.name.to_s).and have_content(@guest1.drink.thickness.name.to_s).and have_content(@guest1.drink.warm ? '温める' : '温めない').and have_content(@guest1.drink.diabetes ? '有り' : '無し').and have_content(@guest1.drink.remark_drink.to_s)
