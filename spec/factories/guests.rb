@@ -10,5 +10,8 @@ FactoryBot.define do
     adl_id                 { 1 }
     description            { Faker::Lorem.sentence }
     association :user
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/muon-ash.jpg'), filename: 'muon-ash.jpg')
+    end
   end
 end
