@@ -11,6 +11,7 @@ class Guest < ApplicationRecord
   has_many   :histories, dependent: :destroy
   has_one    :bath, dependent: :destroy
   has_one    :drink, dependent: :destroy
+  has_one    :food, dependent: :destroy
 
   # name,remarksというエイリアスをつける
   ransack_alias :name, :first_name_or_last_name_or_first_name_kana_or_last_name_kana
