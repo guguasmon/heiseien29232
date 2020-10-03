@@ -16,7 +16,14 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
   resources :drinks, only: [:index, :edit, :update] do
+    member do
+      get 'search'
+    end
+  end
+
+  resources :foods, only: [:index, :edit, :update] do
     member do
       get 'search'
     end
