@@ -248,6 +248,7 @@ VScode
 - belongs_to :user
 - has_one :bath
 - has_one :drink
+- has_one :food
 - has_many :comments
 - has_many :histories
 
@@ -263,11 +264,11 @@ VScode
 
 - belongs_to :guest
 
-## drink テーブル
+## drinks テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| drink_type     | integer    | null: false                    |
+| drink_type_id  | integer    | null: false                    |
 | warm           | boolean    | null: false, default: false    |
 | thickness_id   | integer    | null: false                    |
 | diabetes       | boolean    | null: false, default: false    |
@@ -276,6 +277,24 @@ VScode
 
 - belongs_to :guest
 
+## foods テーブル
+
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| staple_type_id       | integer    | null: false                    |
+| staple_amount_id     | integer    | null: false                    |
+| main_dish_type_id    | integer    | null: false                    |
+| main_dish_amount_id  | integer    | null: false                    |
+| side_dish_type_id    | integer    | null: false                    |
+| side_dish_amount_id  | integer    | null: false                    |
+| banned_food          | string     |                                |
+| low_salt             | boolean    | null: false, default: false    |
+| soup_thick           | boolean    | null: false, default: false    |
+| denture_id           | integer    | null: false                    |
+| remark_food          | string     |                                |
+| guest                | references | null: false, foreign_key: true |
+
+- belongs_to :guest
 
 ## comments テーブル
 
