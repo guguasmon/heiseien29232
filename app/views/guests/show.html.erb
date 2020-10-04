@@ -90,7 +90,7 @@
           <td scope="col"><%= @guest.drink.drink_type.name %></td>
           <td scope="col"><%= @guest.drink.thickness.name %></td>
           <td scope="col"><%= @guest.drink.warm ? "温める" : "温めない"  %></td>
-          <td scope="col"><%= @guest.drink.diabetes ? "有り" : "無し"  %></td>
+          <td scope="col"><%= @guest.drink.diabetes ? "あり" : "なし"  %></td>
         </tr>
       </tbody>
       <thead class="thead-dark">
@@ -106,6 +106,59 @@
     </table>
   </div>
   <%# /利用者の水分詳細テーブル %>
+  <%# 利用者の食事詳細テーブル %>
+  <div class="container">
+    <table class="table table-bordered">
+      <caption>食事の詳細</caption>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">主食の形態</th>
+          <th scope="col">主食の量</th>
+          <th scope="col">主菜の形態</th>
+          <th scope="col">主菜の量</th>
+          <th scope="col">副菜の形態</th>
+          <th scope="col">副菜の量</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="col"><%= @guest.food.staple_type.name %></td>
+          <td scope="col"><%= @guest.food.staple_amount.name %></td>
+          <td scope="col"><%= @guest.food.main_dish_type.name %></td>
+          <td scope="col"><%= @guest.food.main_dish_amount.name %></td>
+          <td scope="col"><%= @guest.food.side_dish_type.name %></td>
+          <td scope="col"><%= @guest.food.side_dish_amount.name %></td>
+        </tr>
+      </tbody>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" colspan="3">禁止食材</th>
+          <th scope="col">汁物のとろみ</th>
+          <th scope="col">塩分制限</th>
+          <th scope="col">義歯</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="col" colspan="3"><%= @guest.food.banned_food %></td>
+          <td scope="col"><%= @guest.food.soup_thick ? "あり" : "なし" %></td>
+          <td scope="col" ><%= @guest.food.low_salt ? "あり" : "なし" %></td>
+          <td scope="col"><%= @guest.food.denture.name %></td>
+        </tr>
+      </tbody>
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="12">食事の備考</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="12"><%= @guest.food.remark_food %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%# /利用者の食事詳細テーブル %>
   <%# 利用者の更新履歴テーブル %>
   <div class="container">
     <table class="table table-bordered">
@@ -234,7 +287,7 @@
               <!-- /Modal -->
     </div>
     <div class="col">
-      <%= link_to edit_guest_path(@guest.id), method: :get, class: "btn btn-primary btn-block btn-lg", role: "button" do %>
+      <%= link_to edit_guest_path(edit_jump(@guest.id)), method: :get, class: "btn btn-primary btn-block btn-lg", role: "button" do %>
       <i class="fas fa-edit"></i> 編集
       <% end %>
     </div>
