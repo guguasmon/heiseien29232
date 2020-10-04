@@ -6,7 +6,7 @@ RSpec.describe GuestData, type: :model do
   end
   describe '利用者一括新規登録' do
     context '一括新規登録がうまくいくとき' do
-      it 'first_name,last_name,first_name_kana,last_name_kana,gender_id,visit1_id,visit2_id,adl_id,bathing_id,infection_id,timing_id,drink_type_id,thickness_id,warm,diabetes,log,log_type_idが存在すれば登録できる' do
+      it 'first_name,last_name,first_name_kana,last_name_kana,gender_id,visit1_id,visit2_id,adl_id,bathing_id,infection_id,timing_id,drink_type_id,thickness_id,warm,diabetes,log,log_type_id,staple_type_id,staple_amount_id,main_dish_type_id,main_dish_amount_id,side_dish_type_id,side_dish_amount_id,low_salt,soup_thick,denture_idが存在すれば登録できる' do
         expect(@guestdata).to be_valid
       end
       it 'first_nameが全角（漢字・ひらがな・カタカナ）であれば登録できる' do
@@ -83,6 +83,26 @@ RSpec.describe GuestData, type: :model do
       end
       it 'remark_drinkが空でも登録できる' do
         @guestdata.remark_drink = ''
+        expect(@guestdata).to be_valid
+      end
+      it 'staple_type_idが0（未選択）以外であれば登録できる' do
+        @guestdata.staple_type_id = '1'
+        expect(@guestdata).to be_valid
+      end
+      it 'main_dish_type_idが0（未選択）以外であれば登録できる' do
+        @guestdata.main_dish_type_id = '1'
+        expect(@guestdata).to be_valid
+      end
+      it 'side_dish_type_idが0（未選択）以外であれば登録できる' do
+        @guestdata.side_dish_type_id = '1'
+        expect(@guestdata).to be_valid
+      end
+      it 'banned_foodが空でも登録できる' do
+        @guestdata.banned_food = ''
+        expect(@guestdata).to be_valid
+      end
+      it 'remark_foodが空でも登録できる' do
+        @guestdata.remark_food = ''
         expect(@guestdata).to be_valid
       end
     end
@@ -232,6 +252,76 @@ RSpec.describe GuestData, type: :model do
         @guestdata.remark_drink = '123456789012345678901'
         @guestdata.valid?
         expect(@guestdata.errors.full_messages).to include('Remark drink is too long (maximum is 20 characters)')
+      end
+      it 'staple_type_idが空では登録できない' do
+        @guestdata.staple_type_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Staple type can't be blank", "Staple type can't be blank", 'Staple type の選択肢を選んでください')
+      end
+      it 'staple_type_idが0（未選択）では登録できない' do
+        @guestdata.staple_type_id = '0'
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Staple type の選択肢を選んでください')
+      end
+      it 'staple_amount_idが空では登録できない' do
+        @guestdata.staple_amount_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Staple amount can't be blank")
+      end
+      it 'main_dish_type_idが空では登録できない' do
+        @guestdata.main_dish_type_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Main dish type can't be blank", "Main dish type can't be blank", 'Main dish type の選択肢を選んでください')
+      end
+      it 'main_dish_type_idが0（未選択）では登録できない' do
+        @guestdata.main_dish_type_id = '0'
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Main dish type の選択肢を選んでください')
+      end
+      it 'main_dish_amount_idが空では登録できない' do
+        @guestdata.main_dish_amount_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Main dish amount can't be blank")
+      end
+      it 'side_dish_type_idが空では登録できない' do
+        @guestdata.side_dish_type_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Side dish type can't be blank", "Side dish type can't be blank", 'Side dish type の選択肢を選んでください')
+      end
+      it 'side_dish_type_idが0（未選択）では登録できない' do
+        @guestdata.side_dish_type_id = '0'
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Side dish type の選択肢を選んでください')
+      end
+      it 'side_dish_amount_idが空では登録できない' do
+        @guestdata.side_dish_amount_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Side dish amount can't be blank")
+      end
+      it 'denture_idが空では登録できない' do
+        @guestdata.denture_id = ''
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include("Denture can't be blank", "Denture can't be blank", 'Denture の選択肢を選んでください')
+      end
+      it 'denture_idが0（未選択）では登録できない' do
+        @guestdata.denture_id = '0'
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Denture の選択肢を選んでください')
+      end
+      it 'low_saltが空では登録できない' do
+        @guestdata.low_salt = nil
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Low salt is not included in the list')
+      end
+      it 'soup_thickが空では登録できない' do
+        @guestdata.soup_thick = nil
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Soup thick is not included in the list')
+      end
+      it 'remark_foodが20文字以上では登録できない' do
+        @guestdata.remark_food = '123456789012345678901'
+        @guestdata.valid?
+        expect(@guestdata.errors.full_messages).to include('Remark food is too long (maximum is 20 characters)')
       end
       it 'logが空では登録できない' do
         @guestdata.log = ''
