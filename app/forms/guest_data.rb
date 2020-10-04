@@ -30,6 +30,13 @@ class GuestData
     validates :visit1_id
     validates :visit2_id
     validates :adl_id
+    # bathsテーブル
+    validates :bathing_id
+    validates :infection_id
+    validates :timing_id
+    # drinksテーブル
+    validates :drink_type_id
+    validates :thickness_id
     # foodsテーブル
     validates :staple_type_id
     validates :staple_amount_id
@@ -38,13 +45,6 @@ class GuestData
     validates :side_dish_type_id
     validates :side_dish_amount_id
     validates :denture_id
-    # drinksテーブル
-    validates :drink_type_id
-    validates :thickness_id
-    # bathsテーブル
-    validates :bathing_id
-    validates :infection_id
-    validates :timing_id
     # historiesテーブル
     validates :log
     validates :log_type_id
@@ -53,17 +53,17 @@ class GuestData
       validates :gender_id
       validates :visit1_id
       validates :adl_id
+      # bathsテーブル
+      validates :bathing_id
+      validates :infection_id
+      # drinksテーブル
+      validates :drink_type_id
+      validates :thickness_id
       # foodsテーブル
       validates :staple_type_id
       validates :main_dish_type_id
       validates :side_dish_type_id
       validates :denture_id
-      # drinksテーブル
-      validates :drink_type_id
-      validates :thickness_id
-      # bathsテーブル
-      validates :bathing_id
-      validates :infection_id
     end
   end
 
