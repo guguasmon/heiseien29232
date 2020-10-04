@@ -6,13 +6,13 @@ class GuestsController < ApplicationController
 
   def index
     if user_signed_in?
-      @guests = @p.result.includes([:bath, :drink])
+      @guests = @p.result.includes([:bath, :drink, :food])
       @count = @guests.size
     end
   end
 
   def lookup
-    @guests = @p.result.includes([:bath, :drink]) # 検索条件にマッチした利用者の情報を取得
+    @guests = @p.result.includes([:bath, :drink, :food]) # 検索条件にマッチした利用者の情報を取得
     @count = @guests.size
   end
 
@@ -41,6 +41,9 @@ class GuestsController < ApplicationController
   end
 
   def edit
+    session[:bath_day] = params[:bath_day] if params[:bath_day].present?
+    session[:drink_day] = params[:drink_day] if params[:drink_day].present?
+    session[:food_day] = params[:food_day] if params[:food_day].present?
     @guestdata = GuestData.new(
       first_name: @guest.first_name,
       last_name: @guest.last_name,
@@ -59,7 +62,18 @@ class GuestsController < ApplicationController
       warm: @guest.drink.warm,
       thickness_id: @guest.drink.thickness_id,
       diabetes: @guest.drink.diabetes,
-      remark_drink: @guest.drink.remark_drink
+      remark_drink: @guest.drink.remark_drink,
+      staple_type_id: @guest.food.staple_type_id,
+      staple_amount_id: @guest.food.staple_amount_id,
+      main_dish_type_id: @guest.food.main_dish_type_id,
+      main_dish_amount_id: @guest.food.main_dish_amount_id,
+      side_dish_type_id: @guest.food.side_dish_type_id,
+      side_dish_amount_id: @guest.food.side_dish_amount_id,
+      banned_food: @guest.food.banned_food,
+      low_salt: @guest.food.low_salt,
+      soup_thick: @guest.food.soup_thick,
+      denture_id: @guest.food.denture_id,
+      remark_food: @guest.food.remark_food,
     )
   end
 
@@ -71,7 +85,30 @@ class GuestsController < ApplicationController
         @guest.update(image: guest_params[:image]) if @guest.valid?
       end
       flash[:info] = '利用者情報を更新しました'
-      redirect_to action: :show
+      if session[:bath_day].present?
+        unless session[:bath_day] == "0"
+          redirect_to search_bath_path(session[:bath_day])
+        else
+          redirect_to baths_path
+        end
+        session[:bath_day].clear
+      elsif session[:drink_day].present?
+        unless session[:drink_day] == "0"
+          redirect_to search_drink_path(session[:drink_day])
+        else
+          redirect_to drinks_path
+        end
+        session[:drink_day].clear
+      elsif session[:food_day].present?
+        unless session[:food_day] == "0"
+          redirect_to search_food_path(session[:food_day])
+        else
+          redirect_to foods_path
+        end
+        session[:food_day].clear
+      else
+        redirect_to action: :show
+      end
     else
       render('guests/edit')
     end
@@ -95,7 +132,9 @@ class GuestsController < ApplicationController
       :bathing_id, :infection_id, :timing_id, :remark_bath,
       :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink,
       :log, :log_type_id,
-      :image
+      :image,
+      :staple_type_id, :staple_amount_id, :main_dish_type_id, :main_dish_amount_id, :side_dish_type_id, :side_dish_amount_id,
+      :banned_food, :low_salt, :soup_thick, :denture_id, :remark_food
     ).merge(id: params[:id], user_id: current_user.id)
   end
 

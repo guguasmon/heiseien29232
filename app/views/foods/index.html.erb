@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <%# 曜日ボタン %>
+  <div class="container-fluid d-flex justify-content-center my-3">
+    <div class="btn-group" role="group" aria-label="Day-of-the-week">
+      <%= link_to '全表示', foods_path, class: "btn btn-outline-info nav-link", id: "allday", role: "button" %>
+      <%= link_to '月曜日', search_food_path(1), class: "btn btn-outline-info nav-link", id: "monday", role: "button" %>
+      <%= link_to '火曜日', search_food_path(2), class: "btn btn-outline-info nav-link", id: "tuesday", role: "button" %>
+      <%= link_to '水曜日', search_food_path(3), class: "btn btn-outline-info nav-link", id: "wednesday", role: "button" %>
+      <%= link_to '木曜日', search_food_path(4), class: "btn btn-outline-info nav-link", id: "thursday", role: "button" %>
+      <%= link_to '金曜日', search_food_path(5), class: "btn btn-outline-info nav-link", id: "friday", role: "button" %>
+      <%= link_to '土曜日', search_food_path(6), class: "btn btn-outline-info nav-link", id: "saturday", role: "button" %>
+      <%= link_to '日曜日', search_food_path(7), class: "btn btn-outline-info nav-link", id: "sunday", role: "button" %>
+    </div>
+  </div>
+ <%# /曜日ボタン %>
+
+  <div class="container-fluid">
+    <%# タイトル %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <h1 class="text-center">食事提供表</h1>
+        </div>
+      </div>
+      <div class="mb-3 d-flex justify-content-end">
+        <button type="button" class="btn btn-success print printing"><i class="fas fa-print" aria-hidden="true"></i>この表を印刷する</button> 
+      </div>
+      <div class="row mb-3">
+        <div class="col text-left">
+          <h3><%= @day_of_the_week  ? "#{@day_of_the_week}曜日" : "全表示" %></h3>
+        </div>
+        <div class="col text-right">
+        <h3><%= "利用者　#{@count}名" if @count %></h3>
+        </div>
+      </div>
+    </div>
+    <%# /タイトル %>
+    <table class="table table-striped table-bordered table-hover table-clickable">
+      <caption>食事提供表</caption>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">名前</th>
+          <th scope="col">主食の形態</th>
+          <th scope="col">主食の量</th>
+          <th scope="col">主菜の形態</th>
+          <th scope="col">主菜の量</th>
+          <th scope="col">副菜の形態</th>
+          <th scope="col">副菜の量</th>
+          <th scope="col">禁止食材</th>
+          <th scope="col">塩分制限</th>
+          <th scope="col">汁物のとろみ</th>
+          <th scope="col">義歯</th>
+          <th scope="col">食事の備考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @guests.each do |guest| %>
+          <%= render partial: "shared/food", locals: { guest: guest } %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= javascript_pack_tag 'nav-active' %>

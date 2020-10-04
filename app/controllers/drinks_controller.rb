@@ -92,6 +92,7 @@ class DrinksController < ApplicationController
       flash[:info] = '利用者情報を更新しました'
       if session[:drink_day].present?
         redirect_to search_drink_path(session[:drink_day])
+        session[:drink_day].clear
       else
         redirect_to action: :index
       end

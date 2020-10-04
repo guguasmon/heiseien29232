@@ -82,6 +82,7 @@ class BathsController < ApplicationController
       flash[:info] = '利用者情報を更新しました'
         if session[:bath_day].present?
           redirect_to search_bath_path(session[:bath_day])
+          session[:bath_day].clear
         else
           redirect_to action: :index
         end
