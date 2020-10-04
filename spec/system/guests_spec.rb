@@ -38,10 +38,18 @@ RSpec.describe '利用者の新規登録', type: :system do
       check 'guest_data[warm]'
       check 'guest_data[diabetes]'
       fill_in 'guest_data[remark_drink]', with: @guestdata.remark_drink
-      # 送信するとGuestモデル/Bathモデル/Drinkモデルのカウントが1上がることを確認する
+      select '常食', from: '主食の形態'
+      select '常食', from: '主菜の形態'
+      select '常食', from: '副菜の形態'
+      fill_in 'guest_data[banned_food]', with: @guestdata.banned_food
+      select '義歯なし', from: '義歯'
+      check 'guest_data[soup_thick]'
+      check 'guest_data[low_salt]'
+      fill_in 'guest_data[remark_food]', with: @guestdata.remark_food
+      # 送信するとGuestモデル/Bathモデル/Drinkモデル/Foodモデルのカウントが1上がることを確認する
       expect  do
         find('input[name="commit"]').click
-      end.to change { Guest.count }.by(1).and change { Bath.count }.by(1).and change { Drink.count }.by(1)
+      end.to change { Guest.count }.by(1).and change { Bath.count }.by(1).and change { Drink.count }.by(1).and change { Food.count }.by(1)
       # トップページに戻ることを確認する
       expect(current_path).to eq root_path
       # フラッシュメッセージが表示されていることを確認する
@@ -65,9 +73,11 @@ RSpec.describe '利用者情報の編集', type: :system do
     @guest1 = FactoryBot.create(:guest)
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
+    @food1 = FactoryBot.create(:food, guest_id: @guest1.id)
     @guest2 = FactoryBot.create(:guest)
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
+    @food2 = FactoryBot.create(:food, guest_id: @guest2.id)
   end
 
   context '利用者情報の編集ができるとき' do
@@ -102,11 +112,12 @@ RSpec.describe '利用者情報の編集', type: :system do
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
       select 'チェアー浴', from: '入浴形態'
       select 'コーヒー牛乳', from: '飲み物の種類'
+      select 'ペースト', from: '主食の形態'
       select '本人の希望', from: '更新の理由'
-      # 編集してもGuestモデル/Bathモデル/Drinkモデルのカウントは変わらないことを確認する
+      # 編集してもGuestモデル/Bathモデル/Drink/Foodモデルのカウントは変わらないことを確認する
       expect do
         find('input[name="commit"]').click
-      end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
+      end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0).and change { Food.count }.by(0)
       # 詳細ページに戻ることを確認する
       expect(current_path).to eq guest_path(@guest1.id)
       # フラッシュメッセージが表示されていることを確認する
@@ -115,7 +126,7 @@ RSpec.describe '利用者情報の編集', type: :system do
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
       # 詳細ページの更新履歴には先ほど変更した内容の履歴が存在することを確認する
-      expect(page).to have_content('入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳')
+      expect(page).to have_content('入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳//主食の形態:常食→ペースト')
     end
   end
   context '利用者情報の編集ができないとき' do
@@ -141,9 +152,11 @@ RSpec.describe '利用者情報の削除', type: :system do
     @guest1 = FactoryBot.create(:guest)
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
+    @food1 = FactoryBot.create(:food, guest_id: @guest1.id)
     @guest2 = FactoryBot.create(:guest)
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
+    @food2 = FactoryBot.create(:food, guest_id: @guest2.id)
   end
 
   context '利用者情報の削除ができるとき' do
@@ -156,12 +169,12 @@ RSpec.describe '利用者情報の削除', type: :system do
       ).to have_link '削除', href: guest_path(@guest1.id)
       # 削除ボタンを一回押して確認ウィンドウを開く
       find_link('削除', href: guest_path(@guest1)).click
-      # 削除するとGuestテーブル・Bathテーブル・Drinkテーブルのレコードの数が1減ることを確認する
+      # 削除するとGuestモデル/Bathモデル/Drinkモデル/Foodモデルのカウントの数が1減ることを確認する
       # フラッシュメッセージが表示されていることを確認する
       expect do
         page.accept_confirm '本当に削除しますか？'
         expect(page).to have_content '利用者情報を削除しました'
-      end.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
+      end.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1).and change { Food.count }.by(-1)
       # トップページに戻ることを確認する
       expect(current_path).to eq root_path
       # トップページには利用者１の内容が存在しないことを確認する
@@ -191,10 +204,12 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
     @guest1 = FactoryBot.create(:guest)
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
+    @food1 = FactoryBot.create(:food, guest_id: @guest1.id)
     @comment1 = FactoryBot.create(:comment, guest_id: @guest1.id)
     @guest2 = FactoryBot.create(:guest)
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
+    @food2 = FactoryBot.create(:food, guest_id: @guest2.id)
     @comment2 = FactoryBot.create(:comment, guest_id: @guest2.id)
   end
 
@@ -211,7 +226,7 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       # 詳細ページに登録済みの画像が表示されていることを確認する
       expect(page).to have_selector "img[src$='test_man.jpg']"
       # 詳細ページに登録した内容が表示されていることを確認する
-      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s)
+      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s).and have_content(@guest1.food.staple_type.name.to_s)
       # 利用者１の「編集」ボタンがあることを確認する
       expect(page).to have_link '編集', href: edit_guest_path(@guest1.id)
       # 利用者１の「削除」ボタンがあることを確認する
@@ -229,8 +244,7 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       # 詳細ページに登録済みの画像が表示されていることを確認する
       expect(page).to have_selector "img[src$='test_man.jpg']"
       # 詳細ページに登録した内容が表示されていることを確認する
-      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.last_name.to_s).and have_content(@guest1.first_name_kana.to_s).and have_content(@guest1.last_name_kana.to_s).and have_content(@guest1.visit1.name.to_s).and have_content(@guest1.visit2.name.to_s).and have_content(@guest1.adl.name.to_s).and have_content(@guest1.description.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.bath.infection.name.to_s).and have_content(@guest1.bath.timing.name.to_s)
-        .and have_content(@guest1.bath.remark_bath.to_s).and have_content(@guest1.drink.drink_type.name.to_s).and have_content(@guest1.drink.thickness.name.to_s).and have_content(@guest1.drink.warm ? '温める' : '温めない').and have_content(@guest1.drink.diabetes ? '有り' : '無し').and have_content(@guest1.drink.remark_drink.to_s)
+      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.last_name.to_s).and have_content(@guest1.first_name_kana.to_s).and have_content(@guest1.last_name_kana.to_s).and have_content(@guest1.visit1.name.to_s).and have_content(@guest1.visit2.name.to_s).and have_content(@guest1.adl.name.to_s).and have_content(@guest1.description.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.bath.infection.name.to_s).and have_content(@guest1.bath.timing.name.to_s).and have_content(@guest1.bath.remark_bath.to_s).and have_content(@guest1.drink.drink_type.name.to_s).and have_content(@guest1.drink.thickness.name.to_s).and have_content(@guest1.drink.warm ? '温める' : '温めない').and have_content(@guest1.drink.diabetes ? 'あり' : 'なし').and have_content(@guest1.drink.remark_drink.to_s).and have_content(@guest1.food.staple_type.name.to_s).and have_content(@guest1.food.staple_amount.name.to_s).and have_content(@guest1.food.main_dish_type.name.to_s).and have_content(@guest1.food.main_dish_amount.name.to_s).and have_content(@guest1.food.side_dish_type.name.to_s).and have_content(@guest1.food.side_dish_amount.name.to_s).and have_content(@guest1.food.banned_food).and have_content(@guest1.food.low_salt ? 'あり' : 'なし').and have_content(@guest1.food.soup_thick ? 'あり' : 'なし').and have_content(@guest1.food.denture.name.to_s).and have_content(@guest1.food.remark_food.to_s)
       # 利用者１の「編集」ボタンがあることを確認する
       expect(page).to have_link '編集', href: edit_guest_path(@guest1.id)
       # 編集ページへ遷移する
@@ -257,11 +271,12 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
       select 'チェアー浴', from: '入浴形態'
       select 'コーヒー牛乳', from: '飲み物の種類'
+      select 'ペースト', from: '主食の形態'
       select '本人の希望', from: '更新の理由'
-      # 編集してもGuestモデル/Bathモデル/Drinkモデルのカウントは変わらないことを確認する
+      # 編集してもGuestモデル/Bathモデル/Drinkモデル/Foodモデルのカウントは変わらないことを確認する
       expect do
         find('input[name="commit"]').click
-      end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
+      end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0).and change { Food.count }.by(0)
       # 詳細ページに戻ることを確認する
       expect(current_path).to eq guest_path(@guest1.id)
       # フラッシュメッセージが表示されていることを確認する
@@ -272,7 +287,7 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
       # 詳細ページの更新履歴に先ほど変更した内容の履歴が存在することを確認する
-      expect(page).to have_content('入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳//顔写真の変更')
+      expect(page).to have_content('入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳//主食の形態:常食→ペースト//顔写真の変更')
     end
     it 'ログインしたユーザーは詳細画面からでも自分が登録した利用者情報の削除ができる' do
       # 利用者1を投稿したユーザーでログインする
@@ -286,17 +301,17 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       # 詳細ページに登録済みの画像が表示されていることを確認する
       expect(page).to have_selector "img[src$='test_man.jpg']"
       # 詳細ページに登録した内容が表示されていることを確認する
-      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s)
+      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s)and have_content(@guest1.food.staple_type.name.to_s)
       # 利用者１の「削除」ボタンがあることを確認する
       expect(page).to have_link '削除', href: guest_path(@guest1.id)
       # 削除ボタンを一回押して確認ウィンドウを開く
       find_link('削除', href: guest_path(@guest1)).click
-      # 削除するとGuestテーブル・Bathテーブル・Drinkテーブルのレコードの数が1減ることを確認する
+      # 削除するとGuestモデル/Bathモデル/Drinkモデル/Foodモデルのカウントの数が1減ることを確認する
       # フラッシュメッセージが表示されていることを確認する
       expect do
         page.accept_confirm '本当に削除しますか？'
         expect(page).to have_content '利用者情報を削除しました'
-      end.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1)
+      end.to change { Guest.count }.by(-1).and change { Bath.count }.by(-1).and change { Drink.count }.by(-1).and change { Food.count }.by(-1)
       # トップページに戻ることを確認する
       expect(current_path).to eq root_path
       # トップページには利用者１の内容が存在しないことを確認する
@@ -314,8 +329,7 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       # 詳細ページに登録済みの画像が表示されていることを確認する
       expect(page).to have_selector "img[src$='test_man.jpg']"
       # 詳細ページに登録した内容が表示されていることを確認する
-      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.last_name.to_s).and have_content(@guest1.first_name_kana.to_s).and have_content(@guest1.last_name_kana.to_s).and have_content(@guest1.visit1.name.to_s).and have_content(@guest1.visit2.name.to_s).and have_content(@guest1.adl.name.to_s).and have_content(@guest1.description.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.bath.infection.name.to_s).and have_content(@guest1.bath.timing.name.to_s)
-        .and have_content(@guest1.bath.remark_bath.to_s).and have_content(@guest1.drink.drink_type.name.to_s).and have_content(@guest1.drink.thickness.name.to_s).and have_content(@guest1.drink.warm ? '温める' : '温めない').and have_content(@guest1.drink.diabetes ? '有り' : '無し').and have_content(@guest1.drink.remark_drink.to_s)
+      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.last_name.to_s).and have_content(@guest1.first_name_kana.to_s).and have_content(@guest1.last_name_kana.to_s).and have_content(@guest1.visit1.name.to_s).and have_content(@guest1.visit2.name.to_s).and have_content(@guest1.adl.name.to_s).and have_content(@guest1.description.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.bath.infection.name.to_s).and have_content(@guest1.bath.timing.name.to_s).and have_content(@guest1.bath.remark_bath.to_s).and have_content(@guest1.drink.drink_type.name.to_s).and have_content(@guest1.drink.thickness.name.to_s).and have_content(@guest1.drink.warm ? '温める' : '温めない').and have_content(@guest1.drink.diabetes ? 'あり' : 'なし').and have_content(@guest1.drink.remark_drink.to_s).and have_content(@guest1.food.staple_type.name.to_s).and have_content(@guest1.food.staple_amount.name.to_s).and have_content(@guest1.food.main_dish_type.name.to_s).and have_content(@guest1.food.main_dish_amount.name.to_s).and have_content(@guest1.food.side_dish_type.name.to_s).and have_content(@guest1.food.side_dish_amount.name.to_s).and have_content(@guest1.food.banned_food).and have_content(@guest1.food.low_salt ? 'あり' : 'なし').and have_content(@guest1.food.soup_thick ? 'あり' : 'なし').and have_content(@guest1.food.denture.name.to_s).and have_content(@guest1.food.remark_food.to_s)
       # 利用者１の「コメント」ボタンがあることを確認する
       expect(page).to have_content 'コメントをする'
       # コメントボタンをクリックする
@@ -420,27 +434,35 @@ RSpec.describe '利用者情報の一覧表示機能', type: :system do
     @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) # 月曜日利用者
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
+    @food1 = FactoryBot.create(:food, guest_id: @guest1.id)
     @guest2 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 2, visit2_id: 0) # 火曜日利用者
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
+    @food2 = FactoryBot.create(:food, guest_id: @guest2.id)
     @guest3 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 3, visit2_id: 0) # 水曜日利用者
     @bath3 = FactoryBot.create(:bath, guest_id: @guest3.id)
     @drink3 = FactoryBot.create(:drink, guest_id: @guest3.id)
+    @food3 = FactoryBot.create(:food, guest_id: @guest3.id)
     @guest4 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 4, visit2_id: 0) # 木曜日利用者
     @bath4 = FactoryBot.create(:bath, guest_id: @guest4.id)
     @drink4 = FactoryBot.create(:drink, guest_id: @guest4.id)
+    @food4 = FactoryBot.create(:food, guest_id: @guest4.id)
     @guest5 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 5, visit2_id: 0) # 金曜日利用者
     @bath5 = FactoryBot.create(:bath, guest_id: @guest5.id)
     @drink5 = FactoryBot.create(:drink, guest_id: @guest5.id)
+    @food5 = FactoryBot.create(:food, guest_id: @guest5.id)
     @guest6 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 6, visit2_id: 0) # 土曜日利用者
     @bath6 = FactoryBot.create(:bath, guest_id: @guest6.id)
     @drink6 = FactoryBot.create(:drink, guest_id: @guest6.id)
+    @food6 = FactoryBot.create(:food, guest_id: @guest6.id)
     @guest7 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 7, visit2_id: 0) # 日曜日利用者
     @bath7 = FactoryBot.create(:bath, guest_id: @guest7.id)
     @drink7 = FactoryBot.create(:drink, guest_id: @guest7.id)
+    @food7 = FactoryBot.create(:food, guest_id: @guest7.id)
     @guest8 = FactoryBot.create(:guest) # 別ユーザーが登録した利用者
     @bath8 = FactoryBot.create(:bath, guest_id: @guest8.id)
     @drink8 = FactoryBot.create(:drink, guest_id: @guest8.id)
+    @food8 = FactoryBot.create(:food, guest_id: @guest8.id)
   end
 
   context '利用者情報が一覧表示される時' do
@@ -550,12 +572,15 @@ RSpec.describe '利用者の詳細検索機能', type: :system do
     @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 2, visit2_id: 0) # 火曜日利用者
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
+    @food1 = FactoryBot.create(:food, guest_id: @guest1.id)
     @guest2 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) # 月曜日利用者
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
+    @food2 = FactoryBot.create(:food, guest_id: @guest2.id)
     @guest3 = FactoryBot.create(:guest) # 別ユーザーが登録した利用者
     @bath3 = FactoryBot.create(:bath, guest_id: @guest3.id)
     @drink3 = FactoryBot.create(:drink, guest_id: @guest3.id)
+    @food3 = FactoryBot.create(:food, guest_id: @guest3.id)
   end
 
   context '利用者の詳細検索ができるとき' do
@@ -603,12 +628,15 @@ RSpec.describe '利用者のソート機能', type: :system do
     @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 2, visit2_id: 0) # 火曜日利用者
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
+    @food1 = FactoryBot.create(:food, guest_id: @guest1.id)
     @guest2 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) # 月曜日利用者
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
+    @food2 = FactoryBot.create(:food, guest_id: @guest2.id)
     @guest3 = FactoryBot.create(:guest) # 別ユーザーが登録した利用者
     @bath3 = FactoryBot.create(:bath, guest_id: @guest3.id)
     @drink3 = FactoryBot.create(:drink, guest_id: @guest3.id)
+    @food3 = FactoryBot.create(:food, guest_id: @guest3.id)
   end
 
   context '利用者のソートができるとき' do

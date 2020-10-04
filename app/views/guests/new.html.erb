@@ -152,7 +152,7 @@
         <%= f.collection_select(:main_dish_amount_id, MainDishAmount.all, :id, :name, {selected: 2}, {class:"form-control", id:"main-dish-amount-id"}) %>
       </div>
       <div class="form-group col-sm-2">
-        <label for="side-dish-id">副菜の形態<span class="text-danger pl-3">必須</span></label>
+        <label for="side-dish-type-id">副菜の形態<span class="text-danger pl-3">必須</span></label>
         <%= f.collection_select(:side_dish_type_id, SideDishType.all, :id, :name, {}, {class:"form-control", id:"side-dish-type-id"}) %>
       </div>
       <div class="form-group col-sm-2">
