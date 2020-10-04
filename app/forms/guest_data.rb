@@ -274,7 +274,7 @@ class GuestData
       change_logs << "禁止食材:#{comparison_old.banned_food}→#{comparison_new.banned_food}"
     end
     if comparison_old.low_salt != comparison_new.low_salt
-      change_logs << "塩分制限:#{comparison_old.low_salt ? '減塩食' : '制限なし'}→#{comparison_new.low_salt ? '減塩食' : '制限なし'}"
+      change_logs << "塩分制限:#{comparison_old.low_salt ? 'あり' : 'なし'}→#{comparison_new.low_salt ? 'あり' : 'なし'}"
     end
     if comparison_old.soup_thick != comparison_new.soup_thick
       change_logs << "汁物のとろみ:#{comparison_old.soup_thick ? 'あり' : 'なし'}→#{comparison_new.soup_thick ? 'あり' : 'なし'}"

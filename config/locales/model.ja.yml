@@ -21,11 +21,24 @@ ja:
        thickness_id: とろみの量
        warm: 温めるか
        diabetes: 糖尿病
+       remark_drink: 水分提供の備考
       comment:
        text: コメント
       history:
        log: 更新する内容
        log_type_id: 更新する理由
+      food:
+       staple_type_id: 主食の形態
+       staple_amount_id: 主食の量
+       main_dish_type_id: 主菜の形態
+       main_dish_amount_id: 主菜の量
+       side_dish_type_id: 副菜の形態
+       side_dish_amount_id: 副菜の量
+       banned_food: 禁止食材
+       low_salt: 塩分制限
+       soup_thick: 汁物のとろみ
+       denture_id: 義歯
+       remark_food: 食事提供の備考
   activemodel:
     attributes:
       guest_data:
@@ -49,3 +62,14 @@ ja:
         text: コメント
         log: 更新する内容
         log_type_id: 更新する理由
+        staple_type_id: 主食の形態
+        staple_amount_id: 主食の量
+        main_dish_type_id: 主菜の形態
+        main_dish_amount_id: 主菜の量
+        side_dish_type_id: 副菜の形態
+        side_dish_amount_id: 副菜の量
+        banned_food: 禁止食材
+        low_salt: 塩分制限
+        soup_thick: 汁物のとろみ
+        denture_id: 義歯
+        remark_food: 食事提供の備考
