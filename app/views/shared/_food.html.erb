@@ -1,0 +1,14 @@
+<tr class="guest-no-<%= guest.id %>" data-href="<%= edit_guest_path(guest.id, food_day: edit_jump(params[:id])) %>" >
+  <th scope="col"><%= "#{guest.first_name} #{guest.last_name}" %></th>
+  <th scope="col"><%= guest.food.staple_type.name %></th>
+  <th scope="col"><%= guest.food.staple_amount.name %></th>
+  <th scope="col"><%= guest.food.main_dish_type.name %></th>
+  <th scope="col"><%= guest.food.main_dish_amount.name %></th>
+  <th scope="col"><%= guest.food.side_dish_type.name %></th>
+  <th scope="col"><%= guest.food.side_dish_amount.name %></th>
+  <th scope="col"><%= guest.food.banned_food %></th>
+  <th scope="col" class="text-center"><%= guest.food.low_salt ? "●" : "" %></th>
+  <th scope="col" class="text-center"><%= guest.food.soup_thick ? "●" : "" %></th>
+  <th scope="col"><%= guest.food.denture.name %></th>
+  <th scope="col"><%= guest.food.remark_food %></th>
+</tr>
