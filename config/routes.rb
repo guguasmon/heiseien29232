@@ -11,19 +11,19 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :baths, only: [:index, :edit, :update] do
+  resources :baths, only: [:index] do
     member do
       get 'search'
     end
   end
 
-  resources :drinks, only: [:index, :edit, :update] do
+  resources :drinks, only: [:index] do
     member do
       get 'search'
     end
   end
 
-  resources :foods, only: [:index, :edit, :update] do
+  resources :foods, only: [:index] do
     member do
       get 'search'
     end

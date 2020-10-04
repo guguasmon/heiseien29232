@@ -1,8 +1,6 @@
 class BathsController < ApplicationController
-  before_action :set_guest, only: [:edit, :update]
   before_action :set_day_of_the_week, only: :search
   before_action :move_to_index
-  before_action :move_to_index_non_editor, only: :edit
 
   def index
     # user/男子/一般浴
@@ -48,75 +46,12 @@ class BathsController < ApplicationController
     render action: :index
   end
 
-  def edit
-    session[:bath_day] = params[:bath_day]
-    @guestdata = GuestData.new(
-      first_name: @guest.first_name,
-      last_name: @guest.last_name,
-      first_name_kana: @guest.first_name_kana,
-      last_name_kana: @guest.last_name_kana,
-      gender_id: @guest.gender_id,
-      visit1_id: @guest.visit1_id,
-      visit2_id: @guest.visit2_id,
-      adl_id: @guest.adl_id,
-      description: @guest.description,
-      bathing_id: @guest.bath.bathing_id,
-      infection_id: @guest.bath.infection_id,
-      timing_id: @guest.bath.timing_id,
-      remark_bath: @guest.bath.remark_bath,
-      drink_type_id: @guest.drink.drink_type_id,
-      warm: @guest.drink.warm,
-      thickness_id: @guest.drink.thickness_id,
-      diabetes: @guest.drink.diabetes,
-      remark_drink: @guest.drink.remark_drink
-    )
-  end
-
-  def update
-    @guestdata = GuestData.new(guest_params)
-    if @guestdata.valid?
-      @guestdata.update
-      if guest_params[:image].present?
-        @guest.update(image: guest_params[:image]) if @guest.valid?
-      end
-      flash[:info] = '利用者情報を更新しました'
-        if session[:bath_day].present?
-          redirect_to search_bath_path(session[:bath_day])
-          session[:bath_day].clear
-        else
-          redirect_to action: :index
-        end
-    else
-      render action: :edit
-    end
-  end
 
   private
-
-  def set_guest
-    @guest = Guest.find(params[:id])
-  end
-
-  def guest_params
-    params.require(:guest_data).permit(
-      :first_name, :last_name, :first_name_kana, :last_name_kana, :gender_id, :visit1_id, :visit2_id, :description, :adl_id,
-      :bathing_id, :infection_id, :timing_id, :remark_bath,
-      :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink,
-      :log, :log_type_id,
-      :image
-    ).merge(id: params[:id], user_id: current_user.id)
-  end
 
   def move_to_index
     unless user_signed_in?
       flash[:warning] = 'ログインしたユーザーでないと利用が認められていません'
-      redirect_to root_path
-    end
-  end
-
-  def move_to_index_non_editor
-    unless current_user.id == @guest.user.id
-      flash[:warning] = '利用者情報を登録したユーザーでないと閲覧が認められていません'
       redirect_to root_path
     end
   end
