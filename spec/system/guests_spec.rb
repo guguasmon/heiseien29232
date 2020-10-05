@@ -584,7 +584,30 @@ RSpec.describe '利用者の詳細検索機能', type: :system do
   end
 
   context '利用者の詳細検索ができるとき' do
-    it 'ログインしたユーザーは登録した利用者の詳細検索ができる', js: true do
+    it 'ログインしたユーザーは利用者一覧で登録した利用者の詳細検索ができる', js: true do
+      # ログインする
+      sign_in(@user)
+      # ログインしたユーザーが登録した利用者の名前が全て表示されていることを確認する
+      expect(page).to have_content(@guest1.first_name)
+      expect(page).to have_content(@guest2.first_name)
+      # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest3.first_name)
+      # 「利用者の詳細検索をする」ボタンがあることを確認する
+      expect(page).to have_content '利用者の詳細検索をする'
+      # 詳細検索ボタンをクリックする
+      click_on '利用者の詳細検索をする'
+      # 利用者詳細検索フォームが表示されることを確認する
+      expect(page).to have_content '利用者詳細検索フォーム'
+      # 詳細検索フォームに情報を入力する
+      fill_in 'q[name_cont]', with: @guest1.first_name.to_s
+      # 利用者を検索するボタンをクリックする
+      find('input[name="commit"]').click
+      # 先ほど検索した利用者の情報が表示されていることを確認する
+      expect(page).to have_content(@guest1.first_name)
+      # それ以外の利用者の名前が表示されていないことを確認する
+      expect(page).to have_no_content(@guest2.first_name.to_s).and have_no_content(@guest3.first_name.to_s)
+    end
+    it 'ログインしたユーザーは詳細検索ページで登録した利用者の詳細検索ができる', js: true do
       # ログインする
       sign_in(@user)
       # 利用者新規登録ページへのリンクがあることを確認する
@@ -618,6 +641,8 @@ RSpec.describe '利用者の詳細検索機能', type: :system do
       visit root_path
       # 詳細検索ページへのリンクがない
       expect(page).to have_no_content('詳細検索')
+      # 詳細検索ページのボタンがない
+      expect(page).to have_no_content('利用者の詳細検索をする')
     end
   end
 end
