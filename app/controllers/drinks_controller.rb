@@ -19,6 +19,8 @@ class DrinksController < ApplicationController
     @milk_jelly_guests = SearchGuestsService.search_drink(current_user.id, 7)
     # お茶
     @tea_guests = SearchGuestsService.search_drink(current_user.id, 8)
+    @guests = Guest.includes(:user, :drink).where(users: { id: current_user.id })
+    @count = @guests.size
   end
 
   def search

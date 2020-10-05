@@ -15,6 +15,8 @@ class BathsController < ApplicationController
     @chair_males = SearchGuestsService.search_bath(current_user.id, 1, 3)
     # user/女子/チェアー浴
     @chair_females = SearchGuestsService.search_bath(current_user.id, 2, 3)
+    @guests = Guest.includes(:user, :bath).where(users: { id: current_user.id })
+    @count = @guests.size
   end
 
   def search
