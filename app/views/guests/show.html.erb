@@ -6,7 +6,6 @@
     <% if @guest.image.attached? %>
       <%= image_tag @guest.image.variant(resize_to_fit: [256, 256]), class: 'guest-image rounded img-thumbnail', alt: '顔写真' %>
     <% else %>
-      <%= image_tag '/assets/people.png', size: '256x256', class: 'guest-image rounded img-thumbnail', alt: '顔写真サンプル'  %>
     <% end %>
     </div>
     <table class="table table-bordered">
