@@ -309,6 +309,25 @@ VScode
 | guest                | references | null: false, foreign_key: true |
 
 - belongs_to :guest
+- has_many :forbids, through: :food_forbid_relations
+
+## food_forbid_relations テーブル
+
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| food                 | references | null: false, foreign_key: true |
+| forbid               | references | null: false, foreign_key: true |
+
+- belongs_to :food
+- belongs_to :forbid
+
+## forbids テーブル
+
+| Column      | Type    | Options                        |
+| ----------- | ------- | ------------------------------ |
+| forbid_food | string  | null:false, uniqueness: true   |
+
+- has_many :foods, through: :food_forbid_relations
 
 ## comments テーブル
 
