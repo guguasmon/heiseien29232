@@ -113,37 +113,37 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">主食の形態</th>
-          <th scope="col">主食の量</th>
           <th scope="col">主菜の形態</th>
-          <th scope="col">主菜の量</th>
           <th scope="col">副菜の形態</th>
-          <th scope="col">副菜の量</th>
+          <th scope="col" colspan="3">禁止食材</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td scope="col"><%= @guest.food.staple_type.name %></td>
-          <td scope="col"><%= @guest.food.staple_amount.name %></td>
           <td scope="col"><%= @guest.food.main_dish_type.name %></td>
-          <td scope="col"><%= @guest.food.main_dish_amount.name %></td>
           <td scope="col"><%= @guest.food.side_dish_type.name %></td>
-          <td scope="col"><%= @guest.food.side_dish_amount.name %></td>
+          <td scope="col" colspan="3"><%= @guest.food.banned_food %></td>
         </tr>
       </tbody>
       <thead class="thead-dark">
         <tr>
-          <th scope="col" colspan="3">禁止食材</th>
+          <th scope="col">主食の量</th>
+          <th scope="col">主菜の量</th>
+          <th scope="col">副菜の量</th>
+          <th scope="col">義歯</th>
           <th scope="col">汁物のとろみ</th>
           <th scope="col">塩分制限</th>
-          <th scope="col">義歯</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td scope="col" colspan="3"><%= @guest.food.banned_food %></td>
+          <td scope="col"><%= @guest.food.staple_amount.name %></td>
+          <td scope="col"><%= @guest.food.main_dish_amount.name %></td>
+          <td scope="col"><%= @guest.food.side_dish_amount.name %></td>
+          <td scope="col"><%= @guest.food.denture.name %></td>
           <td scope="col"><%= @guest.food.soup_thick ? "あり" : "なし" %></td>
           <td scope="col" ><%= @guest.food.low_salt ? "あり" : "なし" %></td>
-          <td scope="col"><%= @guest.food.denture.name %></td>
         </tr>
       </tbody>
       <thead class="thead-dark">
