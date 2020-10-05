@@ -88,7 +88,7 @@ RSpec.describe '食事提供表機能', type: :system do
       # 画像選択フォームに画像を添付する
       attach_file('guest_data[image]', image_path)
       # 選択した画像がブラウザに表示されていることを確認する
-      expect(page).to have_selector("img")
+      expect(page).to have_selector('img')
       # 登録済みの画像が表示されていないことを確認する
       expect(page).to have_no_selector "img[src$='test_man.jpg']"
       # 登録内容を編集する
@@ -104,9 +104,9 @@ RSpec.describe '食事提供表機能', type: :system do
       end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0).and change { Food.count }.by(0)
       # 食事提供表ページに戻ることを確認する
       expect(current_path).to eq foods_path
-      #先ほど変更した内容の利用者が表示されているかを確認する
+      # 先ほど変更した内容の利用者が表示されているかを確認する
       expect(page).to have_content("#{@guest1.first_name}編集済み")
-      expect(page).to have_content("#{@guest1.food.staple_type.name}")
+      expect(page).to have_content(@guest1.food.staple_type.name.to_s)
     end
     it 'ログインしたユーザーは食事提供表ページで自分が登録した利用者情報を曜日別に表示できる' do
       # 利用者を登録したユーザーでログインする

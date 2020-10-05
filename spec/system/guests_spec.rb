@@ -301,7 +301,7 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       # 詳細ページに登録済みの画像が表示されていることを確認する
       expect(page).to have_selector "img[src$='test_man.jpg']"
       # 詳細ページに登録した内容が表示されていることを確認する
-      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s)and have_content(@guest1.food.staple_type.name.to_s)
+      expect(page).to have_content(@guest1.first_name.to_s).and have_content(@guest1.bath.bathing.name.to_s).and have_content(@guest1.drink.drink_type.name.to_s) and have_content(@guest1.food.staple_type.name.to_s)
       # 利用者１の「削除」ボタンがあることを確認する
       expect(page).to have_link '削除', href: guest_path(@guest1.id)
       # 削除ボタンを一回押して確認ウィンドウを開く

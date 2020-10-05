@@ -102,7 +102,7 @@ RSpec.describe '入浴形態表機能', type: :system do
       # 画像選択フォームに画像を添付する
       attach_file('guest_data[image]', image_path)
       # 選択した画像がブラウザに表示されていることを確認する
-      expect(page).to have_selector("img")
+      expect(page).to have_selector('img')
       # 登録済みの画像が表示されていないことを確認する
       expect(page).to have_no_selector "img[src$='test_man.jpg']"
       # 登録内容を編集する

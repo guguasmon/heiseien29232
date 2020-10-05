@@ -8,7 +8,6 @@ class GuestData
                 :image,
                 :staple_type_id, :staple_amount_id, :main_dish_type_id, :main_dish_amount_id, :side_dish_type_id, :side_dish_amount_id, :banned_food, :low_salt, :soup_thick, :denture_id, :remark_food
 
-
   # # boolean型のチェックはpresence:trueが使えない
   validates :warm, inclusion: { in: [true, false] }
   validates :diabetes, inclusion: { in: [true, false] }
@@ -117,16 +116,16 @@ class GuestData
       thickness_id: guest.drink.thickness_id,
       diabetes: guest.drink.diabetes,
       remark_drink: guest.drink.remark_drink,
-      staple_type_id: guest.food.staple_type_id, 
-      staple_amount_id: guest.food.staple_amount_id, 
-      main_dish_type_id: guest.food.main_dish_type_id, 
-      main_dish_amount_id: guest.food.main_dish_amount_id, 
-      side_dish_type_id: guest.food.side_dish_type_id, 
-      side_dish_amount_id: guest.food.side_dish_amount_id, 
-      banned_food: guest.food.banned_food, 
-      low_salt: guest.food.low_salt, 
-      soup_thick: guest.food.soup_thick, 
-      denture_id: guest.food.denture_id, 
+      staple_type_id: guest.food.staple_type_id,
+      staple_amount_id: guest.food.staple_amount_id,
+      main_dish_type_id: guest.food.main_dish_type_id,
+      main_dish_amount_id: guest.food.main_dish_amount_id,
+      side_dish_type_id: guest.food.side_dish_type_id,
+      side_dish_amount_id: guest.food.side_dish_amount_id,
+      banned_food: guest.food.banned_food,
+      low_salt: guest.food.low_salt,
+      soup_thick: guest.food.soup_thick,
+      denture_id: guest.food.denture_id,
       remark_food: guest.food.remark_food
     )
 
@@ -164,16 +163,16 @@ class GuestData
       thickness_id: thickness_id.to_i,
       diabetes: diabetes,
       remark_drink: remark_drink,
-      staple_type_id: staple_type_id.to_i, 
-      staple_amount_id: staple_amount_id.to_i, 
-      main_dish_type_id: main_dish_type_id.to_i, 
-      main_dish_amount_id: main_dish_amount_id.to_i, 
-      side_dish_type_id: side_dish_type_id.to_i, 
-      side_dish_amount_id: side_dish_amount_id.to_i, 
-      banned_food: banned_food, 
-      low_salt: low_salt, 
-      soup_thick: soup_thick, 
-      denture_id: denture_id.to_i, 
+      staple_type_id: staple_type_id.to_i,
+      staple_amount_id: staple_amount_id.to_i,
+      main_dish_type_id: main_dish_type_id.to_i,
+      main_dish_amount_id: main_dish_amount_id.to_i,
+      side_dish_type_id: side_dish_type_id.to_i,
+      side_dish_amount_id: side_dish_amount_id.to_i,
+      banned_food: banned_food,
+      low_salt: low_salt,
+      soup_thick: soup_thick,
+      denture_id: denture_id.to_i,
       remark_food: remark_food
     )
 

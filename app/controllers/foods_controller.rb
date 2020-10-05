@@ -31,5 +31,4 @@ class FoodsController < ApplicationController
   def set_day_of_the_week
     @day = params[:id]
   end
-
 end

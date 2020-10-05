@@ -73,7 +73,7 @@ class GuestsController < ApplicationController
       low_salt: @guest.food.low_salt,
       soup_thick: @guest.food.soup_thick,
       denture_id: @guest.food.denture_id,
-      remark_food: @guest.food.remark_food,
+      remark_food: @guest.food.remark_food
     )
   end
 
@@ -86,24 +86,24 @@ class GuestsController < ApplicationController
       end
       flash[:info] = '利用者情報を更新しました'
       if session[:bath_day].present?
-        unless session[:bath_day] == "0"
-          redirect_to search_bath_path(session[:bath_day])
-        else
+        if session[:bath_day] == '0'
           redirect_to baths_path
+        else
+          redirect_to search_bath_path(session[:bath_day])
         end
         session[:bath_day].clear
       elsif session[:drink_day].present?
-        unless session[:drink_day] == "0"
-          redirect_to search_drink_path(session[:drink_day])
-        else
+        if session[:drink_day] == '0'
           redirect_to drinks_path
+        else
+          redirect_to search_drink_path(session[:drink_day])
         end
         session[:drink_day].clear
       elsif session[:food_day].present?
-        unless session[:food_day] == "0"
-          redirect_to search_food_path(session[:food_day])
-        else
+        if session[:food_day] == '0'
           redirect_to foods_path
+        else
+          redirect_to search_food_path(session[:food_day])
         end
         session[:food_day].clear
       else

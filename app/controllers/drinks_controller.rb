@@ -58,7 +58,6 @@ class DrinksController < ApplicationController
     render action: :index
   end
 
-
   private
 
   def move_to_index
