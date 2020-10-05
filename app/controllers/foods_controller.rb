@@ -3,7 +3,10 @@ class FoodsController < ApplicationController
   before_action :move_to_index
 
   def index
-    @guests = Guest.includes(:user, :food).where(users: { id: current_user.id })
+    # @guests = Guest.includes(:user, :food).where(users: { id: current_user.id })
+    @p = Guest.ransack(params[:q]) # 検索オブジェクトを生成
+    @p.user_id_eq = current_user.id # デフォルトでユーザーが管理する利用者のみを表示
+    @guests = @p.result.includes([:bath, :drink, :food])
     @count = @guests.size
   end
 

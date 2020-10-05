@@ -34,6 +34,10 @@ $(document).on('turbolinks:load', function(){
       $('#all').addClass('active');
       $('#day-of-the-week').text('検索結果');
     break;
+    case 'c':
+      $('#all').addClass('active');
+      $('#day-of-the-week').text('ソート');
+    break;
     default:
       $('#all').addClass('active');
     break;

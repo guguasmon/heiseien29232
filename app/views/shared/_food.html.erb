@@ -1,4 +1,4 @@
-<tr class="guest-no-<%= guest.id %>" data-href="<%= edit_guest_path(guest.id, food_day: edit_jump(params[:id])) %>" >
+<tr class="guest-no-<%= guest.id %>" data-href="<%= edit_guest_path(guest.id, food_day: edit_jump(get_url())) %>" >
   <td scope="col"><%= "#{guest.first_name} #{guest.last_name}" %></td>
   <td scope="col"><%= guest.food.staple_type.name %></td>
   <td scope="col"><%= guest.food.staple_amount.name %></td>
