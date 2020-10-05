@@ -9,7 +9,9 @@ class Food < ApplicationRecord
   belongs_to_active_hash :denture
 
   belongs_to :guest
-
+  has_many :food_forbid_relations
+  has_many :forbids, through: :food_forbid_relations
+  
   # boolean型のチェック
   validates :low_salt,   inclusion: { in: [true, false] }
   validates :soup_thick, inclusion: { in: [true, false] }
