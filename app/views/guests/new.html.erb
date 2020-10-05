@@ -66,6 +66,7 @@
       </div>
     </div>
     <%# /guestテーブルの情報入力 %>
+
     <%# bathsテーブルの情報入力 %>
     <div class="row">
       <div class="col">
@@ -126,6 +127,64 @@
       </div>
     </div>
     <%# /drinksテーブルの情報入力 %>
+
+    <%# foodsテーブルの情報入力 %>
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center m-3">食事情報登録画面</h1>
+      </div>
+    </div>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-2">
+        <label for="staple-type-id">主食の形態<span class="text-danger pl-3">必須</span></label>
+        <%= f.collection_select(:staple_type_id, StapleType.all, :id, :name, {}, {class:"form-control", id:"staple-type-id"}) %>
+      </div>
+      <div class="form-group col-sm-2">
+        <label for="staple-amount-id">主食の量</label>
+        <%= f.collection_select(:staple_amount_id, StapleAmount.all, :id, :name, {selected: 2}, {class:"form-control", id:"staple-amount-id"}) %>
+      </div>
+      <div class="form-group col-sm-2">
+        <label for="main-dish-type-id">主菜の形態<span class="text-danger pl-3">必須</span></label>
+        <%= f.collection_select(:main_dish_type_id, MainDishType.all, :id, :name, {}, {class:"form-control", id:"main-dish-type-id"}) %>
+      </div>
+      <div class="form-group col-sm-2">
+        <label for="main-dish-amount-id">主菜の量</label>
+        <%= f.collection_select(:main_dish_amount_id, MainDishAmount.all, :id, :name, {selected: 2}, {class:"form-control", id:"main-dish-amount-id"}) %>
+      </div>
+      <div class="form-group col-sm-2">
+        <label for="side-dish-type-id">副菜の形態<span class="text-danger pl-3">必須</span></label>
+        <%= f.collection_select(:side_dish_type_id, SideDishType.all, :id, :name, {}, {class:"form-control", id:"side-dish-type-id"}) %>
+      </div>
+      <div class="form-group col-sm-2">
+        <label for="side-dish-amount-id">副菜の量</label>
+        <%= f.collection_select(:side_dish_amount_id, SideDishAmount.all, :id, :name, {selected: 2}, {class:"form-control", id:"side-dish-amount-id"}) %>
+      </div>
+    </div>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-3">
+        <label for="banned-food">禁止食材</label>
+        <%= f.text_field :banned_food, class:"form-control", id:"banned-food", placeholder:"例）納豆"  %>
+      </div>
+      <div class="form-group col-sm-3 form-check px-5">
+        <label for="denture-id">義歯<span class="text-danger pl-3">必須</span></label>
+        <%= f.collection_select(:denture_id, Denture.all, :id, :name, {}, {class:"form-control", id:"denture-id"}) %>
+      </div>
+      <div class="form-group col-sm-3 form-check px-5">
+        <%= f.check_box :soup_thick ,{ class: "form-check-input", id: "soup-thick", style: "transform:scale(2.0);" }, "true", "false" %>
+        <label class="form-check-label pl-2" for="soup-thick">汁物のとろみ</label>
+      </div>
+      <div class="form-group col-sm-3 form-check px-5">
+        <%= f.check_box :low_salt ,{ class: "form-check-input", id: "low-salt", style: "transform:scale(2.0);" }, "true", "false" %>
+        <label class="form-check-label pl-2" for="low-salt">塩分制限</label>
+      </div>
+    </div>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-12">
+        <label for="remark-food">食事提供の備考</label>
+        <%= f.text_field :remark_food, class:"form-control", id:"remark-food", placeholder:"例）早食い傾向あり（20文字まで）"  %>
+      </div>
+    </div>
+    <%# /foodsテーブルの情報入力 %>
 
     <%# historiesテーブルの情報入力 %>
     <div class="form-row my-3">

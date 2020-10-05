@@ -8,6 +8,7 @@ class Drink < ApplicationRecord
   # # boolean型のチェック
   validates :warm, inclusion: { in: [true, false] }
   validates :diabetes, inclusion: { in: [true, false] }
+  # 文字数のチェック
   validates :remark_drink, length: { maximum: 20 }
 
   with_options presence: true do

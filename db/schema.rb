@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_054412) do
+ActiveRecord::Schema.define(version: 2020_10_03_110244) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,24 @@ ActiveRecord::Schema.define(version: 2020_10_01_054412) do
     t.index ["guest_id"], name: "index_drinks_on_guest_id"
   end
 
+  create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "staple_type_id", null: false
+    t.integer "staple_amount_id", null: false
+    t.integer "main_dish_type_id", null: false
+    t.integer "main_dish_amount_id", null: false
+    t.integer "side_dish_type_id", null: false
+    t.integer "side_dish_amount_id", null: false
+    t.string "banned_food"
+    t.boolean "low_salt", default: false, null: false
+    t.boolean "soup_thick", default: false, null: false
+    t.integer "denture_id", null: false
+    t.string "remark_food"
+    t.bigint "guest_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["guest_id"], name: "index_foods_on_guest_id"
+  end
+
   create_table "guests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -109,6 +127,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_054412) do
   add_foreign_key "comments", "guests"
   add_foreign_key "comments", "users"
   add_foreign_key "drinks", "guests"
+  add_foreign_key "foods", "guests"
   add_foreign_key "guests", "users"
   add_foreign_key "histories", "guests"
 end

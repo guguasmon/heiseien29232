@@ -11,10 +11,11 @@ class Guest < ApplicationRecord
   has_many   :histories, dependent: :destroy
   has_one    :bath, dependent: :destroy
   has_one    :drink, dependent: :destroy
+  has_one    :food, dependent: :destroy
 
   # name,remarksというエイリアスをつける
   ransack_alias :name, :first_name_or_last_name_or_first_name_kana_or_last_name_kana
-  ransack_alias :remarks, :description_or_bath_remark_bath_or_drink_remark_drink
+  ransack_alias :remarks, :description_or_bath_remark_bath_or_drink_remark_drink_or_food_remark_food
 
   validates :description, length: { maximum: 1000 }
   with_options presence: true do

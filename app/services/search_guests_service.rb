@@ -18,4 +18,9 @@ class SearchGuestsService
   def self.search_drink_day(user, drink_type, day)
     Guest.joins(:user, :drink).where(visit1_id: day).or(Guest.joins(:user, :drink).where(visit2_id: day)).where(users: { id: user }).where(drinks: { drink_type_id: drink_type })
   end
+
+  # 食事提供表利用者
+  def self.search_food_day(user, day)
+    Guest.joins(:user, :food).where(visit1_id: day).or(Guest.joins(:user, :food).where(visit2_id: day)).where(users: { id: user })
+  end
 end

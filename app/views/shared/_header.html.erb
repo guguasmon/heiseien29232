@@ -48,6 +48,11 @@
             <% end %>
           </li>
           <li class="nav-item">
+            <%= link_to foods_path, class: "btn btn-outline-dark nav-link", id: "food-index", role: "button" do %>
+            <i class="fas fa-utensils"></i>食事提供表
+            <% end %>
+          </li>
+          <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-dark nav-link", role: "button" do %>
             <i class="fas fa-sign-out-alt"></i>ログアウト
             <% end %>

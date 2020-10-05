@@ -85,10 +85,58 @@
             </div>
           </div>
           <%# /drinkテーブルの検索情報入力 %>
+          <%# foodテーブルの検索情報入力 %>
+          <div class="form-row">
+            <div class="form-group col-lg-4">
+              <label for="staple-type-id">主食の形態</label>
+              <%= f.collection_select(:food_staple_type_id_eq, StapleType.where(id: 1..6), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"staple-type-id"}) %>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="main-dish-type-id">主菜の形態</label>
+              <%= f.collection_select(:food_main_dish_type_id_eq, MainDishType.where(id: 1..4), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"main-dish-type-id"}) %>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="side-dish-type-id">副菜の形態</label>
+              <%= f.collection_select(:food_side_dish_type_id_eq, SideDishType.where(id: 1..4), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"side-dish-type-id"}) %>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-4">
+              <label for="staple-amount-id">主食の量</label>
+              <%= f.collection_select(:food_staple_amount_id_eq, StapleAmount.where(id: 1..3), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"staple-amount-id"}) %>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="main-dish-amount-id">主菜の量</label>
+              <%= f.collection_select(:food_main_dish_amount_id_eq, MainDishAmount.where(id: 1..3), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"main-dish-amount-id"}) %>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="side-dish-amount-id">副菜の量</label>
+              <%= f.collection_select(:food_side_dish_amount_id_eq, SideDishAmount.where(id: 1..3), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"side-dish-amount-id"}) %>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-3">
+              <label for="banned-food">禁止食材</label>
+              <%= f.search_field :food_banned_food_cont, class:"form-control", id:"banned-food" %>
+            </div>
+            <div class="form-group col-lg-3">
+              <label for="denture-id">義歯</label>
+              <%= f.collection_select(:food_denture_id_eq, Denture.where(id: 1..5), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"denture-id"}) %>
+            </div>
+            <div class="form-group col-lg-3 form-check">
+              <%= f.check_box :food_low_salt_eq ,{ class: "form-check-input ml-3", id: "low-salt", style: "transform:scale(2.0);" },checked_value = "true", unchecked_value = ""  %>
+              <label class="form-check-label pl-5" for="low-salt">塩分制限</label>
+            </div>
+            <div class="form-group col-lg-3 form-check">
+              <%= f.check_box :food_soup_thick_eq ,{ class: "form-check-input ml-3", id: "soup-thick", style: "transform:scale(2.0);" },checked_value = "true", unchecked_value = ""  %>
+              <label class="form-check-label pl-5" for="soup-thick">汁物のとろみ</label>
+            </div>
+          </div>
+          <%# /foodテーブルの検索情報入力 %>
           <%# 入力検索 %>
           <div class="form-row">
             <div class="form-group col-lg-12">
-              <label for="description">利用者の備考(詳細/入浴/水分)</label>
+              <label for="description">利用者の備考(詳細/入浴/水分/食事)</label>
               <%= f.search_field :remarks_cont, class:"form-control", id:"description"  %>
             </div>
           </div>
@@ -125,7 +173,7 @@
   </div>
   <%# テーブル表示 %>
   <div class="container-fluid">
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover  table-clickable">
       <caption>利用者一覧</caption>
       <thead class="thead-dark">
         <tr>
@@ -144,7 +192,15 @@
           <th scope="col"><%= sort_link(@p, :drink_warm) %></th>
           <th scope="col"><%= sort_link(@p, :drink_diabetes) %></th>
           <th scope="col"><%= sort_link(@p, :drink_remark_drink, "水分の備考") %></th>
-          <th scope="col" class="print">詳細/編集/削除</th>
+          <th scope="col"><%= sort_link(@p, :food_staple_type_id, "主食の形態") %></th>
+          <th scope="col"><%= sort_link(@p, :food_main_dish_type_id, "主菜の形態") %></th>
+          <th scope="col"><%= sort_link(@p, :food_side_dish_type_id, "副菜の形態") %></th>
+          <th scope="col"><%= sort_link(@p, :food_banned_food, "禁止食材") %></th>
+          <th scope="col"><%= sort_link(@p, :food_denture_id, "義歯") %></th>
+          <th scope="col"><%= sort_link(@p, :food_low_salt, "塩分制限") %></th>
+          <th scope="col"><%= sort_link(@p, :food_soup_thick, "汁物のとろみ") %></th>
+          <th scope="col"><%= sort_link(@p, :food_remark_food, "食事の備考") %></th>
+
         </tr>
       </thead>
       <tbody>

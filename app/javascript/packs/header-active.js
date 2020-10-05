@@ -13,6 +13,9 @@ $(document).on('turbolinks:load', function(){
     case x.includes('drinks'):
       $('#drink-index').addClass('active');
     break;
+    case x.includes('foods'):
+      $('#food-index').addClass('active');
+    break;
     default:
       $('#guest-index').addClass('active');
     break;

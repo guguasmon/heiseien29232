@@ -1,35 +1,44 @@
 require 'rails_helper'
 
-RSpec.describe 'Drinks', type: :system do
+RSpec.describe '水分提供表機能', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) # 牛乳 月曜
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id, drink_type_id: 1)
+    @food1 = FactoryBot.create(:food, guest_id: @guest1.id)
     @guest2 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 2, visit2_id: 0) # コーヒー牛乳 火曜
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id, drink_type_id: 2)
+    @food2 = FactoryBot.create(:food, guest_id: @guest2.id)
     @guest3 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 3, visit2_id: 0) # ヤクルト 水曜
     @bath3 = FactoryBot.create(:bath, guest_id: @guest3.id)
     @drink3 = FactoryBot.create(:drink, guest_id: @guest3.id, drink_type_id: 3)
+    @food3 = FactoryBot.create(:food, guest_id: @guest3.id)
     @guest4 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 4, visit2_id: 0) # ジュース 木曜
     @bath4 = FactoryBot.create(:bath, guest_id: @guest4.id)
     @drink4 = FactoryBot.create(:drink, guest_id: @guest4.id, drink_type_id: 4)
+    @food4 = FactoryBot.create(:food, guest_id: @guest4.id)
     @guest5 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 5, visit2_id: 0) # プリン 金曜
     @bath5 = FactoryBot.create(:bath, guest_id: @guest5.id)
     @drink5 = FactoryBot.create(:drink, guest_id: @guest5.id, drink_type_id: 5)
+    @food5 = FactoryBot.create(:food, guest_id: @guest5.id)
     @guest6 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 6, visit2_id: 0) # ヨーグルト 土曜
     @bath6 = FactoryBot.create(:bath, guest_id: @guest6.id)
     @drink6 = FactoryBot.create(:drink, guest_id: @guest6.id, drink_type_id: 6)
+    @food6 = FactoryBot.create(:food, guest_id: @guest6.id)
     @guest7 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 7, visit2_id: 0) # 牛乳ゼリー 日曜
     @bath7 = FactoryBot.create(:bath, guest_id: @guest7.id)
     @drink7 = FactoryBot.create(:drink, guest_id: @guest7.id, drink_type_id: 7)
+    @food7 = FactoryBot.create(:food, guest_id: @guest7.id)
     @guest8 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 7, visit2_id: 0) # お茶 日曜
     @bath8 = FactoryBot.create(:bath, guest_id: @guest8.id)
     @drink8 = FactoryBot.create(:drink, guest_id: @guest8.id, drink_type_id: 8)
+    @food8 = FactoryBot.create(:food, guest_id: @guest8.id)
     @guest9 = FactoryBot.create(:guest) # 別ユーザーが登録した利用者
     @bath9 = FactoryBot.create(:bath, guest_id: @guest9.id)
     @drink9 = FactoryBot.create(:drink, guest_id: @guest9.id)
+    @food9 = FactoryBot.create(:food, guest_id: @guest9.id)
   end
   context '水分提供表の閲覧ができるとき' do
     it 'ログインしたユーザーは自分が登録した利用者の水分提供表ページが閲覧できる' do
@@ -103,7 +112,7 @@ RSpec.describe 'Drinks', type: :system do
       # 画像選択フォームに画像を添付する
       attach_file('guest_data[image]', image_path)
       # 選択した画像がブラウザに表示されていることを確認する
-      expect(page).to have_selector("img")
+      expect(page).to have_selector('img')
       # 登録済みの画像が表示されていないことを確認する
       expect(page).to have_no_selector "img[src$='test_man.jpg']"
       # 登録内容を編集する
@@ -111,11 +120,12 @@ RSpec.describe 'Drinks', type: :system do
       fill_in 'guest_data[last_name]', with: "#{@guest1.last_name}編集済み"
       select 'チェアー浴', from: '入浴形態'
       select 'コーヒー牛乳', from: '飲み物の種類'
+      select 'ペースト', from: '主食の形態'
       select '本人の希望', from: '更新の理由'
-      # 編集してもGuestモデル/Bathモデル/Drinkモデルのカウントは変わらないことを確認する
+      # 編集してもGuestモデル/Bathモデル/Drinkモデル/Foodモデルのカウントは変わらないことを確認する
       expect do
         find('input[name="commit"]').click
-      end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0)
+      end.to change { Guest.count }.by(0).and change { Bath.count }.by(0).and change { Drink.count }.by(0).and change { Food.count }.by(0)
       # 水分提供表ページに戻ることを確認する
       expect(current_path).to eq drinks_path
       # テーブル要素を取得する
