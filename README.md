@@ -118,6 +118,7 @@ Web URL:https://heiseien29232.herokuapp.com/<br>
 ![詳細検索ページ](app/assets/images/search.gif)
 
 詳細検索ページです。<br>
+ここでは登録した利用者の情報が表に全て表示されます。<br>
 詳細検索フォームで条件を指定し検索することで、条件にあった利用者を表示することができます。<br>
 
 ## 入浴形態表ページ
