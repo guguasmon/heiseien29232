@@ -30,6 +30,10 @@ $(document).on('turbolinks:load', function(){
       $('#sunday').addClass('active');
       $('#day-of-the-week').text('日曜日');
     break;
+    case 'B':
+      $('#all').addClass('active');
+      $('#day-of-the-week').text('検索結果');
+    break;
     default:
       $('#all').addClass('active');
     break;
