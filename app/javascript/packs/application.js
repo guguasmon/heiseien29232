@@ -11,7 +11,6 @@ require("./table-show.js")
 require("./header-active.js")
 require("./print.js")
 require('./preview')
-require('./tag-it.js')
 
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all'
