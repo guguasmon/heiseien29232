@@ -185,24 +185,24 @@
           <th scope="col"><%= sort_link(@p, :visit1_id, "利用日１") %></th>
           <th scope="col"><%= sort_link(@p, :visit2_id, "利用日２") %></th>
           <th scope="col"><%= sort_link(@p, :adl_id) %></th>
-          <th scope="col"><%= sort_link(@p, :description) %></th>
+
           <th scope="col"><%= sort_link(@p, :bath_bathing_id) %></th>
           <th scope="col"><%= sort_link(@p, :bath_infection_id, "感染症") %></th>
-          <th scope="col"><%= sort_link(@p, :bath_timing_id) %></th>
-          <th scope="col"><%= sort_link(@p, :bath_remark_bath) %></th>
-          <th scope="col"><%= sort_link(@p, :drink_drink_type_id) %></th>
+          <th scope="col"><%= sort_link(@p, :bath_timing_id, "順番") %></th>
+
+          <th scope="col"><%= sort_link(@p, :drink_drink_type_id, "飲み物") %></th>
           <th scope="col"><%= sort_link(@p, :drink_thickness_id, "とろみ")%></th>
-          <th scope="col"><%= sort_link(@p, :drink_warm) %></th>
-          <th scope="col"><%= sort_link(@p, :drink_diabetes) %></th>
-          <th scope="col"><%= sort_link(@p, :drink_remark_drink, "水分の備考") %></th>
-          <th scope="col"><%= sort_link(@p, :food_staple_type_id, "主食の形態") %></th>
-          <th scope="col"><%= sort_link(@p, :food_main_dish_type_id, "主菜の形態") %></th>
-          <th scope="col"><%= sort_link(@p, :food_side_dish_type_id, "副菜の形態") %></th>
+          <th scope="col"><%= sort_link(@p, :drink_warm, "温") %></th>
+          <th scope="col"><%= sort_link(@p, :drink_diabetes, "DM") %></th>
+
+          <th scope="col"><%= sort_link(@p, :food_staple_type_id, "主食") %></th>
+          <th scope="col"><%= sort_link(@p, :food_main_dish_type_id, "主菜") %></th>
+          <th scope="col"><%= sort_link(@p, :food_side_dish_type_id, "副菜") %></th>
           <th scope="col"><%= sort_link(@p, :food_forbids_forbid_food, "禁止食材") %></th>
           <th scope="col"><%= sort_link(@p, :food_denture_id, "義歯") %></th>
           <th scope="col"><%= sort_link(@p, :food_low_salt, "塩分制限") %></th>
-          <th scope="col"><%= sort_link(@p, :food_soup_thick, "汁物のとろみ") %></th>
-          <th scope="col"><%= sort_link(@p, :food_remark_food, "食事の備考") %></th>
+          <th scope="col"><%= sort_link(@p, :food_soup_thick, "汁とろみ") %></th>
+
 
         </tr>
       </thead>

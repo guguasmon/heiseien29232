@@ -4,16 +4,16 @@
   <td scope="col"><%= guest.visit1.name %></td>
   <td scope="col"><%= guest.visit2.name %></td>
   <td scope="col"><%= guest.adl.name %></td>
-  <td scope="col"><span class="d-inline-block text-truncate" style="max-width: 150px;"><%= guest.description %></span></td>
+
   <td scope="col"><%= guest.bath.bathing.name %></td>
   <td scope="col"><%= guest.bath.infection.name %></td>
   <td scope="col"><%= guest.bath.timing.name %></td>
-  <td scope="col"><%= guest.bath.remark_bath %></td>
+
   <td scope="col"><%= guest.drink.drink_type.name %></td>
   <td scope="col"><%= guest.drink.thickness.name %></td>
   <td scope="col"><%= guest.drink.warm ? "●" : "" %></td>
   <td scope="col"><%= guest.drink.diabetes ? "●" : ""  %></td>
-  <td scope="col"><%= guest.drink.remark_drink %></td>
+
   <td scope="col"><%= guest.food.staple_type.name %></td>
   <td scope="col"><%= guest.food.main_dish_type.name %></td>
   <td scope="col"><%= guest.food.side_dish_type.name %></td>
@@ -23,5 +23,5 @@
   <td scope="col"><%= guest.food.denture.name %></td>
   <td scope="col" class="text-center"><%= guest.food.low_salt ? "●" : "" %></td>
   <td scope="col" class="text-center"><%= guest.food.soup_thick ? "●" : "" %></td>
-  <td scope="col"><%= guest.food.remark_food %></td>
+
 </tr>
