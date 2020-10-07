@@ -73,7 +73,8 @@ class GuestsController < ApplicationController
       low_salt: @guest.food.low_salt,
       soup_thick: @guest.food.soup_thick,
       denture_id: @guest.food.denture_id,
-      remark_food: @guest.food.remark_food
+      remark_food: @guest.food.remark_food,
+      forbid_list: @guest.food.forbids.pluck(:forbid_food).join(",")
     )
   end
 
@@ -134,7 +135,9 @@ class GuestsController < ApplicationController
       :log, :log_type_id,
       :image,
       :staple_type_id, :staple_amount_id, :main_dish_type_id, :main_dish_amount_id, :side_dish_type_id, :side_dish_amount_id,
-      :banned_food, :low_salt, :soup_thick, :denture_id, :remark_food
+      :banned_food, :low_salt, :soup_thick, :denture_id, :remark_food,
+      :forbid_food,
+      :forbid_list
     ).merge(id: params[:id], user_id: current_user.id)
   end
 

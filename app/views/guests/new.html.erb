@@ -186,6 +186,15 @@
     </div>
     <%# /foodsテーブルの情報入力 %>
 
+    <%# /forbidテーブルの情報入力 %>
+    <div class="form-row my-3">
+      <div class="form-group col-sm-12 forbid-foods">
+        <label for="forbid-food">禁止食材</label>
+        <%= f.text_field :forbid_list, class:"form-control", id:"forbid-food", data: {role: "tagsinput"} %>
+      </div>
+    </div>
+    <%# /forbidテーブルの情報入力 %>
+
     <%# historiesテーブルの情報入力 %>
     <div class="form-row my-3">
       <div class="form-group">
