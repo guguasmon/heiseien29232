@@ -39,23 +39,24 @@
       <caption>食事提供表</caption>
       <thead class="thead-dark">
         <tr>
-          <th scope="col"><%= sort_link(@p, :first_name_kana, "名前") %></th>
-          <th scope="col"><%= sort_link(@p, :food_staple_type_id, "主食の形態") %></th>
-          <th scope="col"><%= sort_link(@p, :food_staple_amount_id, "主食の量") %></th>
-          <th scope="col"><%= sort_link(@p, :food_main_dish_type_id, "主菜の形態") %></th>
-          <th scope="col"><%= sort_link(@p, :food_main_dish_amount_id, "主菜の量") %></th>
-          <th scope="col"><%= sort_link(@p, :food_side_dish_type_id, "副菜の形態") %></th>
-          <th scope="col"><%= sort_link(@p, :food_side_dish_amount_id, "副菜の量") %></th>
-          <th scope="col"><%= sort_link(@p, :food_banned_food, "禁止食材") %></th>
-          <th scope="col"><%= sort_link(@p, :food_denture_id, "義歯") %></th>
-          <th scope="col"><%= sort_link(@p, :food_low_salt, "塩分制限") %></th>
-          <th scope="col"><%= sort_link(@p, :food_soup_thick, "汁物のとろみ") %></th>
-          <th scope="col"><%= sort_link(@p, :food_remark_food, "食事の備考") %></th>
+          <th scope="col"><%= sort_link(@p, :guest_first_name_kana, "名前") %></th>
+          <th scope="col"><%= sort_link(@p, :staple_type_id, "主食の形態") %></th>
+          <th scope="col"><%= sort_link(@p, :staple_amount_id, "主食の量") %></th>
+          <th scope="col"><%= sort_link(@p, :main_dish_type_id, "主菜の形態") %></th>
+          <th scope="col"><%= sort_link(@p, :main_dish_amount_id, "主菜の量") %></th>
+          <th scope="col"><%= sort_link(@p, :side_dish_type_id, "副菜の形態") %></th>
+          <th scope="col"><%= sort_link(@p, :side_dish_amount_id, "副菜の量") %></th>
+          <th scope="col"><%= sort_link(@p, :banned_food, "禁止食材") %></th>
+          <th scope="col"><%= sort_link(@p, :denture_id, "義歯") %></th>
+          <th scope="col"><%= sort_link(@p, :low_salt, "塩分制限") %></th>
+          <th scope="col"><%= sort_link(@p, :soup_thick, "汁物のとろみ") %></th>
+          <th scope="col"><%= sort_link(@p, :remark_food, "食事の備考") %></th>
+          <th scope="col">禁止食材</th>
         </tr>
       </thead>
       <tbody>
-        <% @guests.each do |guest| %>
-          <%= render partial: "shared/food", locals: { guest: guest } %>
+        <% @foods.each do |food| %>
+          <%= render partial: "shared/food", locals: { food: food } %>
         <% end %>
       </tbody>
     </table>
