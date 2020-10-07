@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_094330) do
+ActiveRecord::Schema.define(version: 2020_10_07_144009) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 2020_10_05_094330) do
     t.integer "main_dish_amount_id", null: false
     t.integer "side_dish_type_id", null: false
     t.integer "side_dish_amount_id", null: false
-    t.string "banned_food"
     t.boolean "low_salt", default: false, null: false
     t.boolean "soup_thick", default: false, null: false
     t.integer "denture_id", null: false
