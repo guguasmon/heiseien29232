@@ -39,6 +39,9 @@ ja:
        soup_thick: 汁物のとろみ
        denture_id: 義歯
        remark_food: 食事提供の備考
+      forbid:
+       forbid_food: 禁止食材
+       forbid_list: 禁止食材
   activemodel:
     attributes:
       guest_data:
@@ -73,3 +76,5 @@ ja:
         soup_thick: 汁物のとろみ
         denture_id: 義歯
         remark_food: 食事提供の備考
+        forbid_food: 禁止食材
+        forbid_list: 禁止食材
