@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function () {
   const x = $(location).attr('pathname');
   switch (true) {
     case x.includes('/guests/new'):

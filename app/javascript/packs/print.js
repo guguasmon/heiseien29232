@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function () {
   const list = $('.nav-link')
   $('.printing').on('click', function(){
     list.addClass('print');
