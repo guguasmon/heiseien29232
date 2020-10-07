@@ -1,8 +1,8 @@
 <tr class="guest-no-<%= food.guest_id %>" data-href="<%= edit_guest_path(food.guest_id, food_day: edit_jump(get_url())) %>" >
   <td scope="col"><%= "#{food.guest.first_name} #{food.guest.last_name}" %></td>
-  <td scope="col"><%= food.staple_type.name %></td>
-  <td scope="col"><%= food.main_dish_type.name %></td>
-  <td scope="col"><%= food.side_dish_type.name %></td>
+  <td scope="col"><%= food.staple_type.name %>/<%= food.staple_amount.name %></td>
+  <td scope="col"><%= food.main_dish_type.name %>/<%= food.main_dish_amount.name %></td>
+  <td scope="col"><%= food.side_dish_type.name %>/<%= food.side_dish_amount.name %></td>
   <td scope="col"><% food.forbids.each do |x| %>
   <%= x.forbid_food %>
   <% end %></td>
