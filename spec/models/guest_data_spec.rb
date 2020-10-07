@@ -97,10 +97,6 @@ RSpec.describe GuestData, type: :model do
         @guestdata.side_dish_type_id = '1'
         expect(@guestdata).to be_valid
       end
-      it 'banned_foodが空でも登録できる' do
-        @guestdata.banned_food = ''
-        expect(@guestdata).to be_valid
-      end
       it 'remark_foodが空でも登録できる' do
         @guestdata.remark_food = ''
         expect(@guestdata).to be_valid
