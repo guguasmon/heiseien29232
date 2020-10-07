@@ -6,12 +6,11 @@
   <td scope="col"><%= food.main_dish_amount.name %></td>
   <td scope="col"><%= food.side_dish_type.name %></td>
   <td scope="col"><%= food.side_dish_amount.name %></td>
-  <td scope="col"><%= food.banned_food %></td>
+  <td scope="col"><% food.forbids.each do |x| %>
+  <%= x.forbid_food %>
+  <% end %></td>
   <td scope="col"><%= food.denture.name %></td>
   <td scope="col" class="text-center"><%= food.low_salt ? "●" : "" %></td>
   <td scope="col" class="text-center"><%= food.soup_thick ? "●" : "" %></td>
   <td scope="col"><%= food.remark_food %></td>
-  <td scope="col"><% food.forbids.each do |x| %>
-  <%= x.forbid_food %>
-  <% end %></td>
 </tr>

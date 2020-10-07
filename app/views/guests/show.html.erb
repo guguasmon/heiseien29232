@@ -122,7 +122,9 @@
           <td scope="col"><%= @guest.food.staple_type.name %></td>
           <td scope="col"><%= @guest.food.main_dish_type.name %></td>
           <td scope="col"><%= @guest.food.side_dish_type.name %></td>
-          <td scope="col" colspan="3"><%= @guest.food.banned_food %></td>
+          <td scope="col" colspan="3"><% @guest.food.forbids.each do |x| %>
+            <%= x.forbid_food %>
+          <% end %></td>
         </tr>
       </tbody>
       <thead class="thead-dark">
@@ -153,18 +155,6 @@
       <tbody>
         <tr>
           <td colspan="12"><%= @guest.food.remark_food %></td>
-        </tr>
-      </tbody>
-      <thead class="thead-dark">
-        <tr>
-          <th colspan="12">禁止食材タグ</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="12"><% @guest.food.forbids.each do |x| %>
-            <%= x.forbid_food %>
-          <% end %></td>
         </tr>
       </tbody>
     </table>
