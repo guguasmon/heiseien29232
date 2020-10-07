@@ -3,13 +3,13 @@
     <div class="container d-flex justify-content-center my-3">
       <div class="btn-group" role="group" aria-label="Day-of-the-week">
         <%= link_to '全表示', foods_path, class: "btn btn-outline-info nav-link", id: "all", role: "button" %>
-        <%= link_to '月曜日', foods_path(q: {g: {'1': {m: 'or', visit1_id_eq: 1, visit2_id_eq: 1}, '0': {user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "monday", role: "button" %>
-        <%= link_to '火曜日', foods_path(q: {g: {'1': {m: 'or', visit1_id_eq: 2, visit2_id_eq: 2}, '0': {user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "tuesday", role: "button" %>
-        <%= link_to '水曜日', foods_path(q: {g: {'1': {m: 'or', visit1_id_eq: 3, visit2_id_eq: 3}, '0': {user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "wednesday", role: "button" %>
-        <%= link_to '木曜日', foods_path(q: {g: {'1': {m: 'or', visit1_id_eq: 4, visit2_id_eq: 4}, '0': {user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "thursday", role: "button" %>
-        <%= link_to '金曜日', foods_path(q: {g: {'1': {m: 'or', visit1_id_eq: 5, visit2_id_eq: 5}, '0': {user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "friday", role: "button" %>
-        <%= link_to '土曜日', foods_path(q: {g: {'1': {m: 'or', visit1_id_eq: 6, visit2_id_eq: 6}, '0': {user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "saturday", role: "button" %>
-        <%= link_to '日曜日', foods_path(q: {g: {'1': {m: 'or', visit1_id_eq: 7, visit2_id_eq: 7}, '0': {user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "sunday", role: "button" %>
+        <%= link_to '月曜日', foods_path(q: {g: {'1': {m: 'or', guest_visit1_id_eq: 1, guest_visit2_id_eq: 1}, '0': {guest_user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "monday", role: "button" %>
+        <%= link_to '火曜日', foods_path(q: {g: {'1': {m: 'or', guest_visit1_id_eq: 2, guest_visit2_id_eq: 2}, '0': {guest_user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "tuesday", role: "button" %>
+        <%= link_to '水曜日', foods_path(q: {g: {'1': {m: 'or', guest_visit1_id_eq: 3, guest_visit2_id_eq: 3}, '0': {guest_user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "wednesday", role: "button" %>
+        <%= link_to '木曜日', foods_path(q: {g: {'1': {m: 'or', guest_visit1_id_eq: 4, guest_visit2_id_eq: 4}, '0': {guest_user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "thursday", role: "button" %>
+        <%= link_to '金曜日', foods_path(q: {g: {'1': {m: 'or', guest_visit1_id_eq: 5, guest_visit2_id_eq: 5}, '0': {guest_user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "friday", role: "button" %>
+        <%= link_to '土曜日', foods_path(q: {g: {'1': {m: 'or', guest_visit1_id_eq: 6, guest_visit2_id_eq: 6}, '0': {guest_user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "saturday", role: "button" %>
+        <%= link_to '日曜日', foods_path(q: {g: {'1': {m: 'or', guest_visit1_id_eq: 7, guest_visit2_id_eq: 7}, '0': {guest_user_id_eq: "#{current_user.id}"}}}), class: "btn btn-outline-info nav-link", id: "sunday", role: "button" %>
       </div>
     </div>
  <%# /曜日ボタン %>
@@ -46,12 +46,11 @@
           <th scope="col"><%= sort_link(@p, :main_dish_amount_id, "主菜の量") %></th>
           <th scope="col"><%= sort_link(@p, :side_dish_type_id, "副菜の形態") %></th>
           <th scope="col"><%= sort_link(@p, :side_dish_amount_id, "副菜の量") %></th>
-          <th scope="col"><%= sort_link(@p, :banned_food, "禁止食材") %></th>
+          <th scope="col"><%= sort_link(@p, :forbids_forbid_food, "禁止食材") %></th>
           <th scope="col"><%= sort_link(@p, :denture_id, "義歯") %></th>
           <th scope="col"><%= sort_link(@p, :low_salt, "塩分制限") %></th>
           <th scope="col"><%= sort_link(@p, :soup_thick, "汁物のとろみ") %></th>
           <th scope="col"><%= sort_link(@p, :remark_food, "食事の備考") %></th>
-          <th scope="col">禁止食材</th>
         </tr>
       </thead>
       <tbody>
