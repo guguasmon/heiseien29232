@@ -23,10 +23,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :foods, only: [:index] do
-    member do
-      get 'search'
-    end
-  end
+  resources :foods, only: [:index] 
 
 end
