@@ -161,21 +161,23 @@
       </div>
     </div>
     <div class="form-row my-3">
+    <%# forbidテーブルの情報入力 %>
+    <div class="form-group col-sm-3">
+      <label for="forbid-food">禁止食材</label>
+      <%= f.text_field :forbid_food, class:"form-control foodTag", id:"forbid-food", data: {role: "tagsinput"} %>
+    </div>
+    <%# /forbidテーブルの情報入力 %>
       <div class="form-group col-sm-3">
-        <label for="banned-food">禁止食材</label>
-        <%= f.text_field :banned_food, class:"form-control", id:"banned-food", placeholder:"例）納豆"  %>
-      </div>
-      <div class="form-group col-sm-3 form-check px-5">
         <label for="denture-id">義歯<span class="text-danger pl-3">必須</span></label>
         <%= f.collection_select(:denture_id, Denture.all, :id, :name, {}, {class:"form-control", id:"denture-id"}) %>
       </div>
       <div class="form-group col-sm-3 form-check px-5">
-        <%= f.check_box :soup_thick ,{ class: "form-check-input", id: "soup-thick", style: "transform:scale(2.0);" }, "true", "false" %>
-        <label class="form-check-label pl-2" for="soup-thick">汁物のとろみ</label>
-      </div>
-      <div class="form-group col-sm-3 form-check px-5">
         <%= f.check_box :low_salt ,{ class: "form-check-input", id: "low-salt", style: "transform:scale(2.0);" }, "true", "false" %>
         <label class="form-check-label pl-2" for="low-salt">塩分制限</label>
+      </div>
+      <div class="form-group col-sm-3 form-check px-5">
+        <%= f.check_box :soup_thick ,{ class: "form-check-input", id: "soup-thick", style: "transform:scale(2.0);" }, "true", "false" %>
+        <label class="form-check-label pl-2" for="soup-thick">汁物のとろみ</label>
       </div>
     </div>
     <div class="form-row my-3">
@@ -185,15 +187,6 @@
       </div>
     </div>
     <%# /foodsテーブルの情報入力 %>
-
-    <%# /forbidテーブルの情報入力 %>
-    <div class="form-row my-3">
-      <div class="form-group col-sm-12 forbid-foods">
-        <label for="forbid-food">禁止食材</label>
-        <%= f.text_field :forbid_list, class:"form-control", id:"forbid-food", data: {role: "tagsinput"} %>
-      </div>
-    </div>
-    <%# /forbidテーブルの情報入力 %>
 
     <%# historiesテーブルの情報入力 %>
     <div class="form-row my-3">
