@@ -40,13 +40,13 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col"><%= sort_link(@p, :guest_first_name_kana, "名前") %></th>
-          <th scope="col"><%= sort_link(@p, :staple_type_id, "主食の形態") %></th>
-          <th scope="col"><%= sort_link(@p, :main_dish_type_id, "主菜の形態") %></th>
-          <th scope="col"><%= sort_link(@p, :side_dish_type_id, "副菜の形態") %></th>
+          <th scope="col"><%= sort_link(@p, :staple_type_id, "主食") %></th>
+          <th scope="col"><%= sort_link(@p, :main_dish_type_id, "主菜") %></th>
+          <th scope="col"><%= sort_link(@p, :side_dish_type_id, "副菜") %></th>
           <th scope="col"><%= sort_link(@p, :forbids_forbid_food, "禁止食材") %></th>
           <th scope="col"><%= sort_link(@p, :denture_id, "義歯") %></th>
           <th scope="col"><%= sort_link(@p, :low_salt, "塩分制限") %></th>
-          <th scope="col"><%= sort_link(@p, :soup_thick, "汁物のとろみ") %></th>
+          <th scope="col"><%= sort_link(@p, :soup_thick, "汁とろみ") %></th>
           <th scope="col"><%= sort_link(@p, :remark_food, "食事の備考") %></th>
         </tr>
       </thead>
