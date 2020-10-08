@@ -301,7 +301,6 @@ VScode
 | main_dish_amount_id  | integer    | null: false                    |
 | side_dish_type_id    | integer    | null: false                    |
 | side_dish_amount_id  | integer    | null: false                    |
-| banned_food          | string     |                                |
 | low_salt             | boolean    | null: false, default: false    |
 | soup_thick           | boolean    | null: false, default: false    |
 | denture_id           | integer    | null: false                    |
