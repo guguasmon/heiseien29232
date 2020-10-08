@@ -696,7 +696,7 @@ RSpec.describe '利用者のソート機能', type: :system do
       # ログインしたユーザーが登録していない利用者の名前が表示されていないことを確認する
       expect(page).to have_no_content(@guest3.first_name)
       # 「利用日１」ボタンをクリックして曜日順に並び替える
-      click_on '利用日１'
+      click_on '利用日'
       # 要素を確認して並び替えを反映させる時間を作る
       expect(page).to have_content(@guest1.first_name)
       expect(page).to have_content(@guest2.first_name)
