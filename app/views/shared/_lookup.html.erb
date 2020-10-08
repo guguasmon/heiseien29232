@@ -1,13 +1,11 @@
 <tr class="guest-list guest-no-<%= guest.id %>" data-href="<%= guest_path(guest.id) %>" >
   <td scope="col"><%= "#{guest.first_name} #{guest.last_name}" %></td>
   <td scope="col"><%= guest.gender.name %></td>
-  <td scope="col"><%= guest.visit1.name %></td>
-  <td scope="col"><%= guest.visit2.name %></td>
+  <td scope="col"><%= guest.visit1.name %>/<%= guest.visit2.name %></td>
   <td scope="col"><%= guest.adl.name %></td>
 
   <td scope="col"><%= guest.bath.bathing.name %></td>
   <td scope="col"><%= guest.bath.infection.name %></td>
-  <td scope="col"><%= guest.bath.timing.name %></td>
 
   <td scope="col"><%= guest.drink.drink_type.name %></td>
   <td scope="col"><%= guest.drink.thickness.name %></td>
@@ -17,9 +15,6 @@
   <td scope="col"><%= guest.food.staple_type.name %></td>
   <td scope="col"><%= guest.food.main_dish_type.name %></td>
   <td scope="col"><%= guest.food.side_dish_type.name %></td>
-  <td scope="col"><% guest.food.forbids.each do |x| %>
-  <%= x.forbid_food %>
-  <% end %></td>
   <td scope="col"><%= guest.food.denture.name %></td>
   <td scope="col" class="text-center"><%= guest.food.low_salt ? "●" : "" %></td>
   <td scope="col" class="text-center"><%= guest.food.soup_thick ? "●" : "" %></td>
