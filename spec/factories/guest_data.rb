@@ -24,7 +24,7 @@ FactoryBot.define do
     main_dish_amount_id    { 1 }
     side_dish_type_id      { 1 }
     side_dish_amount_id    { 1 }
-    banned_food            { '12345678901234567890' }
+    forbid_food            { Faker::Food.unique.fruits }
     low_salt               { 'false' }
     soup_thick             { 'false' }
     denture_id             { 1 }

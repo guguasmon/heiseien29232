@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_110244) do
+ActiveRecord::Schema.define(version: 2020_10_07_144009) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 2020_10_03_110244) do
     t.index ["guest_id"], name: "index_drinks_on_guest_id"
   end
 
+  create_table "food_forbid_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "food_id"
+    t.bigint "forbid_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["food_id"], name: "index_food_forbid_relations_on_food_id"
+    t.index ["forbid_id"], name: "index_food_forbid_relations_on_forbid_id"
+  end
+
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "staple_type_id", null: false
     t.integer "staple_amount_id", null: false
@@ -73,7 +82,6 @@ ActiveRecord::Schema.define(version: 2020_10_03_110244) do
     t.integer "main_dish_amount_id", null: false
     t.integer "side_dish_type_id", null: false
     t.integer "side_dish_amount_id", null: false
-    t.string "banned_food"
     t.boolean "low_salt", default: false, null: false
     t.boolean "soup_thick", default: false, null: false
     t.integer "denture_id", null: false
@@ -82,6 +90,12 @@ ActiveRecord::Schema.define(version: 2020_10_03_110244) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["guest_id"], name: "index_foods_on_guest_id"
+  end
+
+  create_table "forbids", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "forbid_food", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "guests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -127,6 +141,8 @@ ActiveRecord::Schema.define(version: 2020_10_03_110244) do
   add_foreign_key "comments", "guests"
   add_foreign_key "comments", "users"
   add_foreign_key "drinks", "guests"
+  add_foreign_key "food_forbid_relations", "foods"
+  add_foreign_key "food_forbid_relations", "forbids"
   add_foreign_key "foods", "guests"
   add_foreign_key "guests", "users"
   add_foreign_key "histories", "guests"

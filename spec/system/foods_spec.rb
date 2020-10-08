@@ -3,31 +3,31 @@ require 'rails_helper'
 RSpec.describe '食事提供表機能', type: :system do
   before do
     @user = FactoryBot.create(:user)
-    @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) # 月曜
+    @guest1 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 1, visit2_id: 0) # 月曜日利用者
     @bath1 = FactoryBot.create(:bath, guest_id: @guest1.id)
     @drink1 = FactoryBot.create(:drink, guest_id: @guest1.id)
     @food1 = FactoryBot.create(:food, guest_id: @guest1.id)
-    @guest2 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 2, visit2_id: 0) # 火曜
+    @guest2 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 2, visit2_id: 0) # 火曜日利用者
     @bath2 = FactoryBot.create(:bath, guest_id: @guest2.id)
     @drink2 = FactoryBot.create(:drink, guest_id: @guest2.id)
     @food2 = FactoryBot.create(:food, guest_id: @guest2.id)
-    @guest3 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 3, visit2_id: 0) # 水曜
+    @guest3 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 3, visit2_id: 0) # 水曜日利用者
     @bath3 = FactoryBot.create(:bath, guest_id: @guest3.id)
     @drink3 = FactoryBot.create(:drink, guest_id: @guest3.id)
     @food3 = FactoryBot.create(:food, guest_id: @guest3.id)
-    @guest4 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 4, visit2_id: 0) # 木曜
+    @guest4 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 4, visit2_id: 0) # 木曜日利用者
     @bath4 = FactoryBot.create(:bath, guest_id: @guest4.id)
     @drink4 = FactoryBot.create(:drink, guest_id: @guest4.id)
     @food4 = FactoryBot.create(:food, guest_id: @guest4.id)
-    @guest5 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 5, visit2_id: 0) # 金曜
+    @guest5 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 5, visit2_id: 0) # 金曜日利用者
     @bath5 = FactoryBot.create(:bath, guest_id: @guest5.id)
     @drink5 = FactoryBot.create(:drink, guest_id: @guest5.id)
     @food5 = FactoryBot.create(:food, guest_id: @guest5.id)
-    @guest6 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 6, visit2_id: 0) # 土曜
+    @guest6 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 6, visit2_id: 0) # 土曜日利用者
     @bath6 = FactoryBot.create(:bath, guest_id: @guest6.id)
     @drink6 = FactoryBot.create(:drink, guest_id: @guest6.id)
     @food6 = FactoryBot.create(:food, guest_id: @guest6.id)
-    @guest7 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 7, visit2_id: 0) # 日曜
+    @guest7 = FactoryBot.create(:guest, user_id: @user.id, visit1_id: 7, visit2_id: 0) # 日曜日利用者
     @bath7 = FactoryBot.create(:bath, guest_id: @guest7.id)
     @drink7 = FactoryBot.create(:drink, guest_id: @guest7.id)
     @food7 = FactoryBot.create(:food, guest_id: @guest7.id)
@@ -108,7 +108,7 @@ RSpec.describe '食事提供表機能', type: :system do
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content(@guest1.food.staple_type.name.to_s)
     end
-    it 'ログインしたユーザーは食事提供表ページで自分が登録した利用者情報を曜日別に表示できる' do
+    it 'ログインしたユーザーは食事提供表ページで自分が登録した利用者情報を曜日別に表示できる', js: true do
       # 利用者を登録したユーザーでログインする
       sign_in(@user)
       # 「食事提供表」のリンクがあることを確認する
@@ -127,8 +127,6 @@ RSpec.describe '食事提供表機能', type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「月曜日」ボタンをクリックする
       click_on '月曜日'
-      # 食事提供表の月曜日ページにいることを確認する
-      expect(current_path).to eq search_food_path(1)
       # 月曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest1.first_name)
       expect(page).to have_content(@guest1.last_name)
@@ -138,8 +136,6 @@ RSpec.describe '食事提供表機能', type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「火曜日」ボタンをクリックする
       click_on '火曜日'
-      # 食事提供表の火曜日ページにいることを確認する
-      expect(current_path).to eq search_food_path(2)
       # 火曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest2.first_name)
       # 火曜日以外の利用者の名前が表示されていないことを確認する
@@ -148,8 +144,6 @@ RSpec.describe '食事提供表機能', type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「水曜日」ボタンをクリックする
       click_on '水曜日'
-      # 食事提供表の水曜日ページにいることを確認する
-      expect(current_path).to eq search_food_path(3)
       # 水曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest3.first_name)
       # 水曜日以外の利用者の名前が表示されていないことを確認する
@@ -158,8 +152,6 @@ RSpec.describe '食事提供表機能', type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「木曜日」ボタンをクリックする
       click_on '木曜日'
-      # 食事提供表の木曜日ページにいることを確認する
-      expect(current_path).to eq search_food_path(4)
       # 木曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest4.first_name)
       # 木曜日以外の利用者の名前が表示されていないことを確認する
@@ -168,8 +160,6 @@ RSpec.describe '食事提供表機能', type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「金曜日」ボタンをクリックする
       click_on '金曜日'
-      # 食事提供表の金曜日ページにいることを確認する
-      expect(current_path).to eq search_food_path(5)
       # 金曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest5.first_name)
       # 金曜日以外の利用者の名前が表示されていないことを確認する
@@ -178,8 +168,6 @@ RSpec.describe '食事提供表機能', type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「土曜日」ボタンをクリックする
       click_on '土曜日'
-      # 食事提供表の土曜日ページにいることを確認する
-      expect(current_path).to eq search_food_path(6)
       # 土曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest6.first_name)
       # 土曜日以外の利用者の名前が表示されていないことを確認する
@@ -188,8 +176,6 @@ RSpec.describe '食事提供表機能', type: :system do
       expect(page).to have_no_content(@guest8.first_name)
       # 「日曜日」ボタンをクリックする
       click_on '日曜日'
-      # 食事提供表の日曜日ページにいることを確認する
-      expect(current_path).to eq search_food_path(7)
       # 日曜日利用の利用者の名前が表示されていることを確認する
       expect(page).to have_content(@guest7.first_name)
       # 日曜日以外の利用者の名前が表示されていないことを確認する

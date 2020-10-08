@@ -76,15 +76,15 @@
             <%# /guestテーブルの検索情報入力 %>
             <%# bathテーブルの検索情報入力 %>
             <div class="form-row">
-              <div class="form-group col-lg-3">
+              <div class="form-group col-lg-4">
                 <label for="bathing-id">入浴形態</label>
                 <%= f.collection_select(:bath_bathing_id_eq, Bathing.where(id: 1..3), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"bathing-id"}) %>
               </div>
-              <div class="form-group col-lg-3">
+              <div class="form-group col-lg-4">
                 <label for="infection-id">感染症の有無</label>
                 <%= f.collection_select(:bath_infection_id_eq, Infection.where(id: 1..5), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"infection-id"}) %>
               </div>
-              <div class="form-group col-lg-3">
+              <div class="form-group col-lg-4">
                 <label for="timing-id">入浴の順番</label>
                 <%= f.collection_select(:bath_timing_id_eq, Timing.where(id: 1..5), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"timing-id"}) %>
               </div>
@@ -140,24 +140,27 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-lg-3">
-                <label for="banned-food">禁止食材</label>
-                <%= f.search_field :food_banned_food_cont, class:"form-control", id:"banned-food" %>
+              <%# forbid検索 %>
+              <div class="form-group col-lg-12 mx-2">
+                <label for="forbid-food">禁止食材</label>
+                <%= f.search_field :food_forbids_forbid_food_cont , class:"form-control", id:"forbid-food", data: {role: "tagsinput"}  %>
               </div>
-              <div class="form-group col-lg-3">
+              <%# /forbid検索 %>
+              <div class="form-group col-lg-4">
                 <label for="denture-id">義歯</label>
                 <%= f.collection_select(:food_denture_id_eq, Denture.where(id: 1..5), :id, :name, { include_blank: '指定なし'}, {class:"form-control", id:"denture-id"}) %>
               </div>
-              <div class="form-group col-lg-3 form-check">
+              <div class="form-group col-lg-4 form-check">
                 <%= f.check_box :food_low_salt_eq ,{ class: "form-check-input ml-3", id: "low-salt", style: "transform:scale(2.0);" },checked_value = "true", unchecked_value = ""  %>
                 <label class="form-check-label pl-5" for="low-salt">塩分制限</label>
               </div>
-              <div class="form-group col-lg-3 form-check">
+              <div class="form-group col-lg-4 form-check">
                 <%= f.check_box :food_soup_thick_eq ,{ class: "form-check-input ml-3", id: "soup-thick", style: "transform:scale(2.0);" },checked_value = "true", unchecked_value = ""  %>
                 <label class="form-check-label pl-5" for="soup-thick">汁物のとろみ</label>
               </div>
             </div>
             <%# /foodテーブルの検索情報入力 %>
+
             <%# 入力検索 %>
             <div class="form-row">
               <div class="form-group col-lg-12">
@@ -209,8 +212,8 @@
           <th scope="col"><%= sort_link(@p, :visit2_id, "利用日２") %></th>
           <th scope="col"><%= sort_link(@p, :adl_id) %></th>
           <th scope="col"><%= sort_link(@p, :bath_bathing_id) %></th>
-          <th scope="col"><%= sort_link(@p, :drink_drink_type_id) %></th>
-          <th scope="col"><%= sort_link(@p, :food_staple_type_id) %></th>
+          <th scope="col"><%= sort_link(@p, :drink_drink_type_id, "飲み物") %></th>
+          <th scope="col"><%= sort_link(@p, :food_staple_type_id, "主食") %></th>
           <th scope="col" class="print">詳細/編集/削除</th>
         </tr>
       </thead>

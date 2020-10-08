@@ -69,11 +69,11 @@ class GuestsController < ApplicationController
       main_dish_amount_id: @guest.food.main_dish_amount_id,
       side_dish_type_id: @guest.food.side_dish_type_id,
       side_dish_amount_id: @guest.food.side_dish_amount_id,
-      banned_food: @guest.food.banned_food,
       low_salt: @guest.food.low_salt,
       soup_thick: @guest.food.soup_thick,
       denture_id: @guest.food.denture_id,
-      remark_food: @guest.food.remark_food
+      remark_food: @guest.food.remark_food,
+      forbid_food: @guest.food.forbids.pluck(:forbid_food).join(',')
     )
   end
 
@@ -103,7 +103,7 @@ class GuestsController < ApplicationController
         if session[:food_day] == '0'
           redirect_to foods_path
         else
-          redirect_to foods_path(q: {g: {'1': {m: 'or', visit1_id_eq: session[:food_day], visit2_id_eq: session[:food_day]}, '0': {user_id_eq: "#{current_user.id}"}}})
+          redirect_to foods_path(q: { g: {'1': {m: 'or', visit1_id_eq: session[:food_day], visit2_id_eq: session[:food_day]}, '0': {user_id_eq: current_user.id.to_s}}})
         end
         session[:food_day].clear
       else
@@ -134,7 +134,8 @@ class GuestsController < ApplicationController
       :log, :log_type_id,
       :image,
       :staple_type_id, :staple_amount_id, :main_dish_type_id, :main_dish_amount_id, :side_dish_type_id, :side_dish_amount_id,
-      :banned_food, :low_salt, :soup_thick, :denture_id, :remark_food
+      :low_salt, :soup_thick, :denture_id, :remark_food,
+      :forbid_food
     ).merge(id: params[:id], user_id: current_user.id)
   end
 

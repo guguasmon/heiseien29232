@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function () {
   const x = $(location).attr('pathname');
   const num = x.replace(/[^0-9]/g, '');
   switch (num) {

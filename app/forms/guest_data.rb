@@ -6,7 +6,8 @@ class GuestData
                 :drink_type_id, :warm, :thickness_id, :diabetes, :remark_drink, :guest_id,
                 :log, :log_type_id,
                 :image,
-                :staple_type_id, :staple_amount_id, :main_dish_type_id, :main_dish_amount_id, :side_dish_type_id, :side_dish_amount_id, :banned_food, :low_salt, :soup_thick, :denture_id, :remark_food
+                :staple_type_id, :staple_amount_id, :main_dish_type_id, :main_dish_amount_id, :side_dish_type_id, :side_dish_amount_id, :low_salt, :soup_thick, :denture_id, :remark_food,
+                :forbid_food
 
   # # boolean型のチェックはpresence:trueが使えない
   validates :warm, inclusion: { in: [true, false] }
@@ -88,7 +89,12 @@ class GuestData
     drink = Drink.create(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink, guest_id: guest.id)
 
     # 食事の情報を保存
-    food = Food.create(staple_type_id: staple_type_id, staple_amount_id: staple_amount_id, main_dish_type_id: main_dish_type_id, main_dish_amount_id: main_dish_amount_id, side_dish_type_id: side_dish_type_id, side_dish_amount_id: side_dish_amount_id, banned_food: banned_food, low_salt: low_salt, soup_thick: soup_thick, denture_id: denture_id, remark_food: remark_food, guest_id: guest.id)
+    food = Food.create(staple_type_id: staple_type_id, staple_amount_id: staple_amount_id, main_dish_type_id: main_dish_type_id, main_dish_amount_id: main_dish_amount_id, side_dish_type_id: side_dish_type_id, side_dish_amount_id: side_dish_amount_id, low_salt: low_salt, soup_thick: soup_thick, denture_id: denture_id, remark_food: remark_food, guest_id: guest.id)
+    # 禁止食材の情報を保存
+    if forbid_food
+      food_list = forbid_food.split(',')
+      food.save_forbids(food_list)
+    end
     # 更新履歴の情報を保存
     new_log = History.create(log: log, log_type_id: log_type_id, guest_id: guest.id)
   end
@@ -122,11 +128,11 @@ class GuestData
       main_dish_amount_id: guest.food.main_dish_amount_id,
       side_dish_type_id: guest.food.side_dish_type_id,
       side_dish_amount_id: guest.food.side_dish_amount_id,
-      banned_food: guest.food.banned_food,
       low_salt: guest.food.low_salt,
       soup_thick: guest.food.soup_thick,
       denture_id: guest.food.denture_id,
-      remark_food: guest.food.remark_food
+      remark_food: guest.food.remark_food,
+      forbid_food: guest.food.forbids.pluck(:forbid_food).join(',')
     )
 
     guest.update(
@@ -141,6 +147,24 @@ class GuestData
     elsif guest.visit1_id > guest.visit2_id && guest.visit2_id != 0
       guest.visit1_id, guest.visit2_id = guest.visit2_id, guest.visit1_id
       guest.update(visit1_id: guest.visit1_id, visit2_id: guest.visit2_id)
+    end
+
+    # 入浴の情報を保存
+    bath = Bath.find_by(guest_id: guest.id)
+    bath.update(bathing_id: bathing_id, infection_id: infection_id, timing_id: timing_id, remark_bath: remark_bath)
+
+    # 水分の情報を保存
+    drink = Drink.find_by(guest_id: guest.id)
+    drink.update(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink)
+
+    # 食事の情報を保存
+    food = Food.find_by(guest_id: guest.id)
+    food.update(staple_type_id: staple_type_id, staple_amount_id: staple_amount_id, main_dish_type_id: main_dish_type_id, main_dish_amount_id: main_dish_amount_id, side_dish_type_id: side_dish_type_id, side_dish_amount_id: side_dish_amount_id, low_salt: low_salt, soup_thick: soup_thick, denture_id: denture_id, remark_food: remark_food)
+
+    # 禁止食材の情報を保存
+    if forbid_food
+      food_list = forbid_food.split(',')
+      food.save_forbids(food_list)
     end
 
     # 比較用データ新しい方作成
@@ -169,24 +193,12 @@ class GuestData
       main_dish_amount_id: main_dish_amount_id.to_i,
       side_dish_type_id: side_dish_type_id.to_i,
       side_dish_amount_id: side_dish_amount_id.to_i,
-      banned_food: banned_food,
       low_salt: low_salt,
       soup_thick: soup_thick,
       denture_id: denture_id.to_i,
-      remark_food: remark_food
+      remark_food: remark_food,
+      forbid_food: food.forbids.pluck(:forbid_food).join(',')
     )
-
-    # 入浴の情報を保存
-    bath = Bath.find_by(guest_id: guest.id)
-    bath.update(bathing_id: bathing_id, infection_id: infection_id, timing_id: timing_id, remark_bath: remark_bath)
-
-    # 水分の情報を保存
-    drink = Drink.find_by(guest_id: guest.id)
-    drink.update(drink_type_id: drink_type_id, thickness_id: thickness_id, warm: warm, diabetes: diabetes, remark_drink: remark_drink)
-
-    # 食事の情報を保存
-    food = Food.find_by(guest_id: guest.id)
-    food.update(staple_type_id: staple_type_id, staple_amount_id: staple_amount_id, main_dish_type_id: main_dish_type_id, main_dish_amount_id: main_dish_amount_id, side_dish_type_id: side_dish_type_id, side_dish_amount_id: side_dish_amount_id, banned_food: banned_food, low_salt: low_salt, soup_thick: soup_thick, denture_id: denture_id, remark_food: remark_food)
 
     # アクティブハッシュとの繋がりが途切れているため改めて記述
     change_logs = []
@@ -269,8 +281,8 @@ class GuestData
     if comparison_old.side_dish_amount_id != comparison_new.side_dish_amount_id
       change_logs << "副菜の量:#{amounts[comparison_old.side_dish_amount_id]}→#{amounts[comparison_new.side_dish_amount_id]}"
     end
-    if comparison_old.banned_food != comparison_new.banned_food
-      change_logs << "禁止食材:#{comparison_old.banned_food}→#{comparison_new.banned_food}"
+    if comparison_old.forbid_food != comparison_new.forbid_food
+      change_logs << "禁止食材:#{comparison_old.forbid_food}→#{comparison_new.forbid_food}"
     end
     if comparison_old.low_salt != comparison_new.low_salt
       change_logs << "塩分制限:#{comparison_old.low_salt ? 'あり' : 'なし'}→#{comparison_new.low_salt ? 'あり' : 'なし'}"

@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function () {
   $('form').on('change', 'input[type="file"]', function(e){
     //ファイルオブジェクトを取得する
     const file = e.target.files[0],

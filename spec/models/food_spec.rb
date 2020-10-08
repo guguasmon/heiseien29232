@@ -21,8 +21,8 @@ RSpec.describe Food, type: :model do
         @food.side_dish_type_id = '1'
         expect(@food).to be_valid
       end
-      it 'banned_foodが空でも登録できる' do
-        @food.banned_food = ''
+      it 'denture_idが0（未選択）以外であれば登録できる' do
+        @food.denture_id = '1'
         expect(@food).to be_valid
       end
       it 'remark_foodが空でも登録できる' do
