@@ -73,7 +73,7 @@ class GuestsController < ApplicationController
       soup_thick: @guest.food.soup_thick,
       denture_id: @guest.food.denture_id,
       remark_food: @guest.food.remark_food,
-      forbid_food: @guest.food.forbids.pluck(:forbid_food).join(",")
+      forbid_food: @guest.food.forbids.pluck(:forbid_food).join(',')
     )
   end
 
@@ -103,7 +103,7 @@ class GuestsController < ApplicationController
         if session[:food_day] == '0'
           redirect_to foods_path
         else
-          redirect_to foods_path(q: {g: {'1': {m: 'or', visit1_id_eq: session[:food_day], visit2_id_eq: session[:food_day]}, '0': {user_id_eq: "#{current_user.id}"}}})
+          redirect_to foods_path(q: { g: {'1': {m: 'or', visit1_id_eq: session[:food_day], visit2_id_eq: session[:food_day]}, '0': {user_id_eq: current_user.id.to_s}}})
         end
         session[:food_day].clear
       else

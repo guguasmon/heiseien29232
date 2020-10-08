@@ -11,7 +11,7 @@ class Food < ApplicationRecord
   belongs_to :guest
   has_many :food_forbid_relations, dependent: :destroy
   has_many :forbids, through: :food_forbid_relations
-  
+
   # boolean型のチェック
   validates :low_salt,   inclusion: { in: [true, false] }
   validates :soup_thick, inclusion: { in: [true, false] }
@@ -35,19 +35,19 @@ class Food < ApplicationRecord
   end
 
   def save_forbids(tags)
-    current_tags = self.forbids.pluck(:forbid_food) unless self.forbids.nil?
+    current_tags = forbids.pluck(:forbid_food) unless forbids.nil?
     old_tags = current_tags - tags
     new_tags = tags - current_tags
 
     # Destroy old taggings:
     old_tags.each do |old_name|
-      self.forbids.delete Forbid.find_by(forbid_food:old_name)
+      forbids.delete Forbid.find_by(forbid_food: old_name)
     end
 
     # Create new taggings:
     new_tags.each do |new_name|
-      food_forbid = Forbid.find_or_create_by(forbid_food:new_name)
-      self.forbids << food_forbid
+      food_forbid = Forbid.find_or_create_by(forbid_food: new_name)
+      forbids << food_forbid
     end
   end
 end

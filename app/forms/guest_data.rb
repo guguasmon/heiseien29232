@@ -92,7 +92,7 @@ class GuestData
     food = Food.create(staple_type_id: staple_type_id, staple_amount_id: staple_amount_id, main_dish_type_id: main_dish_type_id, main_dish_amount_id: main_dish_amount_id, side_dish_type_id: side_dish_type_id, side_dish_amount_id: side_dish_amount_id, low_salt: low_salt, soup_thick: soup_thick, denture_id: denture_id, remark_food: remark_food, guest_id: guest.id)
     # 禁止食材の情報を保存
     if forbid_food
-      food_list = forbid_food.split(",")
+      food_list = forbid_food.split(',')
       food.save_forbids(food_list)
     end
     # 更新履歴の情報を保存
@@ -132,7 +132,7 @@ class GuestData
       soup_thick: guest.food.soup_thick,
       denture_id: guest.food.denture_id,
       remark_food: guest.food.remark_food,
-      forbid_food: guest.food.forbids.pluck(:forbid_food).join(",")
+      forbid_food: guest.food.forbids.pluck(:forbid_food).join(',')
     )
 
     guest.update(
@@ -163,7 +163,7 @@ class GuestData
 
     # 禁止食材の情報を保存
     if forbid_food
-      food_list = forbid_food.split(",")
+      food_list = forbid_food.split(',')
       food.save_forbids(food_list)
     end
 
@@ -197,8 +197,8 @@ class GuestData
       soup_thick: soup_thick,
       denture_id: denture_id.to_i,
       remark_food: remark_food,
-      forbid_food: food.forbids.pluck(:forbid_food).join(",")
-    )    
+      forbid_food: food.forbids.pluck(:forbid_food).join(',')
+    )
 
     # アクティブハッシュとの繋がりが途切れているため改めて記述
     change_logs = []
@@ -296,7 +296,6 @@ class GuestData
     if comparison_old.remark_food != comparison_new.remark_food
       change_logs << "食事の備考:#{comparison_old.remark_food}→#{comparison_new.remark_food}"
     end
-
 
     change_logs << '顔写真の変更' if image
     # 変更内容を変数へ入力

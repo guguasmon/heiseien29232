@@ -126,7 +126,7 @@ RSpec.describe '利用者情報の編集', type: :system do
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
       # 詳細ページの更新履歴には先ほど変更した内容の履歴が存在することを確認する
-      expect(page).to have_content("入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳//主食の形態:常食→ペースト")
+      expect(page).to have_content('入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳//主食の形態:常食→ペースト')
     end
   end
   context '利用者情報の編集ができないとき' do

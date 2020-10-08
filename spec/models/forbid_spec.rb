@@ -20,7 +20,7 @@ RSpec.describe Forbid, type: :model do
         @forbid.save
         another_forbid = FactoryBot.build(:forbid, forbid_food: @forbid.forbid_food)
         another_forbid.valid?
-        expect(another_forbid.errors.full_messages).to include("Forbid food has already been taken")
+        expect(another_forbid.errors.full_messages).to include('Forbid food has already been taken')
       end
     end
   end
