@@ -205,7 +205,7 @@
         <h1 class="text-center m-3">更新理由記入画面</h1>
       </div>
     </div>
-    <div class="form-row my-3">
+    <div class="form-row my-3 mb-5">
       <div class="form-group  col-sm-12">
         <label for="log-type-id">更新の理由<span class="text-danger pl-3">必須</span></label>
         <%= f.collection_select(:log_type_id, LogType.where(id: 1..6), :id, :name, {prompt: "更新する理由を選択してください"}, {class:"form-control", id:"log-type-id"}) %>
