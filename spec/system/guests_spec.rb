@@ -126,7 +126,7 @@ RSpec.describe '利用者情報の編集', type: :system do
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
       # 詳細ページの更新履歴には先ほど変更した内容の履歴が存在することを確認する
-      expect(page).to have_content('入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳//主食の形態:常食→ペースト')
+      expect(page).to have_content('入浴形態:一般浴→チェアー浴//飲み物の種類:牛乳→コーヒー牛乳//主食の形態:常食→ペースト')
     end
   end
   context '利用者情報の編集ができないとき' do
@@ -287,7 +287,7 @@ RSpec.describe '利用者情報の詳細表示/更新履歴自動記入機能/�
       expect(page).to have_content("#{@guest1.first_name}編集済み")
       expect(page).to have_content("#{@guest1.last_name}編集済み")
       # 詳細ページの更新履歴に先ほど変更した内容の履歴が存在することを確認する
-      expect(page).to have_content('入浴形態:独歩→歩行器//飲み物の種類:牛乳→コーヒー牛乳//主食の形態:常食→ペースト//顔写真の変更')
+      expect(page).to have_content('入浴形態:一般浴→チェアー浴//飲み物の種類:牛乳→コーヒー牛乳//主食の形態:常食→ペースト//顔写真の変更')
     end
     it 'ログインしたユーザーは詳細画面からでも自分が登録した利用者情報の削除ができる' do
       # 利用者1を投稿したユーザーでログインする
