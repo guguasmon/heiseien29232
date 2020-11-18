@@ -68,6 +68,11 @@
             <i class="fas fa-sign-in-alt"></i>ログイン
             <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to users_guest_sign_in_path, method: :post, class: "btn btn-outline-dark nav-link", role: "button" do %>
+            <i class="fas fa-sign-in-alt"></i>テストログイン(閲覧用)
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>

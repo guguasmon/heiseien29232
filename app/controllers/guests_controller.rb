@@ -103,7 +103,7 @@ class GuestsController < ApplicationController
         if session[:food_day] == '0'
           redirect_to foods_path
         else
-          redirect_to foods_path(q: { g: {'1': {m: 'or', visit1_id_eq: session[:food_day], visit2_id_eq: session[:food_day]}, '0': {user_id_eq: current_user.id.to_s}}})
+          redirect_to foods_path(q: { g: {'1': {m: 'or', visit1_id_eq: session[:food_day], visit2_id_eq: session[:food_day]}, '0': {user_id_eq: current_user.id.to_s}} })
         end
         session[:food_day].clear
       else
