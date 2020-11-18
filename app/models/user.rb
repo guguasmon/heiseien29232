@@ -17,5 +17,4 @@ class User < ApplicationRecord
       user.password = 'password123'
     end
   end
-
 end
