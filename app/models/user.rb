@@ -11,4 +11,11 @@ class User < ApplicationRecord
     validates :email, uniqueness: { case_sensitive: true }, format: { with: /\A\S+@\S+\.\S+\z/ }
     validates :password, length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: 'Password Include both letters and numbers' }
   end
+
+  def self.guest
+    find_by(email: 'test@example.com') do |user|
+      user.password = 'password123'
+    end
+  end
+
 end
